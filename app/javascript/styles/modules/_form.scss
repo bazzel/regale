@@ -1,0 +1,16 @@
+.hint-block {
+  @extend .help-block;
+
+  .has-error & {
+    color: lighten($text-color, 25%);
+  }
+}
+
+form {
+  abbr[title],
+  abbr[data-original-title] {
+    border-bottom: 0;
+    color: $state-danger-text;
+    text-decoration: none;
+  }
+}
