@@ -53,6 +53,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'html2slim'
+  gem 'letter_opener' # When mail is sent from your application, Letter Opener will open a preview in the browser instead of sending.
 end
 
 group :test do
