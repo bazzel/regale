@@ -3,13 +3,18 @@ Feature:
   I want to be able to sing-up
   So I can edit and view my meals
 
-  @wip
   Scenario: Show the sign up page
     Given I am a new user
     When I open the application
     Then I see the sign up page
 
+  @wip
   Scenario: Sign up with valid email address
+    Given I am a new user
+    When I open the application
+    And I fill in "Email" with "john.doe@example.com"
+    And I click "Sign In"
+    Then "john.doe@example.com" should receive an email
 
 
   Scenario: Sign up with invalid email address
