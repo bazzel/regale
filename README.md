@@ -1,5 +1,10 @@
 # README
 
+# SendGrid
+
+The production mode of this application uses [SendGrid](http://sendgrid.com) for sending mails.
+
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
