@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'slim-rails' # Provides the generator settings required for Rails 3+ to use Slim
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -51,6 +52,8 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'html2slim'
+  gem 'letter_opener' # When mail is sent from your application, Letter Opener will open a preview in the browser instead of sending.
 end
 
 group :test do
@@ -62,7 +65,13 @@ group :test do
   gem 'cucumber-rails', require: false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  gem 'email_spec' # Easily test email in RSpec, Cucumber, and MiniTest
+  gem 'rails-controller-testing' # Extracting `assigns` and `assert_template` from ActionDispatch.
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+  gem 'sendgrid-ruby'
+end

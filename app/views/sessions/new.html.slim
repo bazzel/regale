@@ -1,0 +1,11 @@
+.card-pf
+  header.login-pf-header
+    h1
+      | Simply login with your email
+  = form_tag do
+    .form-group
+      = label_tag :email, 'Email address', class: 'sr-only'
+      = email_field_tag :email, nil, placeholder: 'Email', class: 'form-control input-lg'
+      = submit_tag 'Sign In', class: 'button.btn btn-primary btn-block btn-lg'
+  p.login-pf-signup
+    | Regale uses magic links instead of passwords.
