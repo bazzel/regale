@@ -15,6 +15,7 @@ Feature:
     And I fill in "Email" with "john.doe@example.com"
     And I click "Sign In"
     Then "john.doe@example.com" should receive an email
+    And I see a page with instructions for "john.doe@example.com" how to login
 
 
   Scenario: Sign up with invalid email address
