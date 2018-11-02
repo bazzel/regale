@@ -1,6 +1,6 @@
 Feature:
   As a user
-  I want to be able to sing-up
+  I want to be able to sign-up
   So I can edit and view my meals
 
   Scenario: Show the sign up page
