@@ -1,12 +1,14 @@
 doctype html
-html
+html.layout-pf.layout-pf-fixed.transitions
   head
     title
       | Regale
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'styles', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
+    = render partial: 'masthead'
+
     = yield

@@ -105,6 +105,11 @@ GEM
       mail (~> 2.7)
     erubi (1.7.1)
     execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
     ffi (1.9.25)
     gherkin (5.1.0)
     globalid (0.4.1)
@@ -291,6 +296,7 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   email_spec
+  factory_bot_rails
   html2slim
   jbuilder (~> 2.5)
   letter_opener

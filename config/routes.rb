@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get 'sign_in', to: 'sessions#new', as: :signin
   post 'sign_in', to: 'sessions#create'
   get '/sign_in/:token', to: 'sessions#show', as: :token_sign_in
+  delete '/sign_out', to: 'sessions#destroy', as: :sign_out
 
 
   get 'welcome/show'

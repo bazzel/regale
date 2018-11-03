@@ -8,7 +8,6 @@ Feature:
     When I open the application
     Then I see the sign up page
 
-  @wip
   Scenario: Sign up with valid email address
     Given I am a new user
     When I open the application
@@ -18,10 +17,23 @@ Feature:
     And I see a page with instructions for "john.doe@example.com" how to login
 
 
+  Scenario: Sign in with valid url
+    Given I sign up with my email address "john.doe@example.com"
+    When I use the magic link
+    Then I'm in
+
+  Scenario: Sign out
+    Given I signed in with my email address "john.doe@example.com"
+    When I sign out
+    Then I see the sign up page
+
+  @todo
   Scenario: Sign up with invalid email address
 
-  Scenario: Sign in with valid url
-
+  @todo
   Scenario: Sign in with invalid url
 
+  @todo
   Scenario: Sign in with expired valid url
+
+  # http://masa331.github.io/2016/05/21/passwordless-authentication-in-rails.html
