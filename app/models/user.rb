@@ -12,13 +12,3 @@ class User < ApplicationRecord
       .where('login_token_valid_until > ?', Time.now).first
   end
 end
-
-class NullUser
-  def anonymous?
-    true
-  end
-
-  def id
-    nil
-  end
-end

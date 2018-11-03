@@ -1,10 +1,3 @@
-Given('I am a new user') do
-end
-
-When('I open the application') do
-  visit ''
-end
-
 Then('I see the sign up page') do
   expect(page).to have_text('Simply login with your email')
   expect(page).to have_text('Regale uses magic links instead of passwords.')
@@ -31,4 +24,16 @@ end
 
 Then("I'm in") do
   expect(page).to have_text("Welcome, #{@user.email}")
+end
+
+Given("I signed in with my email address {string}") do |email|
+  step %Q(I sign up with my email address "#{email}")
+  step %q(I use the magic link)
+end
+
+When("I sign out") do
+  within('ul.navbar-utility') do
+    click_link_or_button @user.email
+    click_link_or_button 'Logout'
+  end
 end

@@ -22,6 +22,12 @@ Feature:
     When I use the magic link
     Then I'm in
 
+  @wip
+  Scenario: Sign out
+    Given I signed in with my email address "john.doe@example.com"
+    When I sign out
+    Then I see the sign up page
+
   @todo
   Scenario: Sign up with invalid email address
 

@@ -20,4 +20,9 @@ class SessionsController < ApplicationController
       #redirect_to root_path, alert: 'Invalid or expired login link'
     end
   end
+
+  def destroy
+    self.current_user = NullUser.new
+    redirect_to root_path
+  end
 end
