@@ -49,7 +49,7 @@ RSpec.describe SessionsController, type: :controller do
 
       context 'existing user' do
         before do
-          User.create(email: email)
+          create(:user, email: email)
         end
 
         it 'does not create a user' do
@@ -91,11 +91,7 @@ RSpec.describe SessionsController, type: :controller do
 
     describe 'on success' do
       let!(:user) do
-        User.create(
-          email: email,
-          login_token: login_token,
-          login_token_valid_until: 15.minutes.from_now
-        )
+        create :user
       end
 
       def do_get
@@ -121,6 +117,22 @@ RSpec.describe SessionsController, type: :controller do
         expect(do_get).to redirect_to(root_path)
       end
     end
+  end
 
+  describe 'DELETE sessions' do
+    before { controller.current_user = build_stubbed(:user) }
+
+    def do_delete
+      delete 'destroy'
+    end
+
+    it 'nullifies the current user' do
+      do_delete
+      expect(controller.current_user).to be_anonymous
+    end
+
+    it 'redirect to the root path' do
+      expect(do_delete).to redirect_to(root_path)
+    end
   end
 end

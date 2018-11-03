@@ -9,22 +9,6 @@ html.layout-pf.layout-pf-fixed.transitions
     = stylesheet_pack_tag 'styles', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   body
-
-    nav.navbar.navbar-pf-vertical
-      .navbar-header
-        a.navbar-brand href="/"
-          = image_tag 'logo-alt.svg', class: 'img navbar-brand-icon'
-          = image_tag 'brand-alt.svg', class: 'navbar-brand-name', alt: 'PatternFly Enterprise Application'
-      nav.collapse.navbar-collapse
-        ul.nav.navbar-nav.navbar-right.navbar-iconic.navbar-utility
-          li.dropdown
-            button#dropdownMenu2.btn.btn-link.dropdown-toggle.nav-item-iconic aria-expanded="true" aria-haspopup="true" data-toggle="dropdown"
-              span.fa.pficon-user title="Username"
-              span.dropdown-title
-                => current_user.email
-                span.caret
-            ul.dropdown-menu aria-labelledby="dropdownMenu2"
-              li
-                = link_to 'Logout', sign_out_path
+    = render partial: 'masthead'
 
     = yield
