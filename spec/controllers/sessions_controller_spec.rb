@@ -1,11 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  let(:email) { 'john.doe@example.com' }
 
   describe 'POST /sessions' do
-
     describe 'on success' do
-      let(:email) { 'john.doe@example.com' }
       let(:options) do
         {
           email: email
@@ -85,5 +84,43 @@ RSpec.describe SessionsController, type: :controller do
 
       end
     end
+  end
+
+  describe 'GET sessions/:token' do
+    let(:login_token) { 'lorem-ipsum' }
+
+    describe 'on success' do
+      let!(:user) do
+        User.create(
+          email: email,
+          login_token: login_token,
+          login_token_valid_until: 15.minutes.from_now
+        )
+      end
+
+      def do_get
+        get 'show', params: {
+          token: login_token
+        }
+      end
+
+      it 'resets the token' do
+        expect do
+          do_get
+          user.reload
+        end.to change { user.login_token }.to(nil).and \
+               change { user.login_token_valid_until }
+      end
+
+      it 'it assigns the user' do
+        do_get
+        expect(controller.current_user).to eql(user)
+      end
+
+      it 'redirects to the root page' do
+        expect(do_get).to redirect_to(root_path)
+      end
+    end
+
   end
 end

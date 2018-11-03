@@ -7,4 +7,17 @@ class SessionsController < ApplicationController
 
     SessionsMailer.magic_link(user).deliver
   end
+
+  def show
+    user = User.valid_with_token(params[:token])
+
+    if user
+      user.invalidate_token
+
+      self.current_user = user
+      redirect_to root_path
+    #else
+      #redirect_to root_path, alert: 'Invalid or expired login link'
+    end
+  end
 end
