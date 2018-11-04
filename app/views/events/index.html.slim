@@ -1,17 +1,3 @@
 h1 Listing events
 
-.list-group.list-view-pf
-  - @events.each do |event|
-    .list-group-item.list-view-pf-stacked
-      .list-group-item-header
-        .list-view-pf-actions
-          = link_to 'Edit', edit_event_path(event), class: 'btn btn-default'
-        .list-view-pf-main-info
-          .list-view-pf-left
-            .list-view-pf-calendar
-              = event.scheduled_at.strftime('%b')
-              strong= event.scheduled_at.strftime('%-m')
-          .list-view-pf-body
-            .list-view-pf-description
-              .list-group-item-heading
-                = event.title
+.list-group.list-view-pf= render @events

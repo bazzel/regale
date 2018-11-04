@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :event do
-    title { "MyString" }
-    scheduled_at { "2018-11-04 08:11:36" }
+    title { "Italian dinner" }
+    scheduled_at { "2018-11-04 18:00:00" }
   end
 end
