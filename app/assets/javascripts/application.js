@@ -14,3 +14,15 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// See: https://github.com/patternfly/patternfly/blob/master/QUICKSTART.md#using-patternfly-in-your-application
+//
+//= require 'jquery/dist/jquery'
+//= require 'bootstrap/dist/js/bootstrap'
+//= require 'patternfly/dist/js/patternfly'
+
+var ready = function() {
+  $().setupVerticalNavigation(true);
+}
+
+$(document).on('turbolinks:load', ready)

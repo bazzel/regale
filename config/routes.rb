@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :events
   get 'sign_in', to: 'sessions#new', as: :signin
   post 'sign_in', to: 'sessions#create'
   get '/sign_in/:token', to: 'sessions#show', as: :token_sign_in

@@ -33,7 +33,7 @@ end
 
 When("I sign out") do
   within('ul.navbar-utility') do
-    click_link_or_button @user.email
-    click_link_or_button 'Logout'
+    click_on @user.email
+    click_on 'Logout'
   end
 end
