@@ -7,6 +7,19 @@ When("I choose {string} from the {string} menu") do |subitem, item|
   end
 end
 
+When("I try to add an empty event") do
+  step %Q(I choose "Add Event" from the "Events" menu)
+  within('form') do
+    click_on 'Save'
+  end
+end
+
+Then("I see a validation error for {string}") do |label|
+  within('form') do
+    expect(page).to have_css('.form-group.has-error', text: label)
+  end
+end
+
 Then("I can add a new event") do
   within('form') do
     expect(page).to have_button('Save')

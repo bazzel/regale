@@ -70,6 +70,7 @@ group :test do
   gem 'database_cleaner'
   gem 'email_spec' # Easily test email in RSpec, Cucumber, and MiniTest
   gem 'rails-controller-testing' # Extracting `assigns` and `assert_template` from ActionDispatch.
+  gem 'shoulda-matchers', '4.0.0.rc1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
