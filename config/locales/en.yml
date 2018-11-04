@@ -9,3 +9,6 @@ en:
     attributes:
       event:
         scheduled_at: Starts at
+  datetime:
+    formats:
+      datetimepicker: 'YYYY-MM-DD, hh:mm a'

@@ -1,23 +1,17 @@
 h1 Listing events
 
-table
-  thead
-    tr
-      th Title
-      th Scheduled at
-      th
-      th
-      th
-
-  tbody
-    - @events.each do |event|
-      tr
-        td = event.title
-        td = event.scheduled_at
-        td = link_to 'Show', event
-        td = link_to 'Edit', edit_event_path(event)
-        td = link_to 'Destroy', event, data: { confirm: 'Are you sure?' }, method: :delete
-
-br
-
-= link_to 'New Event', new_event_path
+.list-group.list-view-pf
+  - @events.each do |event|
+    .list-group-item.list-view-pf-stacked
+      .list-group-item-header
+        .list-view-pf-actions
+          = link_to 'Edit', edit_event_path(event), class: 'btn btn-default'
+        .list-view-pf-main-info
+          .list-view-pf-left
+            .list-view-pf-calendar
+              = event.scheduled_at.strftime('%b')
+              strong= event.scheduled_at.strftime('%-m')
+          .list-view-pf-body
+            .list-view-pf-description
+              .list-group-item-heading
+                = event.title

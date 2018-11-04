@@ -8,14 +8,20 @@ Feature:
     When I choose "Add Event" from the "Events" menu
     Then I can add a new event
 
-  @wip
   Scenario: Create an invalid event
     Given I signed in with my email address "john.doe@example.com"
     When I try to add an empty event
     Then I see a validation error for "Title"
     And I see a validation error for "Starts at"
 
+  @wip
   Scenario: Create an event
+    Given I signed in with my email address "john.doe@example.com"
+    And I'm adding a new event
+    When I fill in "Title" with "Italian dinner"
+    And I fill in "Starts at" with "1-1-2018 6:00 PM"
+    And I click "Save"
+    Then I see a list of 1 event
 
   Scenario: Edit an event
 

@@ -7,10 +7,20 @@ When("I choose {string} from the {string} menu") do |subitem, item|
   end
 end
 
+Given("I'm adding a new event") do
+  step %Q(I choose "Add Event" from the "Events" menu)
+end
+
 When("I try to add an empty event") do
   step %Q(I choose "Add Event" from the "Events" menu)
   within('form') do
     click_on 'Save'
+  end
+end
+
+Then("I see a list of {int} event") do |events_count|
+  within('.list-group.list-view-pf') do
+    expect(page).to have_css('.list-group-item', count: events_count)
   end
 end
 
