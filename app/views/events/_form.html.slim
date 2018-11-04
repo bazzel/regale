@@ -2,9 +2,7 @@
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-inputs
-    = f.input :title
-    = f.input :scheduled_at
+  = f.input :title
+  = f.input :scheduled_at
 
-  .form-actions
-    = f.button :submit, 'Save'
+  = f.button :submit_cancel, 'Save', cancel: root_path
