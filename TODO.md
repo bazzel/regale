@@ -4,3 +4,4 @@
 * [ ] Use puma
 * [ ] Suggest default time when adding an event
 * [ ] Use localized time (now DD-MM-YYYY HH:mm)
+* [ ] BUG - Timestamps are not stored correctly
