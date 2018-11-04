@@ -12,6 +12,10 @@ en:
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
+  application:
+    nav:
+      add_resource: "Add %{resource}"
+      show_all: "All %{resources}"
   events:
     event:
       edit: Edit

@@ -11,4 +11,7 @@
         ul.list-group
           li.list-group-item
             = link_to new_event_path do
-              span.list-group-item-value Add Event
+              span.list-group-item-value= t('.add_resource', resource: Event.model_name.human)
+          li.list-group-item
+            = link_to events_path do
+              span.list-group-item-value= t('.show_all', resources: Event.model_name.human.pluralize)

@@ -14,7 +14,6 @@ Feature:
     Then I see a validation error for "Title"
     And I see a validation error for "Starts at"
 
-  @wip
   Scenario: Create an event
     Given I signed in with my email address "john.doe@example.com"
     And I'm adding a new event
@@ -23,8 +22,14 @@ Feature:
     And I click "Save"
     Then I see a list of 1 event
 
+  @wip
   Scenario: Edit an event
 
   Scenario: Delete an event
 
+  Scenario: List events
+    Given I signed in with my email address "john.doe@example.com"
+    And there are 12 events
+    When I choose "All Events" from the "Events" menu
+    Then I see a list of 12 event
 
