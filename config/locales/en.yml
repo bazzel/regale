@@ -1,4 +1,11 @@
 en:
+  helpers:
+    submit:
+      create: Save
+      update: Save
   activerecord:
     models:
       event: Event
+    attributes:
+      event:
+        scheduled_at: Starts at

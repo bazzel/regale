@@ -2,3 +2,4 @@
 * [x] Cucumber
 * [ ] Improve mails
 * [ ] Use puma
+* [ ] Suggest default time when adding an event

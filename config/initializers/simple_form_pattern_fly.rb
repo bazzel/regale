@@ -148,7 +148,7 @@ SimpleForm.setup do |config|
     radio_buttons: :horizontal_radio_and_checkboxes,
     file: :horizontal_file_input,
     boolean: :horizontal_boolean,
-    datetime: :multi_select,
+    #datetime: :multi_select,
     #date: :multi_select,
     time: :multi_select
   }

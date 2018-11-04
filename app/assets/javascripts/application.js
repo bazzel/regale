@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks
 //= require_tree .
 
 // See: https://github.com/patternfly/patternfly/blob/master/QUICKSTART.md#using-patternfly-in-your-application
@@ -21,8 +21,27 @@
 //= require 'bootstrap/dist/js/bootstrap'
 //= require 'patternfly/dist/js/patternfly'
 
+//= require 'moment/moment'
+//= require 'bootstrap-datepicker/dist/js/bootstrap-datepicker'
+//= require 'patternfly/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
+
 var ready = function() {
   $().setupVerticalNavigation(true);
+  $('.bootstrap-datetimepicker').datetimepicker({
+    allowInputToggle: true,
+    showTodayButton: true,
+    toolbarPlacement: 'bottom',
+    sideBySide: true,
+    icons: {
+      today: 'today-button-pf'
+    }
+  });
+  $('.bootstrap-datepicker').datepicker({
+    autoclose: true,
+    todayBtn: "linked",
+    todayHighlight: true
+  });
 }
 
-$(document).on('turbolinks:load', ready)
+//$(document).on('turbolinks:load', ready)
+$(document).ready(ready)
