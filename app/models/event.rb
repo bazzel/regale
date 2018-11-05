@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   def scheduled_at=(value)
     #byebug
     if value.is_a?(String)
-      super(Time.parse(value))
+      super(Time.zone.parse(value))
     else
       super
     end
