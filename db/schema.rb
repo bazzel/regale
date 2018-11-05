@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 2018_11_04_071136) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "name"
+    t.string "email", limit: 255
+    t.string "name", limit: 100
     t.string "login_token"
     t.datetime "login_token_valid_until"
     t.datetime "created_at", null: false
