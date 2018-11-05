@@ -1,16 +1,5 @@
-Given("I'm adding a new event") do
-  step %Q(I choose "Add Event" from the "Events" menu)
-end
-
 Given("there are {int} events") do |events_count|
   create_list :event, events_count
-end
-
-When("I try to add an empty event") do
-  step %Q(I choose "Add Event" from the "Events" menu)
-  within('form') do
-    click_on 'Save'
-  end
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
