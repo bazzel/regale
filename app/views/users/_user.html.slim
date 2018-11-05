@@ -1,0 +1,10 @@
+.list-group-item
+  .list-group-item-header
+    .list-view-pf-actions
+      = link_to t('.edit'), edit_user_path(user), class: 'btn btn-default'
+    .list-view-pf-main-info
+      .list-view-pf-body
+        .list-view-pf-description
+          .list-group-item-heading
+            = user.email
+

@@ -1,12 +1,3 @@
-When("I choose {string} from the {string} menu") do |subitem, item|
-  within('.nav-pf-vertical-with-sub-menus') do
-    click_on item
-    within('.secondary-nav-item-pf', text: item) do
-      click_on subitem
-    end
-  end
-end
-
 Given("I'm adding a new event") do
   step %Q(I choose "Add Event" from the "Events" menu)
 end
@@ -22,9 +13,9 @@ When("I try to add an empty event") do
   end
 end
 
-Then("I see a list of {int} event") do |events_count|
+Then("I see a list of {int} event(s)/user(s)") do |items_count|
   within('.list-group.list-view-pf') do
-    expect(page).to have_css('.list-group-item', count: events_count)
+    expect(page).to have_css('.list-group-item', count: items_count)
   end
 end
 
@@ -35,6 +26,7 @@ Then("I see a validation error for {string}") do |label|
 end
 
 Then("I can add a new event") do
+  expect(page).to have_content('New event')
   within('form') do
     expect(page).to have_button('Save')
   end

@@ -22,7 +22,6 @@ Feature:
     And I click "Save"
     Then I see a list of 1 event
 
-  @wip
   Scenario: Edit an event
 
   Scenario: Delete an event

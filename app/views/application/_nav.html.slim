@@ -15,3 +15,18 @@
           li.list-group-item
             = link_to events_path do
               span.list-group-item-value= t('.show_all', resources: Event.model_name.human.pluralize)
+    li.list-group-item.secondary-nav-item-pf
+      a[href="#"]
+        = fa_icon('users')
+        span.list-group-item-value= User.model_name.human.pluralize
+      .nav-pf-secondary-nav
+        .nav-item-pf-header
+          a.secondary-collapse-toggle-pf[href="#"]
+          span= User.model_name.human.pluralize
+        ul.list-group
+          li.list-group-item
+            = link_to new_user_path do
+              span.list-group-item-value= t('.add_resource', resource: User.model_name.human)
+          li.list-group-item
+            = link_to users_path do
+              span.list-group-item-value= t('.show_all', resources: User.model_name.human.pluralize)

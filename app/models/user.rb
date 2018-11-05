@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  validates :email, presence: true
+
   def anonymous?
     false
   end
