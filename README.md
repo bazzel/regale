@@ -4,9 +4,6 @@ See https://regale.herokuapp.com/
 
 # Heroku
 
-```
-$ heroku config:add TZ="Europe/Amsterdam"
-```
 
 # SendGrid
 
