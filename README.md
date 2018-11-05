@@ -2,6 +2,12 @@
 
 See https://regale.herokuapp.com/
 
+# Heroku
+
+```
+$ heroku config:add TZ="Europe/Amsterdam"
+```
+
 # SendGrid
 
 The production mode of this application uses [SendGrid](http://sendgrid.com) for sending mails.
