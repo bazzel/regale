@@ -12,7 +12,15 @@ class EventDecorator < ApplicationDecorator
 
   def calendar
     content = [scheduled_at.strftime('%b')]
-    content << h.content_tag(:strong, scheduled_at.strftime('%-d'))
+    content << h.content_tag(:strong, scheduled_at.strftime('%d'))
+
+    h.safe_join content
+  end
+
+  def guests_info_item
+    content = [h.fa_icon('users')]
+    content << h.content_tag(:strong, guests_count)
+    content << Guest.model_name.human(count: event.guests_count)
 
     h.safe_join content
   end

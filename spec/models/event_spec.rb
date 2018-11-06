@@ -7,6 +7,11 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of(:scheduled_at) }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:guests) }
+    it { is_expected.to have_many(:users).through(:guests) }
+  end
+
   describe '#scheduled_at' do
 
   end

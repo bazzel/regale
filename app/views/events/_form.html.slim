@@ -2,4 +2,6 @@
   = f.input :title
   = f.input :scheduled_at
 
+  = f.association :users, as: :check_boxes, collection: User.decorate
+
   = f.button :submit_cancel, cancel: root_path
