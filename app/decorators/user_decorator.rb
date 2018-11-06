@@ -10,6 +10,14 @@ class UserDecorator < ApplicationDecorator
   #     end
   #   end
 
+  def destroy_link
+    if self == h.current_user
+      h.link_to I18n.t('users.user.destroy'), '#', class: 'btn btn-danger disabled'
+    else
+      h.link_to I18n.t('users.user.destroy'), self, method: :delete, class: 'btn btn-danger', data: { confirm: I18n.t('users.user.confirm', name: self) }
+    end
+  end
+
   def to_label
     return name if name.present?
 
