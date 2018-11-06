@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'email_spec/cucumber'
+require 'capybara-screenshot/cucumber'
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -60,5 +61,7 @@ Cucumber::Rails::Database.javascript_strategy = :truncation
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
+
+Capybara.asset_host = 'http://localhost:3000'
 
 World(FactoryBot::Syntax::Methods)

@@ -4,6 +4,7 @@ end
 
 Given("the following event:") do |table|
   table.map_headers!('starts_at' => :scheduled_at)
+  table.map_column!('starts_at') { |s| Chronic.parse(s) }
 
   table.hashes.each do |h|
     guests_email = h.delete('guests').split(/\s*,\s*/)

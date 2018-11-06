@@ -1,2 +1,8 @@
 .blank-slate-pf
   h1= "Welcome, #{current_user.email}"
+
+  ul
+    - @upcoming_events.each do |e|
+      li
+        = e.title
+        = e.scheduled_at
