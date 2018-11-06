@@ -15,4 +15,5 @@ class UserDecorator < ApplicationDecorator
 
     email
   end
+  alias to_s to_label
 end
