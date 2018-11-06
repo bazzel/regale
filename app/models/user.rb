@@ -5,6 +5,8 @@ class User < ApplicationRecord
                     email: true
   validates :name, length: { maximum: 100 }
 
+  has_many :guests, dependent: :destroy
+
   def anonymous?
     false
   end

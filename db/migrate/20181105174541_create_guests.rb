@@ -6,5 +6,11 @@ class CreateGuests < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+
+    add_column :events, :guests_count, :integer, default: 0
+
+    Event.all.each do |e|
+      Event.reset_counters e.id, :guests
+    end
   end
 end

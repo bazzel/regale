@@ -11,3 +11,9 @@ Given("the following users:") do |table|
   end
 end
 
+Given("I delete the user {string}") do |user_label|
+  within('.list-group-item', text: user_label) do
+    page.evaluate_script('window.confirm = function() { return true; }')
+    page.click_on('Delete')
+  end
+end

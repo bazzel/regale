@@ -19,7 +19,7 @@ Given("I sign up with my email address {string}") do |email|
 end
 
 When('I use the magic link') do
-  visit token_sign_in_url(@user.reload.login_token)
+  visit token_sign_in_path(@user.reload.login_token)
 end
 
 Then("I'm in") do

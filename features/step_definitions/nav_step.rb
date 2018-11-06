@@ -7,8 +7,21 @@ When("I choose {string} from the {string} menu") do |subitem, item|
   end
 end
 
+Given("I'm viewing the {model_name}s") do |resource|
+  resources = resource.pluralize
+  step %(I choose "All #{resources}" from the "#{resources}" menu)
+end
+
 Given("I'm adding a new {model_name}") do |resource|
   step %Q(I choose "Add #{resource}" from the "#{resource.pluralize}" menu)
+end
+
+Given("I edit the {model_name} {string}") do |resource, to_label|
+  resources = resource.pluralize
+  step %(I'm viewing the #{resources})
+  within('.list-group-item', text: to_label) do
+    page.click_on('Edit')
+  end
 end
 
 When("I try to add an empty {model_name}") do |resource|

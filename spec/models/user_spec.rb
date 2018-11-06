@@ -12,6 +12,10 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:guests).dependent(:destroy) }
+  end
+
   describe '#invalidate_user' do
     subject        { instance.invalidate_token }
     let(:instance) { create :user }

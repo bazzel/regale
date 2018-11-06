@@ -22,3 +22,6 @@ en:
   events:
     event:
       edit: Edit
+  users:
+    user:
+      destroy: Delete
