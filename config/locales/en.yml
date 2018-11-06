@@ -6,6 +6,9 @@ en:
   activerecord:
     models:
       event: Event
+      guest:
+        one: Guest
+        other: Guests
     attributes:
       event:
         scheduled_at: Starts at

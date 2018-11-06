@@ -11,18 +11,18 @@ class EventDecorator < ApplicationDecorator
   #   end
 
   def calendar
-    content = [scheduled_at.strftime('%b')]
-    content << h.content_tag(:strong, scheduled_at.strftime('%d'))
-
-    h.safe_join content
+    h.capture do
+      h.concat scheduled_at.strftime('%b')
+      h.concat h.content_tag(:strong, scheduled_at.strftime('%d'))
+    end
   end
 
   def guests_info_item
-    content = [h.fa_icon('users')]
-    content << h.content_tag(:strong, guests_count)
-    content << Guest.model_name.human(count: event.guests_count)
-
-    h.safe_join content
+    h.capture do
+      h.concat h.fa_icon('users')
+      h.concat h.content_tag(:strong, guests_count)
+      h.concat Guest.model_name.human(count: event.guests_count)
+    end
   end
 
 end
