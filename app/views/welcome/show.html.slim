@@ -1,8 +1,99 @@
 .blank-slate-pf
   h1= "Welcome, #{current_user.email}"
 
-  ul
-    - @upcoming_events.each do |e|
-      li
-        = e.title
-        = e.scheduled_at
+  #carousel-example-generic.carousel.slide(data-ride='carousel')
+    ol.carousel-indicators
+      li.active(data-target='#carousel-example-generic' data-slide-to='0')
+      li(data-target='#carousel-example-generic' data-slide-to='1')
+      li(data-target='#carousel-example-generic' data-slide-to='2')
+
+    .carousel-inner
+      .item.active
+        .card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select
+          .card-pf-body
+            .card-pf-top-element
+              span.fa.fa-cutlery.card-pf-icon-circle
+            h2.card-pf-title.text-center
+              | Lorem
+            .card-pf-items.text-center
+              .card-pf-item
+                span.pficon.pficon-screen
+                span.card-pf-item-text 8
+              .card-pf-item
+                span.fa.fa-check
+            p.card-pf-info.text-center
+              strong Created On
+              | 2015-03-01 02:00 AM
+              br/
+              | Never Expires
+      .item
+        .card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select
+          .card-pf-body
+            .card-pf-top-element
+              span.fa.fa-cutlery.card-pf-icon-circle
+            h2.card-pf-title.text-center
+              | Ipsum
+            .card-pf-items.text-center
+              .card-pf-item
+                span.pficon.pficon-screen
+                span.card-pf-item-text 8
+              .card-pf-item
+                span.fa.fa-check
+            p.card-pf-info.text-center
+              strong Created On
+              | 2015-03-01 02:00 AM
+              br/
+              | Never Expires
+      .item
+        .card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select
+          .card-pf-body
+            .card-pf-top-element
+              span.fa.fa-cutlery.card-pf-icon-circle
+            h2.card-pf-title.text-center
+              | Dolor
+            .card-pf-items.text-center
+              .card-pf-item
+                span.pficon.pficon-screen
+                span.card-pf-item-text 8
+              .card-pf-item
+                span.fa.fa-check
+            p.card-pf-info.text-center
+              strong Created On
+              | 2015-03-01 02:00 AM
+              br/
+              | Never Expires
+
+    a.left.carousel-control(href='#carousel-example-generic' data-slide='prev')
+      span.glyphicon.glyphicon-chevron-left
+      .sr-only Previous
+    a.right.carousel-control(href='#carousel-example-generic' data-slide='next')
+      span.glyphicon.glyphicon-chevron-right
+      .sr-only Next
+
+
+
+
+
+  .row
+    - 4.times do
+      - @my_upcoming_events.each do |e|
+        .col-xs-12.col-sm-6.col-lg-4
+          .card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select
+            .card-pf-body
+              .card-pf-top-element
+                span.fa.fa-cutlery.card-pf-icon-circle
+              h2.card-pf-title.text-center
+                = e.title
+              .card-pf-items.text-center
+                .card-pf-item
+                  span.pficon.pficon-screen
+                  span.card-pf-item-text 8
+                .card-pf-item
+                  span.fa.fa-check
+              p.card-pf-info.text-center
+                strong Created On
+                | 2015-03-01 02:00 AM
+                br/
+                | Never Expires
+
+
