@@ -1,57 +1,84 @@
 module Bootstrap
   class Carousel
-    delegate :capture, :content_tag, :concat, :link_to, :safe_join, to: :@template
-    attr_reader :collection, :template, :block
+    delegate :capture,
+      :content_tag,
+      :concat,
+      :link_to,
+      :safe_join, to: :@template
+    attr_reader :items, :template, :block
 
-    def initialize(collection, template, &block)
-      @collection = collection
+    def initialize(items, template, &block)
+      @items = items
       @template = template
       @block = block
     end
 
     def render
-      return nil if collection.empty?
+      return if items.empty?
 
-      if collection.size == 1
-        return capture { block.call(collection.first) }
-      end
-
-      content_tag(:div, id: uid, class: 'carousel slide', data: { ride: 'carousel' }) do
-        concat indicators(collection.size)
-        concat inner(collection, &block)
-        concat controls
-      end
+      carousel
     end
+
+    private
 
     def uid
       @uid ||= SecureRandom.hex(6)
     end
 
-    def indicators(count)
-      content_tag(:ol, class: 'carousel-indicators') do
-        count.times do |i|
-          options = {
-            data: {
-              target: "##{uid}",
-              'slide-to': i
-            }
-          }
-          options.merge!(class: 'active') if i.zero?
+    def partial(item)
+      capture { block.call(item) }
+    end
 
-          concat content_tag(:li, '', options)
-        end
+    def carousel
+      return partial(items.first) if items.one?
+
+      options = {
+        id: uid,
+        class: 'carousel slide',
+        data: {
+          ride: 'carousel'
+        }
+      }
+
+      content_tag(:div, options) do
+        concat indicators
+        concat inner
+        concat controls
       end
     end
 
-    def inner(collection)
+    def indicators
+      items_count = items.count
+
+      indicators_wrapper do
+        items_count.times { |i| concat indicator(i) }
+      end
+    end
+
+    def indicators_wrapper
+      content_tag(:ol, class: 'carousel-indicators') { yield }
+    end
+
+    def indicator(index)
+      options = {
+        data: {
+          target: "##{uid}",
+          'slide-to': index
+        }
+      }
+      options.merge!(class: 'active') if index.zero?
+
+      content_tag(:li, '', options)
+    end
+
+    def inner
       content_tag(:div, class: 'carousel-inner') do
-        collection.each_with_index do |element, i|
-          partial = capture { yield(element) }
+        items.each_with_index do |element, i|
           options = {
             class: 'item'
           }
           options[:class] << ' active' if i.zero?
-          concat content_tag(:div, partial, options)
+          concat content_tag(:div, partial(i), options)
         end
       end
     end
