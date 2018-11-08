@@ -1,7 +1,3 @@
-require_relative './controls'
-require_relative './indicators'
-require_relative './inner'
-
 module Bootstrap
   module Carousel
     class Renderer

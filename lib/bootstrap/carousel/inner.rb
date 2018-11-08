@@ -17,7 +17,7 @@ module Bootstrap
               class: 'item'
             }
             options[:class] << ' active' if i.zero?
-            concat content_tag(:div, partial(i), options)
+            concat content_tag(:div, partial(element), options)
           end
         end
       end

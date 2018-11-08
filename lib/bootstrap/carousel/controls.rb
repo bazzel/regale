@@ -17,19 +17,17 @@ module Bootstrap
 
       def control_left
         link_to("##{uid}", class: 'left carousel-control', data: { slide: 'prev' }) do
-          concat content_tag(:span, '', class: 'fa fa-chevron-left')
+          concat content_tag(:span, '', class: 'glyphicon glyphicon-chevron-left')
           concat content_tag(:div, 'Previous', class: 'sr-only')
         end
       end
 
       def control_right
         link_to("##{uid}", class: 'right carousel-control', data: { slide: 'next' }) do
-          concat content_tag(:span, '', class: 'fa fa-chevron-right')
+          concat content_tag(:span, '', class: 'glyphicon glyphicon-chevron-right')
           concat content_tag(:div, 'Next', class: 'sr-only')
         end
       end
-
     end
-
   end
 end

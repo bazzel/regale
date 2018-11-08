@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require './lib/pattern_fly/icons'
-
 module PatternFly
   class Alert
     PF_ALERT_TYPES = %i[success info warning danger].freeze
