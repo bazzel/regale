@@ -1,22 +1,5 @@
 .blank-slate-pf
   h1= "Welcome, #{current_user.email}"
 
-  = bs_carousel(@my_upcoming_events) do |e|
-    .card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select
-      .card-pf-body
-        .card-pf-top-element
-          span.fa.fa-cutlery.card-pf-icon-circle
-        h2.card-pf-title.text-center
-          = e.title
-        .card-pf-items.text-center
-          .card-pf-item
-            span.pficon.pficon-screen
-            span.card-pf-item-text 8
-          .card-pf-item
-            span.fa.fa-check
-        p.card-pf-info.text-center
-          strong Created On
-          | 2015-03-01 02:00 AM
-          br/
-          | Never Expires
-
+  = bs_carousel(@my_upcoming_events) do |event|
+    = render partial: 'event', object: event
