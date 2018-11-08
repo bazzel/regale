@@ -46,12 +46,12 @@ RSpec.describe Bootstrap::CarouselHelper, type: :helper do
     describe 'controls' do
       it 'renders a Previous button' do
         expect(subject).to have_css('.carousel a.left.carousel-control[href^="#"][data-slide="prev"]')
-        expect(subject).to have_css('.carousel a.left span.fa.fa-chevron-left')
+        expect(subject).to have_css('.carousel a.left span.glyphicon.glyphicon-chevron-left')
       end
 
       it 'renders a Next button' do
         expect(subject).to have_css('.carousel a.right.carousel-control[href^="#"][data-slide="next"]')
-        expect(subject).to have_css('.carousel a.right span.fa.fa-chevron-right')
+        expect(subject).to have_css('.carousel a.right span.glyphicon.glyphicon-chevron-right')
       end
     end
 
