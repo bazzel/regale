@@ -16,4 +16,7 @@
       br/
       | Never Expires
 
-
+    .btn-group
+      = button_to 'Accept', [event, current_user], params: { accept_status: Guest.accept_statuses[:yes] }
+      = button_to 'Decline', [event, current_user], params: { accept_status: Guest.accept_statuses[:no] }
+      = button_to 'Maybe', [event, current_user], params: { accept_status: Guest.accept_statuses[:maybe] }

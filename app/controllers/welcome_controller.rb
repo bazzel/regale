@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @my_upcoming_events = Event.upcoming.for_user(current_user).decorate
+    @my_upcoming_guests = Guest.upcoming.for_user(current_user).includes(:event)
   end
 
   private

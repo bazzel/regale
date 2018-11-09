@@ -1,5 +1,5 @@
 .blank-slate-pf
   h1= "Welcome, #{current_user.email}"
 
-  = bs_carousel(@my_upcoming_events) do |event|
-    = render partial: 'event', object: event
+  = bs_carousel(@my_upcoming_guests) do |guest|
+    = render partial: 'guest', object: guest

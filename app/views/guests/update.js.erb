@@ -1,0 +1,2 @@
+var el = document.getElementById('<%= @guest.dom_id %>')
+el.outerHTML = '<%= j render(partial: 'welcome/guest', object: @guest) %>'

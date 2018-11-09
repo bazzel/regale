@@ -1,0 +1,23 @@
+.card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select{ id=dom_id(guest) }
+  .card-pf-body
+    .card-pf-top-element
+      span.fa.fa-cutlery.card-pf-icon-circle
+    h2.card-pf-title.text-center
+      = guest.event.title
+      = guest.accept_status
+    .card-pf-items.text-center
+      .card-pf-item
+        span.pficon.pficon-screen
+        span.card-pf-item-text 8
+      .card-pf-item
+        span.fa.fa-check
+    p.card-pf-info.text-center
+      strong Created On
+      | 2015-03-01 02:00 AM
+      br/
+      | Never Expires
+
+    .btn-group
+      = link_to 'Accept', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:yes] }), method: :put, class: 'btn btn-default', remote: true
+      = link_to 'Decline', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:no] }), method: :put, class: 'btn btn-default', remote: true
+      = link_to 'Maybe', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:maybe] }), method: :put, class: 'btn btn-default', remote: true
