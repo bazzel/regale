@@ -4,20 +4,21 @@
       span.fa.fa-cutlery.card-pf-icon-circle
     h2.card-pf-title.text-center
       = guest.event.title
-      = guest.accept_status
+    p.card-pf-aggregate-status-notifications
+      span.card-pf-aggregate-status-notification
+        a(href='#' title="#{guest.accept_status}" data-toggle='tooltip')
+          span.pficon.pficon-ok
     .card-pf-items.text-center
       .card-pf-item
         span.pficon.pficon-screen
         span.card-pf-item-text 8
       .card-pf-item
         span.fa.fa-check
+        span.pficon-ok
     p.card-pf-info.text-center
-      strong Scheduled at
-      = guest.event.scheduled_at
-      br/
-      | Never Expires
+      = guest.event.calendar
 
     .btn-group
-      = link_to 'Accept', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:yes] }), method: :put, class: 'btn btn-default', remote: true
-      = link_to 'Decline', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:no] }), method: :put, class: 'btn btn-default', remote: true
-      = link_to 'Maybe', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:maybe] }), method: :put, class: 'btn btn-default', remote: true
+      = link_to 'Accept', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:yes] }), method: :put, class: ['btn', 'btn-default', guest.yes? && 'active'].join(' '), remote: true
+      = link_to 'Decline', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:no] }), method: :put, class: ['btn', 'btn-default', guest.no? && 'active'].join(' '), remote: true
+      = link_to 'Maybe', guest_path(guest, guest: { accept_status: Guest.accept_statuses[:maybe] }), method: :put, class: ['btn', 'btn-default', guest.maybe? && 'active'].join(' '), remote: true

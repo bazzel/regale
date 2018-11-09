@@ -18,15 +18,37 @@ Then("I don't see an invite for {string}") do |event_name|
 end
 
 When("I accept the invite for {string}") do |event_name|
-  item = find('.card-pf', text: event_name)
-
-  item.find('button', text: 'Accept').click
+  within('.card-pf') do
+    click_on('Accept')
+  end
 end
 
 When("I decline the invite for {string}") do |event_name|
-
+  within('.card-pf') do
+    click_on('Decline')
+  end
 end
 
-When("I say  the invite for {string}") do |event_name|
+When("I say maybe to the invite for {string}") do |event_name|
+  within('.card-pf') do
+    click_on('Maybe')
+  end
+end
 
+Then("I see I'm expected for {string}") do |event_name|
+  within('.card-pf') do
+    expect(page).to have_css('.active', text: 'Accept')
+  end
+end
+
+Then("I see I'm not expected for {string}") do |event_name|
+  within('.card-pf') do
+    expect(page).to have_css('.active', text: 'Decline')
+  end
+end
+
+Then("I see they're still expecting a final response for {string}") do |event_name|
+  within('.card-pf') do
+    expect(page).to have_css('.active', text: 'Maybe')
+  end
 end

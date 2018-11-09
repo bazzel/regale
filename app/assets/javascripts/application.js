@@ -26,6 +26,11 @@
 //= require 'patternfly/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
 
 var ready = function() {
+  $('body').tooltip({
+        selector: '[data-toggle="tooltip"]'
+  });
+  //$('[data-toggle="tooltip"]').tooltip();
+
   $().setupVerticalNavigation(true);
   $('.bootstrap-datetimepicker').datetimepicker({
     allowInputToggle: true,

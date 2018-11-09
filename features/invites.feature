@@ -21,7 +21,7 @@ Feature:
     And I see an invite for "Italian dinner" on page 1
     And I see an invite for "Greek dinner" on page 2
 
-  @wip
+  @javascript
   Scenario: Accept
     Given I signed in with my email address "john.doe@example.com"
     And the following event:
@@ -31,7 +31,7 @@ Feature:
     When I accept the invite for "Italian dinner"
     Then I see I'm expected for "Italian dinner"
 
-  @todo
+  @javascript
   Scenario: Decline
     Given I signed in with my email address "john.doe@example.com"
     And the following event:
@@ -41,7 +41,7 @@ Feature:
     When I decline the invite for "Italian dinner"
     Then I see I'm not expected for "Italian dinner"
 
-  @todo
+  @javascript
   Scenario: Maybe
     Given I signed in with my email address "john.doe@example.com"
     And the following event:
