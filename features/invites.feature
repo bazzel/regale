@@ -13,14 +13,13 @@ Feature:
     And the following event:
       | title          | starts_at        | guests                                     |
       | Rabarber party | 4 days ago       | john.doe@example.com, lorraine@example.com |
-      | Italian dinner | tomorrow         | john.doe@example.com, lorraine@example.com |
       | Pizza          | 3 days from now  | Marty, lorraine@example.com                |
+      | Italian dinner | tomorrow         | john.doe@example.com, lorraine@example.com |
       | Greek dinner   | 1 week from now  | john.doe@example.com, lorraine@example.com |
     When I open the application
-    Then I see an invite for "Italian dinner"
-    And I see an invite for "Greek dinner"
-    But I don't see an invite for "Rabarber party"
-    And I don't see an invite for "Pizza"
+    Then I see 2 invites
+    And I see an invite for "Italian dinner" on page 1
+    And I see an invite for "Greek dinner" on page 2
 
   @wip
   Scenario: Accept

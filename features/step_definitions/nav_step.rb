@@ -31,3 +31,8 @@ When("I try to add an empty {model_name}") do |resource|
   end
 end
 
+When("I go to page {int}") do |page|
+  within('.pagination') do
+    click_on(page)
+  end
+end

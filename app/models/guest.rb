@@ -2,7 +2,7 @@ class Guest < ApplicationRecord
   belongs_to :user
   belongs_to :event, counter_cache: true
 
-  scope :upcoming, -> { joins(:event).merge(Event.upcoming) }
+  scope :upcoming, -> { joins(:event).order('events.scheduled_at').merge(Event.upcoming) }
   scope :for_user, -> (user) { where(user: user) }
 
   enum accept_status: %i(yes no maybe)
