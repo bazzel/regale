@@ -1,6 +1,8 @@
 FactoryBot.define do
   factory :user do
-    email { 'john.doe@example.org' }
+    sequence :email do |n|
+      "person#{n}@example.com"
+    end
     login_token { 'lorem-ipsum' }
     login_token_valid_until { 15.minutes.from_now }
   end

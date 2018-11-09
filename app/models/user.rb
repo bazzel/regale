@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 100 }
 
   has_many :guests, dependent: :destroy
+  has_many :events, through: :guests
 
   def anonymous?
     false
