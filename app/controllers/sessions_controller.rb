@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def create
     @email = params[:email]
     user = User.find_or_create_by!(email: @email)

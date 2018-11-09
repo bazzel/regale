@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-  before_action :authenticate_user!
-
   def show
     @my_upcoming_guests = Guest
       .upcoming
@@ -8,13 +6,5 @@ class WelcomeController < ApplicationController
       .page(params[:page]).per(1)
       .includes(:event)
       .decorate
-  end
-
-  private
-
-  def authenticate_user!
-    if current_user.anonymous?
-      redirect_to signin_path, alert: 'Not authenticated'
-    end
   end
 end

@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   before_action :make_action_mailer_use_request_host_and_protocol
   helper_method :current_user
 
@@ -12,6 +13,12 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def authenticate_user!
+    if current_user.anonymous?
+      redirect_to signin_path, alert: 'Not authenticated'
+    end
+  end
 
   def make_action_mailer_use_request_host_and_protocol
     ActionMailer::Base.default_url_options[:protocol] = request.protocol
