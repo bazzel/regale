@@ -1,16 +1,16 @@
-.card-pf.card-pf-view.card-pf-view-select.card-pf-view-multi-select{ id=dom_id(guest) }
+.card-pf.card-pf-view.text-center{ id=dom_id(guest) }
   .card-pf-body
     .card-pf-top-element
       span.fa.fa-cutlery.card-pf-icon-circle
-    h2.card-pf-title.text-center
+    h2.card-pf-title
       = guest.event.title
-    p.card-pf-subtitle.text-center
+    p.card-pf-subtitle
       = Guest.human_attribute_name(:accept_status)
       | :
       strong=< guest.accept_status
-    p.card-pf-info.text-center
+    p.card-pf-info
       = Guest.human_attribute_name(:scheduled_at)
       | :
       strong=< guest.scheduled_at
 
-    .text-center= guest.respond_buttons
+    = guest.respond_buttons
