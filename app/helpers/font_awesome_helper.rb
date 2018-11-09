@@ -1,3 +1,5 @@
+require './lib/font_awesome/icons'
+
 module FontAwesomeHelper
   # See https://fontawesome.com/v4.7.0/icons/
   # for icons you can use.
