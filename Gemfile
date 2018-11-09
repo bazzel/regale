@@ -41,6 +41,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'slim-rails' # Provides the generator settings required for Rails 3+ to use Slim
 gem 'simple_form' # Forms made easy!
 gem 'draper'
+gem 'kaminari' # Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
