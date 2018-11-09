@@ -3,6 +3,9 @@ en:
     submit:
       create: Save
       update: Save
+      accept_status/yes: Accept
+      accept_status/no: Decline
+      accept_status/maybe: Maybe
   activerecord:
     models:
       event: Event
@@ -12,6 +15,12 @@ en:
     attributes:
       event:
         scheduled_at: Starts at
+      guest:
+        scheduled_at: Event
+        accept_status: Your response
+        accept_status/yes: Accepted
+        accept_status/no: Declined
+        accept_status/maybe: Maybe
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
@@ -26,3 +35,7 @@ en:
     user:
       destroy: Delete
       confirm: 'Are you sure you want to delete %{name}?'
+  time:
+    am: am
+    formats:
+      date_at_time: "%a, %d %b %Y at %H:%M"

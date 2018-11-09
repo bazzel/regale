@@ -2,4 +2,4 @@
   h1= "Welcome, #{current_user.email}"
 
   = render partial: 'guest', collection: @my_upcoming_guests
-  = paginate @my_upcoming_guests, theme: 'upcoming_events'
+  .text-center= paginate @my_upcoming_guests, theme: 'upcoming_events'

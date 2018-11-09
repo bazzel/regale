@@ -37,18 +37,18 @@ end
 
 Then("I see I'm expected for {string}") do |event_name|
   within('.card-pf') do
-    expect(page).to have_css('.active', text: 'Accept')
+    expect(page).to have_button('Accept', disabled: true)
   end
 end
 
 Then("I see I'm not expected for {string}") do |event_name|
   within('.card-pf') do
-    expect(page).to have_css('.active', text: 'Decline')
+    expect(page).to have_button('Decline', disabled: true)
   end
 end
 
 Then("I see they're still expecting a final response for {string}") do |event_name|
   within('.card-pf') do
-    expect(page).to have_css('.active', text: 'Maybe')
+    expect(page).to have_button('Maybe', disabled: true)
   end
 end
