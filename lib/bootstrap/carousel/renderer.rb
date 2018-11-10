@@ -1,3 +1,5 @@
+%w(indicators inner controls).each { |file| require_relative file }
+
 module Bootstrap
   module Carousel
     class Renderer

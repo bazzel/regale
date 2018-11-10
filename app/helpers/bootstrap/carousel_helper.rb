@@ -1,3 +1,5 @@
+require './lib/bootstrap/carousel/renderer'
+
 module Bootstrap
   module CarouselHelper
     def bs_carousel(collection, &block)
