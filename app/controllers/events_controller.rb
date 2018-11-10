@@ -15,6 +15,7 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+    @event.courses.build
   end
 
   # GET /events/1/edit
@@ -70,6 +71,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :scheduled_at, user_ids: [])
+      params.require(:event).permit(:title, :scheduled_at, user_ids: [], courses_attributes: [:id, :title, :description, :_destroy])
     end
 end

@@ -4,5 +4,11 @@
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
+  #courses
+    = f.simple_fields_for :courses do |course|
+      = render 'course_fields', f: course
+    .links
+      = link_to_add_association 'add course', f, :courses
+
   = f.button :submit_cancel, cancel: events_path
 

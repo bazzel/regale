@@ -24,6 +24,7 @@
 //= require 'moment/moment'
 //= require 'bootstrap-datepicker/dist/js/bootstrap-datepicker'
 //= require 'patternfly/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
+//= require cocoon
 
 var ready = function() {
   $('body').tooltip({
