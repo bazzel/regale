@@ -21,6 +21,8 @@ en:
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
+      course:
+        title: Course
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'

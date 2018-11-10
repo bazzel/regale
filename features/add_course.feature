@@ -4,6 +4,7 @@ Feature:
   So guests can take their pick
 
   @wip
+  @javascript
   Scenario: Add appetizer, main course and dessert
     Given I signed in with my email address "john.doe@example.com"
     And I'm adding a new event

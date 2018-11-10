@@ -20,10 +20,14 @@ Given("I add {string} as a guest") do |guest_name|
   end
 end
 
+Given("I add a new course") do
+  click_on('add course')
+end
+
 Given("I add {string} as a course") do |course_name|
-  within('form') do
-    # ...
-  end
+  fields = all('form #courses .nested-fields').last
+
+  fields.find_field('Course').fill_in with: course_name
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
@@ -48,7 +52,13 @@ end
 Then("I see the event {string} with {int} guests") do |event_title, guests_count|
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
 
-  expect(element).to have_content(guests_count)
+  expect(element).to have_content("#{guests_count} Guest")
+end
+
+Then("I see the event {string} with {int} courses") do |event_title, courses_count|
+  element = find('.list-group.list-view-pf .list-group-item', text: event_title)
+
+  expect(element).to have_content("#{courses_count} Course")
 end
 
 Then("I don't see the guest {string}") do |guest_name|

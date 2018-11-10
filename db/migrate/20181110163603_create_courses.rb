@@ -9,5 +9,9 @@ class CreateCourses < ActiveRecord::Migration[5.2]
     end
 
     add_column :events, :courses_count, :integer, default: 0
+
+    Event.all.each do |e|
+      Event.reset_counters e.id, :courses
+    end
   end
 end
