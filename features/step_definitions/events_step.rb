@@ -20,6 +20,12 @@ Given("I add {string} as a guest") do |guest_name|
   end
 end
 
+Given("I add {string} as a course") do |course_name|
+  within('form') do
+    # ...
+  end
+end
+
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
   within('.list-group.list-view-pf') do
     expect(page).to have_css('.list-group-item', count: items_count)

@@ -8,8 +8,9 @@ RSpec.describe Event, type: :model do
   end
 
   describe 'associations' do
-    it { is_expected.to have_many(:guests) }
+    it { is_expected.to have_many(:guests).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:guests) }
+    it { is_expected.to have_many(:courses).dependent(:destroy) }
   end
 
   describe 'scopes' do
