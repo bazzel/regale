@@ -1,4 +1,4 @@
-.nested-fields
-    = f.input :title
-    = f.input :description
-    = link_to_remove_association "remove course", f
+.form-group
+  .col-sm-3= f.input_field :title, class: 'form-control'
+  .col-sm-8= f.input_field :description, class: 'form-control'
+  .col-sm-1.text-right= link_to_remove_association fa_icon('trash-o'), f, class: 'btn btn-default'

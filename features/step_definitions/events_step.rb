@@ -25,9 +25,9 @@ Given("I add a new course") do
 end
 
 Given("I add {string} as a course") do |course_name|
-  fields = all('form #courses .nested-fields').last
+  fields = all('form #courses .form-group').last
 
-  fields.find_field('Course').fill_in with: course_name
+  fields.find_field('Title of the course').fill_in with: course_name
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
