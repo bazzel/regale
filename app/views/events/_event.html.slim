@@ -11,11 +11,6 @@
           .list-group-item-heading
             = event.title
         .list-view-pf-additional-info
-          .list-view-pf-additional-info-item
-            = event.guests_info_item
-          .list-view-pf-additional-info-item
-            => event.courses_count
-            | Course
-          .list-view-pf-additional-info-item
-            => event.dishes.count
-            | Dish
+          = event.guests_info_item
+          = event.courses_info_item
+          = event.dishes_info_item

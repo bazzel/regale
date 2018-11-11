@@ -12,6 +12,12 @@ en:
       guest:
         one: Guest
         other: Guests
+      course:
+        one: Course
+        other: Courses
+      dish:
+        one: Dish
+        other: Dishes
     attributes:
       event:
         scheduled_at: Starts at
