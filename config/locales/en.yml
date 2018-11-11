@@ -24,6 +24,7 @@ en:
       guest:
         scheduled_at: Event
         accept_status: Your response
+        accept_status/: (Awaiting your response)
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
