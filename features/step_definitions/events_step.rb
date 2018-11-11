@@ -22,9 +22,15 @@ end
 
 Given("I add {string} as a course") do |course_name|
   click_on('Add Course')
-  fields = all('form #courses .form-group').last
+  field = all('form #courses .nested-fields').last
 
-  fields.find_field('Title of the course').fill_in with: course_name
+  field.find_field('Title of the course').fill_in with: course_name
+end
+
+Given("I add {string} as a dish to {string}") do |dish_name, course_name|
+  field = all('#courses input[placeholder="Title of the course"]').find { |e| e.value == course_name }
+
+  field.ancestor('.nested-fields').click_on('Add Dish')
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
@@ -57,6 +63,12 @@ Then("I see the event {string} with {int} courses") do |event_title, courses_cou
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
 
   expect(element).to have_content("#{courses_count} Course")
+end
+
+Then("I see the event {string} with {int} dishes") do |event_title, dishes_count|
+  element = find('.list-group.list-view-pf .list-group-item', text: event_title)
+
+  expect(element).to have_content("#{courses_count} Dish")
 end
 
 Then("I don't see the guest {string}") do |guest_name|
