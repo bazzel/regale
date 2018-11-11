@@ -10,7 +10,7 @@
         = f.simple_fields_for :courses do |course|
           = render 'course_fields', f: course
         .links
-          = link_to_add_association 'add course', f, :courses
+          = link_to_add_association f, :courses, class: 'btn btn-default'
 
   = f.button :submit_cancel, cancel: events_path
 

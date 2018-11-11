@@ -15,7 +15,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    @event.courses.build
   end
 
   # GET /events/1/edit

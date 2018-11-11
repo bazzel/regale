@@ -41,3 +41,6 @@ en:
     am: am
     formats:
       date_at_time: "%a, %d %b %Y at %H:%M"
+  cocoon:
+    courses:
+      add: Add Course

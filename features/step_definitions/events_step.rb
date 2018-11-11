@@ -20,11 +20,8 @@ Given("I add {string} as a guest") do |guest_name|
   end
 end
 
-Given("I add a new course") do
-  click_on('add course')
-end
-
 Given("I add {string} as a course") do |course_name|
+  click_on('Add Course')
   fields = all('form #courses .form-group').last
 
   fields.find_field('Title of the course').fill_in with: course_name
