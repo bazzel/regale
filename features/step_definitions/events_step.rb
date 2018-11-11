@@ -34,7 +34,7 @@ Given("I add {string} as a dish to {string}") do |dish_name, course_name|
   course_div.click_on('Add Dish')
 
   dish_field = course_div.all('form .dishes').last.all('.nested-fields').last
-  dish_field.find_field('Title of the dish').fill_in with: dish_name
+  dish_field.all('input').first.fill_in with: dish_name
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
@@ -72,7 +72,7 @@ end
 Then("I see the event {string} with {int} dishes") do |event_title, dishes_count|
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
 
-  expect(element).to have_content("#{courses_count} Dish")
+  expect(element).to have_content("#{dishes_count} Dish")
 end
 
 Then("I don't see the guest {string}") do |guest_name|

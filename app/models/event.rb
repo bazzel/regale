@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
   has_many :courses, inverse_of: :event, dependent: :destroy
+  has_many :dishes, through: :courses
 
   accepts_nested_attributes_for :courses, reject_if: :all_blank, allow_destroy: true
 
