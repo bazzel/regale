@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.decorate
+    @events = Event.order(scheduled_at: :desc).decorate
   end
 
   # GET /events/1

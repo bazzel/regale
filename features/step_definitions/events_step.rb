@@ -40,7 +40,7 @@ Then("I see a validation error for {string}") do |label|
 end
 
 Then("I can add a new event") do
-  expect(page).to have_content('New event')
+  expect(page).to have_content('New Event')
   within('form') do
     expect(page).to have_button('Save')
   end
@@ -48,8 +48,9 @@ end
 
 Then("I see the event {string} with {int} guests") do |event_title, guests_count|
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
+  name = 'Guest'.pluralize(guests_count)
 
-  expect(element).to have_content("#{guests_count} Guest")
+  expect(element).to have_content("#{guests_count}#{name}")
 end
 
 Then("I see the event {string} with {int} courses") do |event_title, courses_count|
