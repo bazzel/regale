@@ -20,3 +20,6 @@ en:
         courses:
           title: Title of the course
           description: Short description of the course
+          dishes:
+            title: Title of the dish
+            description: Short description of the dish

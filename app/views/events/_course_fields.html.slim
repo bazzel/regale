@@ -1,4 +1,13 @@
-.form-group.nested-fields
-  .col-sm-3= f.input_field :title, class: 'form-control'
-  .col-sm-8= f.input_field :description, class: 'form-control'
-  .col-sm-1.text-right= link_to_remove_association fa_icon('trash-o'), f, class: 'btn btn-default'
+.nested-fields
+  .form-group
+    .col-sm-3= f.input_field :title, class: 'form-control'
+    .col-sm-8= f.input_field :description, class: 'form-control'
+    .col-sm-1.text-right= link_to_remove_association fa_icon('trash-o'), f, class: 'btn btn-default'
+
+  .dishes.form-group
+    = f.label :dishes, class: 'col-sm-3 control-label'
+    .col-sm-9
+      = f.simple_fields_for :dishes do |dish|
+        = render 'dish_fields', f: dish
+      .links
+        = link_to_add_association f, :dishes, class: 'btn btn-default'

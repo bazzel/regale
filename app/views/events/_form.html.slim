@@ -4,13 +4,13 @@
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
-  #courses.form-group
-      = f.label :courses, class: 'col-sm-2 control-label'
-      .col-sm-10
-        = f.simple_fields_for :courses do |course|
-          = render 'course_fields', f: course
-        .links
-          = link_to_add_association f, :courses, class: 'btn btn-default'
+  .courses.form-group
+    = f.label :courses, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.simple_fields_for :courses do |course|
+        = render 'course_fields', f: course
+      .links
+        = link_to_add_association f, :courses, class: 'btn btn-default'
 
   = f.button :submit_cancel, cancel: events_path
 

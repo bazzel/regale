@@ -22,15 +22,19 @@ end
 
 Given("I add {string} as a course") do |course_name|
   click_on('Add Course')
-  field = all('form #courses .nested-fields').last
+  field = all('form .courses .nested-fields').last
 
   field.find_field('Title of the course').fill_in with: course_name
 end
 
 Given("I add {string} as a dish to {string}") do |dish_name, course_name|
-  field = all('#courses input[placeholder="Title of the course"]').find { |e| e.value == course_name }
+  course_field = all('.courses input[placeholder="Title of the course"]').find { |e| e.value == course_name }
+  course_div = course_field.ancestor('.nested-fields')
 
-  field.ancestor('.nested-fields').click_on('Add Dish')
+  course_div.click_on('Add Dish')
+
+  dish_field = course_div.all('form .dishes').last.all('.nested-fields').last
+  dish_field.find_field('Title of the dish').fill_in with: dish_name
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|

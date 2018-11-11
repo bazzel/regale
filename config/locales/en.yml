@@ -42,5 +42,7 @@ en:
     formats:
       date_at_time: "%a, %d %b %Y at %H:%M"
   cocoon:
+    dishes:
+      add: Add Dish
     courses:
       add: Add Course
