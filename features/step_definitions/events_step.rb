@@ -14,6 +14,18 @@ Given("the following event:") do |table|
   end
 end
 
+Given("the event {string} has the following menu:") do |event_name, table|
+  event = Event.find_by(title: event_name)
+
+  table.hashes.each do |h|
+    Course.create(event: event, title: h['course']) do |course|
+      h['dishes'].split(/\s*,\s*/).each do |dish_title|
+        course.dishes.build(title: dish_title)
+      end
+    end
+  end
+end
+
 Given("I add {string} as a guest") do |guest_name|
   within('form') do
     check(guest_name)

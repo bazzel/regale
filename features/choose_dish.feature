@@ -10,7 +10,7 @@ Feature:
     And the following event:
       | title          | starts_at       | guests               |
       | Italian dinner | 1 week from now | john.doe@example.com |
-    And the event "Greek dinner" has the following menu:
+    And the event "Italian dinner" has the following menu:
       | course      | dishes                 |
       | appetizer   | carpaccio, tomato soup |
       | main course | pizza, spaghetti       |
