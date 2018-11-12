@@ -17,10 +17,16 @@ class EventDecorator < ApplicationDecorator
   end
 
   def courses_info_item
+    x = 0
+    x += 1 if soups.any?
+    x += 1 if appetizers.any?
+    x += 1 if main_courses.any?
+    x += 1 if desserts.any?
+
     info_item_wrapper do
       h.concat h.fa_icon('cutlery')
-      h.concat h.content_tag(:strong, courses_count)
-      h.concat Course.model_name.human(count: courses_count)
+      h.concat h.content_tag(:strong, x)
+      h.concat I18n.t('activerecord.models.course', count: x)
     end
   end
 

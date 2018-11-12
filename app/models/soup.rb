@@ -1,0 +1,3 @@
+class Soup < Dish
+
+end

@@ -9,16 +9,15 @@ Feature:
     And I'm adding a new event
     When I fill in "Title" with "Italian dinner"
     And I fill in "Starts at" with "1-1-2018 6:00 PM"
-    And I add "appetizer" as a course
-    And I add "main course" as a course
-    And I add "dessert" as a course
-    And I add "carpaccio" as a dish to "appetizer"
-    And I add "tomato soup" as a dish to "appetizer"
-    And I add "pizza" as a dish to "main course"
-    And I add "spaghetti" as a dish to "main course"
-    And I add "tiramisu" as a dish to "dessert"
-    And I add "limoncello" as a dish to "dessert"
+    And I add "tomato soup" as a dish to "Soups"
+    And I add "minestrone soup" as a dish to "Soups"
+    And I add "carpaccio" as a dish to "Appetizers"
+    And I add "bruschetta" as a dish to "Appetizers"
+    And I add "pizza" as a dish to "Main Courses"
+    And I add "spaghetti" as a dish to "Main Courses"
+    And I add "tiramisu" as a dish to "Desserts"
+    And I add "limoncello" as a dish to "Desserts"
     And I click "Save"
-    Then I see the event "Italian dinner" with 6 dishes
+    Then I see the event "Italian dinner" with 4 courses and 8 dishes
 
 

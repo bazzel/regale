@@ -12,12 +12,24 @@ en:
       guest:
         one: Guest
         other: Guests
-      course:
-        one: Course
-        other: Courses
       dish:
         one: Dish
         other: Dishes
+      soup:
+        one: Soup
+        other: Soups
+      appetizer:
+        one: Appetizer
+        other: Appetizers
+      main_course:
+        one: Main Course
+        other: Main Courses
+      dessert:
+        one: Dessert
+        other: Desserts
+      course:
+        one: Course
+        other: Courses
     attributes:
       event:
         scheduled_at: Starts at
@@ -28,8 +40,6 @@ en:
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
-      course:
-        title: Course
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
@@ -49,7 +59,11 @@ en:
     formats:
       date_at_time: "%a, %d %b %Y at %H:%M"
   cocoon:
-    dishes:
-      add: Add Dish
-    courses:
-      add: Add Course
+    soups:
+      add: Add Soup
+    appetizers:
+      add: Add Appetizer
+    desserts:
+      add: Add Dessert
+    main_courses:
+      add: Add Main Course

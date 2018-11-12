@@ -1,0 +1,3 @@
+class MainCourse < Dish
+
+end

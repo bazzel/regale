@@ -20,17 +20,23 @@ RSpec.describe EventDecorator do
   end
 
   describe '#courses_info_item' do
+    before do
+      allow(instance).to receive(:soups).and_return([])
+      allow(instance).to receive(:appetizers).and_return([1])
+      allow(instance).to receive(:main_courses).and_return([1, 2])
+      allow(instance).to receive(:desserts).and_return([1, 2, 3])
+    end
     subject        { instance.decorate.courses_info_item }
-    let(:instance) { build_stubbed :event, courses_count: 5 }
+    let(:instance) { build_stubbed :event }
 
     it { is_expected.to have_css('.list-view-pf-additional-info-item') }
     it { is_expected.to have_css('span.fa.fa-cutlery') }
     it { is_expected.to have_content('Courses') }
-    it { is_expected.to match('<strong>5</strong>') }
+    it { is_expected.to match('<strong>3</strong>') }
   end
 
   describe '#dishes_info_item' do
-    before { allow(instance).to receive(:dishes).and_return(double('Dish', count: 5)) }
+    before         { allow(instance).to receive(:dishes).and_return(double('Dish', count: 5)) }
     subject        { instance.decorate.dishes_info_item }
     let(:instance) { build_stubbed :event }
 

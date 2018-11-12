@@ -32,21 +32,14 @@ Given("I add {string} as a guest") do |guest_name|
   end
 end
 
-Given("I add {string} as a course") do |course_name|
-  click_on('Add Course')
-  field = all('form .courses .nested-fields').last
+Given("I add {string} as a dish to {string}") do |dish_name, courses_name|
+  within('.form-group', text: courses_name) do
+    course_name = courses_name.singularize
+    click_on("Add #{course_name}")
 
-  field.find_field('Title of the course').fill_in with: course_name
-end
-
-Given("I add {string} as a dish to {string}") do |dish_name, course_name|
-  course_field = all('.courses input[placeholder="Title of the course"]').find { |e| e.value == course_name }
-  course_div = course_field.ancestor('.nested-fields')
-
-  course_div.click_on('Add Dish')
-
-  dish_field = course_div.all('form .dishes').last.all('.nested-fields').last
-  dish_field.all('input').first.fill_in with: dish_name
+    field = all('.nested-fields').last
+    field.find_field("Title of the #{course_name.downcase}").fill_in with: dish_name
+  end
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
@@ -75,11 +68,13 @@ Then("I see the event {string} with {int} guests") do |event_title, guests_count
   expect(element).to have_content(/#{guests_count}\n*#{name}/)
 end
 
-Then("I see the event {string} with {int} courses") do |event_title, courses_count|
+Then("I see the event {string} with {int} courses and {int} dishes") do |event_title, courses_count, dishes_count|
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
-  name = 'Course'.pluralize(courses_count)
+  course_label = 'Course'.pluralize(courses_count)
+  dish_label = 'Dish'.pluralize(dishes_count)
 
-  expect(element).to have_content(/#{courses_count}\n*#{name}/)
+  expect(element).to have_content(/#{courses_count}\n*#{course_label}/)
+  expect(element).to have_content(/#{dishes_count}\n*#{dish_label}/)
 end
 
 Then("I see the event {string} with {int} dishes") do |event_title, dishes_count|
