@@ -4,13 +4,37 @@
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
-  .courses.form-group
-    = f.label :courses, class: 'col-sm-2 control-label'
+  .soups.form-group
+    = f.label :soups, class: 'col-sm-2 control-label'
     .col-sm-10
-      = f.simple_fields_for :courses do |course|
-        = render 'course_fields', f: course
+      = f.simple_fields_for :soups do |soup|
+        = render 'soup_fields', f: soup
       .links
-        = link_to_add_association f, :courses, class: 'btn btn-default'
+        = link_to_add_association f, :soups, class: 'btn btn-default'
+
+  .appetizers.form-group
+    = f.label :appetizers, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.simple_fields_for :appetizers do |appetizer|
+        = render 'appetizer_fields', f: appetizer
+      .links
+        = link_to_add_association f, :appetizers, class: 'btn btn-default'
+
+  .main_courses.form-group
+    = f.label :main_courses, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.simple_fields_for :main_courses do |main_course|
+        = render 'main_course_fields', f: main_course
+      .links
+        = link_to_add_association f, :main_courses, class: 'btn btn-default'
+
+  .desserts.form-group
+    = f.label :desserts, class: 'col-sm-2 control-label'
+    .col-sm-10
+      = f.simple_fields_for :desserts do |dessert|
+        = render 'dessert_fields', f: dessert
+      .links
+        = link_to_add_association f, :desserts, class: 'btn btn-default'
 
   = f.button :submit_cancel, cancel: events_path
 

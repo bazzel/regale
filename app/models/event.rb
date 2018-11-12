@@ -5,10 +5,17 @@ class Event < ApplicationRecord
 
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
-  has_many :courses, inverse_of: :event, dependent: :destroy
-  has_many :dishes, through: :courses
 
-  accepts_nested_attributes_for :courses, reject_if: :all_blank, allow_destroy: true
+  has_many :dishes, dependent: :destroy
+  has_many :soups, dependent: :destroy
+  has_many :appetizers, dependent: :destroy
+  has_many :main_courses, dependent: :destroy
+  has_many :desserts, dependent: :destroy
+
+  accepts_nested_attributes_for :soups, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :appetizers, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :main_courses, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :desserts, reject_if: :all_blank, allow_destroy: true
 
   scope :upcoming, -> { where('scheduled_at > ?', Date.today) }
   scope :for_user, -> (user) { joins(:users).merge(User.where(id: user.id)) }

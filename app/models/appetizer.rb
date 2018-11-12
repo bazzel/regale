@@ -1,0 +1,3 @@
+class Appetizer < Dish
+
+end

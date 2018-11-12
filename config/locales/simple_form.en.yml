@@ -15,11 +15,22 @@ en:
     hints:
       event:
         title: "Short description, e.g. 'Italian dinner'"
+    labels:
+      event:
+        soups: Soups
+        appetizers: Appetizers
+        main_courses: Main Courses
+        desserts: Desserts
     placeholders:
       event:
-        courses:
-          title: Title of the course
-          description: Short description of the course
-          dishes:
-            title: Title of the dish
-            description: Short description of the dish
+        soups:
+          title: Title of the soup
+          description: Short description of the soup
+        appetizers:
+          title: Title of the appetizer
+        main_courses:
+          description: Short description of the appetizer
+          title: Title of the main course
+        desserts:
+          title: Title of the dessert
+          description: Short description of the dessert
