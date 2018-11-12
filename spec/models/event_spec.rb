@@ -10,7 +10,18 @@ RSpec.describe Event, type: :model do
   describe 'associations' do
     it { is_expected.to have_many(:guests).dependent(:destroy) }
     it { is_expected.to have_many(:users).through(:guests) }
-    it { is_expected.to have_many(:courses).dependent(:destroy) }
+    it { is_expected.to have_many(:dishes).dependent(:destroy) }
+    it { is_expected.to have_many(:soups).dependent(:destroy) }
+    it { is_expected.to have_many(:appetizers).dependent(:destroy) }
+    it { is_expected.to have_many(:main_courses).dependent(:destroy) }
+    it { is_expected.to have_many(:desserts).dependent(:destroy) }
+  end
+
+  describe 'nested_attributes' do
+    it { is_expected.to accept_nested_attributes_for(:soups).allow_destroy(true) }
+    it { is_expected.to accept_nested_attributes_for(:appetizers).allow_destroy(true) }
+    it { is_expected.to accept_nested_attributes_for(:main_courses).allow_destroy(true) }
+    it { is_expected.to accept_nested_attributes_for(:desserts).allow_destroy(true) }
   end
 
   describe 'scopes' do
