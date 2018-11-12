@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_11_144633) do
+ActiveRecord::Schema.define(version: 2018_11_12_194250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,15 @@ ActiveRecord::Schema.define(version: 2018_11_11_144633) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "accept_status"
+    t.bigint "soup_id"
+    t.bigint "appetizer_id"
+    t.bigint "main_course_id"
+    t.bigint "dessert_id"
+    t.index ["appetizer_id"], name: "index_guests_on_appetizer_id"
+    t.index ["dessert_id"], name: "index_guests_on_dessert_id"
     t.index ["event_id"], name: "index_guests_on_event_id"
+    t.index ["main_course_id"], name: "index_guests_on_main_course_id"
+    t.index ["soup_id"], name: "index_guests_on_soup_id"
     t.index ["user_id"], name: "index_guests_on_user_id"
   end
 
@@ -52,6 +60,10 @@ ActiveRecord::Schema.define(version: 2018_11_11_144633) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "guests", "dishes", column: "appetizer_id"
+  add_foreign_key "guests", "dishes", column: "dessert_id"
+  add_foreign_key "guests", "dishes", column: "main_course_id"
+  add_foreign_key "guests", "dishes", column: "soup_id"
   add_foreign_key "guests", "events"
   add_foreign_key "guests", "users"
 end

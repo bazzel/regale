@@ -21,6 +21,11 @@ en:
         appetizers: Appetizers
         main_courses: Main Courses
         desserts: Desserts
+      guest:
+        soup: Soup
+        appetizer: Appetizer
+        main_course: Main Course
+        dessert: Dessert
     placeholders:
       event:
         soups:
