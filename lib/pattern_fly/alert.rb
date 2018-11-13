@@ -68,7 +68,7 @@ module PatternFly
     def close_button
       @close_button ||= begin
                           content_tag(:button, type: 'button', class: 'close', 'data-dismiss' => 'alert') do
-                            content_tag(:span, '', class: 'pficon pficon-close')
+                            Icons.close
                           end
                         end
     end

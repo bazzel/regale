@@ -8,7 +8,8 @@ module PatternFly
       ok: 'ok',
       info: 'info',
       warning: 'warning-triangle-o',
-      error: 'error-circle-o'
+      error: 'error-circle-o',
+      close: 'close'
     }.freeze
 
     class << self
