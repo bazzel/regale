@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module PatternFly
+  # See https://www.patternfly.org/pattern-library/communication/inline-notifications/
   class Alert
     PF_ALERT_TYPES = %i[success info warning danger].freeze
     delegate :flash, :raw, :content_tag, :safe_join, to: :@template
@@ -21,6 +22,12 @@ module PatternFly
 
     def render
       safe_join flash_messages
+    end
+
+    protected
+
+    def default_tag_class
+      'fade in'
     end
 
     private
@@ -59,10 +66,15 @@ module PatternFly
     end
 
     def tag_options(type)
-      tag_class = options.extract!(:class)[:class]
       {
-        class: "alert fade in alert-#{type} #{tag_class}"
+        class: tag_class(type)
       }.merge(options)
+    end
+
+    def tag_class(type)
+      tag_class = options.extract!(:class)[:class].to_s
+      tag_class << ' ' + default_tag_class
+      tag_class << " alert alert-#{type}"
     end
 
     def close_button
