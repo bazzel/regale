@@ -14,10 +14,10 @@
       strong=< guest.scheduled_at
 
     = simple_form_for(guest, remote: true) do |f|
-      = f.association :soup, collection: guest.soup_collection
-      = f.association :appetizer, collection: guest.appetizer_collection
-      = f.association :main_course, collection: guest.main_course_collection
-      = f.association :dessert, collection: guest.dessert_collection
+      = f.association(:soup, collection: guest.soup_collection) if guest.event.soups.any?
+      = f.association :appetizer, collection: guest.appetizer_collection if guest.event.appetizers.any?
+      = f.association :main_course, collection: guest.main_course_collection if guest.event.main_courses.any?
+      = f.association :dessert, collection: guest.dessert_collection if guest.event.desserts.any?
 
       = f.button :submit
 

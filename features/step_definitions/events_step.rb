@@ -87,3 +87,11 @@ Then("I don't see the guest {string}") do |guest_name|
     expect(page).not_to have_content(guest_name)
   end
 end
+
+Then("I see the course {string}") do |course_name|
+  expect(page).to have_content(course_name)
+end
+
+Then("I don't see the course {string}") do |course_name|
+  expect(page).not_to have_content(course_name)
+end
