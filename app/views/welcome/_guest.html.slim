@@ -17,7 +17,8 @@
       = f.association :soup, collection: guest.event.soups
       = f.association :appetizer, collection: guest.event.appetizers
       = f.association :main_course, collection: guest.event.main_courses
-      = f.association :dessert, collection: guest.event.desserts
+      /= f.association :dessert, collection: guest.event.desserts.map { |d| [d.title, d.id, { data: { subtext: d.description, icon: 'fa-leaf' }}] }
+      = f.association :dessert, collection: guest.event.desserts.map { |d| [d.title, d.id, { data: { subtext: d.description }}] }
 
       = f.button :submit
 

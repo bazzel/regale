@@ -24,13 +24,16 @@
 //= require 'moment/moment'
 //= require 'bootstrap-datepicker/dist/js/bootstrap-datepicker'
 //= require 'patternfly/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
+//= require 'bootstrap-select/dist/js/bootstrap-select'
 //= require cocoon
 
 var ready = function() {
   $('body').tooltip({
-        selector: '[data-toggle="tooltip"]'
+    selector: '[data-toggle="tooltip"]'
   });
-  //$('[data-toggle="tooltip"]').tooltip();
+  $('select').selectpicker({
+    iconBase: 'fa'
+  });
 
   $().setupVerticalNavigation(true);
   $('.bootstrap-datetimepicker').datetimepicker({
