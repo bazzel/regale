@@ -10,4 +10,9 @@ FactoryBot.define do
   trait :expired_token do
     login_token_valid_until { 15.minutes.ago }
   end
+
+  trait :random do
+    email { Faker::Internet.unique.email }
+    name { Faker::Name.unique.name }
+  end
 end

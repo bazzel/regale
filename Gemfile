@@ -43,6 +43,7 @@ gem 'simple_form' # Forms made easy!
 gem 'draper'
 gem 'kaminari' # Scope & Engine based, clean, powerful, agnostic, customizable and sophisticated paginator for Rails 4+
 gem 'cocoon' # Unobtrusive nested forms handling, using jQuery
+gem 'faker' # easily generate fake data: names, addresses, phone numbers, etc.
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
