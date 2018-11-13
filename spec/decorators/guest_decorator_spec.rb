@@ -63,4 +63,42 @@ RSpec.describe GuestDecorator do
       end
     end
   end
+
+  describe 'bootstrap-select collections' do
+    let(:el1)      { double('Element', id: 1, title: 'foo', description: 'Lorem') }
+    let(:el2)      { double('Element', id: 2, title: 'bar', description: 'Ipsum') }
+    let(:instance) { build_stubbed :guest }
+
+    describe '#soup_collection' do
+      before         { allow(instance.event).to receive(:soups).and_return([el1, el2]) }
+      subject        { instance.decorate.soup_collection }
+
+      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+    end
+
+    describe '#appetizer_collection' do
+      before         { allow(instance.event).to receive(:appetizers).and_return([el1, el2]) }
+      subject        { instance.decorate.appetizer_collection }
+
+      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+    end
+
+    describe '#main_course_collection' do
+      before         { allow(instance.event).to receive(:main_courses).and_return([el1, el2]) }
+      subject        { instance.decorate.main_course_collection }
+
+      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+    end
+
+    describe '#dessert_collection' do
+      before         { allow(instance.event).to receive(:desserts).and_return([el1, el2]) }
+      subject        { instance.decorate.dessert_collection }
+
+      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+    end
+  end
 end

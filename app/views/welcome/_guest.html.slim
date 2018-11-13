@@ -14,11 +14,10 @@
       strong=< guest.scheduled_at
 
     = simple_form_for(guest, remote: true) do |f|
-      = f.association :soup, collection: guest.event.soups
-      = f.association :appetizer, collection: guest.event.appetizers
-      = f.association :main_course, collection: guest.event.main_courses
-      /= f.association :dessert, collection: guest.event.desserts.map { |d| [d.title, d.id, { data: { subtext: d.description, icon: 'fa-leaf' }}] }
-      = f.association :dessert, collection: guest.event.desserts.map { |d| [d.title, d.id, { data: { subtext: d.description }}] }
+      = f.association :soup, collection: guest.soup_collection
+      = f.association :appetizer, collection: guest.appetizer_collection
+      = f.association :main_course, collection: guest.main_course_collection
+      = f.association :dessert, collection: guest.dessert_collection
 
       = f.button :submit
 
