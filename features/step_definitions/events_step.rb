@@ -24,6 +24,18 @@ Given("the event {string} has the following menu:") do |event_name, table|
   end
 end
 
+Given("the event {string} has the following responses:") do |event_name, table|
+  event = Event.find_by(title: event_name)
+  table.map_column!('guest')              { |guest| event.guests.detect{ |g| g.user.email = guest } }
+  table.map_column!('accept_status')      { |status| status.blank? ? nil : status }
+  table.map_column!('soup', false)        { |soup| event.soups.find_by(title: soup) }
+  table.map_column!('appetizer', false)   { |appetizer| event.appetizers.find_by(title: appetizer) }
+  table.map_column!('main_course', false) { |main_course| event.main_courses.find_by(title: main_course) }
+  table.map_column!('dessert', false)     { |dessert| event.desserts.find_by(title: dessert) }
+
+  table.hashes.each { |h| h.delete('guest').update(h) }
+end
+
 Given("I add {string} as a guest") do |guest_name|
   within('form') do
     check(guest_name)
@@ -38,6 +50,11 @@ Given("I add {string} as a dish to {string}") do |dish_name, courses_name|
     field = all('.nested-fields').last
     field.find_field("Title of the #{course_name.downcase}").fill_in with: dish_name
   end
+end
+
+Given("I'm expanding the {string} for the event {string}") do |course_name, event_name|
+  item = find('.list-group-item', text: event_name)
+  item.find('.list-view-pf-additional-info-item', text: course_name).click
 end
 
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
@@ -94,4 +111,11 @@ end
 
 Then("I don't see the course {string}") do |course_name|
   expect(page).not_to have_content(course_name)
+end
+
+Then("I see an expansion showing the following appetizers:") do |table|
+  within('list-group-item-container.container-fluid:not(.hidden)') do
+    raise
+  end
+
 end
