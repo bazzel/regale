@@ -1,5 +1,10 @@
 class EventDecorator < ApplicationDecorator
   delegate_all
+  decorates_association :guests
+  decorates_association :soups
+  decorates_association :appetizers
+  decorates_association :main_courses
+  decorates_association :desserts
 
   def calendar
     h.capture do
@@ -10,9 +15,12 @@ class EventDecorator < ApplicationDecorator
 
   def guests_info_item
     info_item_wrapper do
-      h.concat h.fa_icon('users')
-      h.concat h.content_tag(:strong, guests_count)
-      h.concat Guest.model_name.human(count: guests_count)
+      h.content_tag(:div, class: 'list-view-pf-expand') do
+        h.concat h.fa_icon('angle-right')
+        h.concat h.fa_icon('users')
+        h.concat h.content_tag(:strong, guests_count)
+        h.concat Guest.model_name.human(count: guests_count)
+      end
     end
   end
 
@@ -24,9 +32,12 @@ class EventDecorator < ApplicationDecorator
     x += 1 if desserts.any?
 
     info_item_wrapper do
-      h.concat h.fa_icon('cutlery')
-      h.concat h.content_tag(:strong, x)
-      h.concat I18n.t('activerecord.models.course', count: x)
+      h.content_tag(:div, class: 'list-view-pf-expand') do
+        h.concat h.fa_icon('angle-right')
+        h.concat h.fa_icon('cutlery')
+        h.concat h.content_tag(:strong, x)
+        h.concat I18n.t('activerecord.models.course', count: x)
+      end
     end
   end
 

@@ -1,6 +1,7 @@
 class GuestDecorator < ApplicationDecorator
   delegate_all
   decorates_association :event
+  decorates_association :user
 
   def dom_id
     h.dom_id(self)
