@@ -31,42 +31,42 @@
         h1 Courses
 
         .row
-        - if event.soups.any?
-          .col-md-4
-            h2 Soup
-            - event.soups.each do |soup|
-              - if soup.guests.any?
-                dl.dl-horizontal
-                  dt= soup.title
-                  - soup.guests.each do |guest|
-                    dd= guest.user.to_label
+          - if event.soups.any?
+            .col-md-4
+              h2 Soups
+              - event.soups.each do |soup|
+                - if soup.guests.any?
+                  dl.dl-horizontal
+                    dt= soup.title
+                    - soup.guests.each do |guest|
+                      dd= guest.user.to_label
 
-        - if event.appetizers.any?
-          .col-md-4
-            h2 Appetizer
-            - event.appetizers.each do |appetizer|
-              - if appetizer.guests.any?
-                dl.dl-horizontal
-                  dt= appetizer.title
-                  - appetizer.guests.each do |guest|
-                    dd= guest.user.to_label
+          - if event.appetizers.any?
+            .col-md-4
+              h2 Appetizers
+              - event.appetizers.each do |appetizer|
+                - if appetizer.guests.any?
+                  dl.dl-horizontal
+                    dt= appetizer.title
+                    - appetizer.guests.each do |guest|
+                      dd= guest.user.to_label
 
-        - if event.main_courses.any?
-          .col-md-4
-            h2 Main Course
-            - event.main_courses.each do |main_course|
-              - if main_course.guests.any?
-                dl.dl-horizontal
-                  dt= main_course.title
-                  - main_course.guests.each do |guest|
-                    dd= guest.user.to_label
+          - if event.main_courses.any?
+            .col-md-4
+              h2 Main Courses
+              - event.main_courses.each do |main_course|
+                - if main_course.guests.any?
+                  dl.dl-horizontal
+                    dt= main_course.title
+                    - main_course.guests.each do |guest|
+                      dd= guest.user.to_label
 
-        - if event.desserts.any?
-          .col-md-4
-            h2 Dessert
-            - event.desserts.each do |dessert|
-              - if dessert.guests.any?
-                dl.dl-horizontal
-                  dt= dessert.title
-                  - dessert.guests.each do |guest|
-                    dd= guest.user.to_label
+          - if event.desserts.any?
+            .col-md-4
+              h2 Desserts
+              - event.desserts.each do |dessert|
+                - if dessert.guests.any?
+                  dl.dl-horizontal
+                    dt= dessert.title
+                    - dessert.guests.each do |guest|
+                      dd= guest.user.to_label

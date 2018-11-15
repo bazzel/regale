@@ -5,18 +5,17 @@ end
 Given("the following event:") do |table|
   table.map_headers!('starts_at' => :scheduled_at)
   table.map_column!('starts_at') { |s| Chronic.parse(s) }
+  table.map_column!('guests') { |emails| emails.split(/\s*,\s*/) }
 
   table.hashes.each do |h|
-    guests_email = h.delete('guests').split(/\s*,\s*/)
+    guests_email = h.delete('guests')
     create(:event, h) do |u|
       u.users = User.where(email: guests_email)
     end
   end
 end
 
-Given("the event {string} has the following menu:") do |event_name, table|
-  event = Event.find_by(title: event_name)
-
+Given("the {event} has the following menu:") do |event, table|
   table.hashes.each do |h|
     h['dishes'].split(/\s*,\s*/).each do |dish_title|
       event.send(h['course']).create(title: dish_title)
@@ -24,16 +23,17 @@ Given("the event {string} has the following menu:") do |event_name, table|
   end
 end
 
-Given("the event {string} has the following responses:") do |event_name, table|
-  event = Event.find_by(title: event_name)
-  table.map_column!('guest')              { |guest| event.guests.detect{ |g| g.user.email = guest } }
+Given("the {event} has the following responses:") do |event, table|
+  table.map_column!('guest')              { |guest| event.guests.detect{ |g| g.user.email == guest } }
   table.map_column!('accept_status')      { |status| status.blank? ? nil : status }
   table.map_column!('soup', false)        { |soup| event.soups.find_by(title: soup) }
   table.map_column!('appetizer', false)   { |appetizer| event.appetizers.find_by(title: appetizer) }
   table.map_column!('main_course', false) { |main_course| event.main_courses.find_by(title: main_course) }
   table.map_column!('dessert', false)     { |dessert| event.desserts.find_by(title: dessert) }
 
-  table.hashes.each { |h| h.delete('guest').update(h) }
+  table.hashes.each do |h|
+    h.delete('guest').update(h)
+  end
 end
 
 Given("I add {string} as a guest") do |guest_name|
@@ -104,9 +104,19 @@ Then("I don't see the course {string}") do |course_name|
   expect(page).not_to have_content(course_name)
 end
 
-Then("I see an expansion showing the following appetizers:") do |table|
-  within('list-group-item-container.container-fluid:not(.hidden)') do
-    raise
-  end
+Then(/I see an expansion showing the following (soups|appetizers|main courses|desserts):/) do |course_name, table|
+  table.map_column!('guests') { |emails| emails.split(/\s*,\s*/) }
 
+  within('.list-group-item-container.container-fluid:not(.hidden)') do
+    expect(page).to have_content('Courses')
+    expect(page).to have_content(/#{course_name}/i)
+
+    table.hashes.each do |h|
+      element = find('dl dt', text: h['dish']).ancestor('dl')
+
+      h['guests'].each do |guest|
+        expect(element).to have_content(guest)
+      end
+    end
+  end
 end

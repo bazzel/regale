@@ -19,7 +19,7 @@ Feature:
       | emmett@example.com   | Doc   |
     And I signed in with my email address "john.doe@example.com"
     And the following event:
-      | title          | starts_at       | guests                                            |
+      | title          | starts_at       | guests                                                        |
       | Italian dinner | 1 week from now | marty@example.com, lorraine@example.com, john.doe@example.com |
     And the event "Italian dinner" has the following menu:
       | course       | dishes                 |

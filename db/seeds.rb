@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # bin/rails db:seed email=<your-email-address>
+# bin/rails db:seed email=<your-email-address> users_count=100 events_count=20
 #
 include FactoryBot::Syntax::Methods
 
@@ -14,17 +15,19 @@ Event.destroy_all
 User.destroy_all
 
 email = ENV['email']
+users_count = ENV.fetch('users_count', 20)
+events_count = ENV.fetch('events_count', 10)
 
 current_user = create :user,
   email: email,
   name: nil
 
-40.times do
+users_count.times do
   create :user, :random
 end
 
 
-20.times do
+events_count.times do
   event = create(:event, :random) do |e|
     rand(6).times do
       e.soups << build(:soup, :random)
