@@ -18,6 +18,6 @@ Feature:
     And I add "tiramisu" as a dish to "Desserts"
     And I add "limoncello" as a dish to "Desserts"
     And I click "Save"
-    Then I see the event "Italian dinner" with 4 courses and 8 dishes
+    Then I see the event "Italian dinner" with 4 courses
 
 

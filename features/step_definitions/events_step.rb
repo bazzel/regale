@@ -83,20 +83,11 @@ Then("I see the event {string} with {int} guests") do |event_title, guests_count
   expect(element).to have_content(/#{guests_count}\n*#{name}/)
 end
 
-Then("I see the event {string} with {int} courses and {int} dishes") do |event_title, courses_count, dishes_count|
+Then("I see the event {string} with {int} courses") do |event_title, courses_count|
   element = find('.list-group.list-view-pf .list-group-item', text: event_title)
   course_label = 'Course'.pluralize(courses_count)
-  dish_label = 'Dish'.pluralize(dishes_count)
 
   expect(element).to have_content(/#{courses_count}\n*#{course_label}/)
-  expect(element).to have_content(/#{dishes_count}\n*#{dish_label}/)
-end
-
-Then("I see the event {string} with {int} dishes") do |event_title, dishes_count|
-  element = find('.list-group.list-view-pf .list-group-item', text: event_title)
-  name = 'Dish'.pluralize(dishes_count)
-
-  expect(element).to have_content(/#{dishes_count}\n*#{name}/)
 end
 
 Then("I don't see the guest {string}") do |guest_name|
