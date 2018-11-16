@@ -17,13 +17,9 @@
     .close= pf_icon('close')
     .row
       .col-md-12
-        h1 Guests
-        - event.guests.each do |guest|
-          dl.dl-horizontal
-            dt= guest.user.to_label
-            dd= [guest.soup&.title, guest.appetizer&.title, guest.main_course&.title, guest.dessert&.title].compact.join(' - ')
+        = render partial: 'guests', locals: { event: event }
   .list-group-item-container.container-fluid.hidden
     .close= pf_icon('close')
     .row
       .col-md-12
-        = render partial: 'courses_details', locals: { event: event }
+        = render partial: 'courses', locals: { event: event }
