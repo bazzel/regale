@@ -4,37 +4,15 @@
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
-  .soups.form-group
-    = f.label :soups, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.simple_fields_for :soups do |soup|
-        = render 'dish_fields', f: soup
-      .links
-        = link_to_add_association f, :soups, partial: 'dish_fields', class: 'btn btn-default'
-
-  .appetizers.form-group
-    = f.label :appetizers, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.simple_fields_for :appetizers do |appetizer|
-        = render 'dish_fields', f: appetizer
-      .links
-        = link_to_add_association f, :appetizers, partial: 'dish_fields', class: 'btn btn-default'
-
-  .main_courses.form-group
-    = f.label :main_courses, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.simple_fields_for :main_courses do |main_course|
-        = render 'dish_fields', f: main_course
-      .links
-        = link_to_add_association f, :main_courses, partial: 'dish_fields', class: 'btn btn-default'
-
-  .desserts.form-group
-    = f.label :desserts, class: 'col-sm-2 control-label'
-    .col-sm-10
-      = f.simple_fields_for :desserts do |dessert|
-        = render 'dish_fields', f: dessert
-      .links
-        = link_to_add_association f, :desserts, partial: 'dish_fields', class: 'btn btn-default'
+  - Dish.descendants.each do |d|
+    - name = d.model_name.collection.to_sym
+    .form-group
+      = f.label name, class: 'col-sm-2 control-label'
+      .col-sm-10
+        = f.simple_fields_for name do |dish|
+          = render 'dish_fields', f: dish
+        .links
+          = link_to_add_association f, name, partial: 'dish_fields', class: 'btn btn-default'
 
   = f.button :submit_cancel, cancel: events_path
 
