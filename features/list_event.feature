@@ -33,14 +33,14 @@ Feature:
       | john.doe@example.com | maybe         | carpaccio   | pizza       | tiramisu |
     When I'm viewing the events
     And I'm expanding the "Courses" for the event "Italian dinner"
-    Then I see an expansion showing the following appetizers:
+    Then I see an expansion showing the following appetizer:
       | dish        | guests               |
       | tomato soup | lorraine@example.com |
       | carpaccio   | john.doe@example.com |
-    And I see an expansion showing the following main courses:
+    And I see an expansion showing the following main course:
       | dish  | guests                                     |
       | pizza | lorraine@example.com, john.doe@example.com |
-    And I see an expansion showing the following desserts:
+    And I see an expansion showing the following dessert:
       | dish     | guests               |
       | tiramisu | john.doe@example.com |
 

@@ -104,7 +104,7 @@ Then("I don't see the course {string}") do |course_name|
   expect(page).not_to have_content(course_name)
 end
 
-Then(/I see an expansion showing the following (soups|appetizers|main courses|desserts):/) do |course_name, table|
+Then(/I see an expansion showing the following (soup|appetizer|main course|dessert):/) do |course_name, table|
   table.map_column!('guests') { |emails| emails.split(/\s*,\s*/) }
 
   within('.list-group-item-container.container-fluid:not(.hidden)') do

@@ -14,8 +14,7 @@
           = event.guests_info_item
           = event.courses_info_item
   .list-group-item-container.container-fluid.hidden
-    .close
-      = pf_icon('close')
+    .close= pf_icon('close')
     .row
       .col-md-12
         h1 Guests
@@ -24,49 +23,7 @@
             dt= guest.user.to_label
             dd= [guest.soup&.title, guest.appetizer&.title, guest.main_course&.title, guest.dessert&.title].compact.join(' - ')
   .list-group-item-container.container-fluid.hidden
-    .close
-      = pf_icon('close')
+    .close= pf_icon('close')
     .row
       .col-md-12
-        h1 Courses
-
-        .row
-          - if event.soups.any?
-            .col-md-4
-              h2 Soups
-              - event.soups.each do |soup|
-                - if soup.guests.any?
-                  dl.dl-horizontal
-                    dt= soup.title
-                    - soup.guests.each do |guest|
-                      dd= guest.user.to_label
-
-          - if event.appetizers.any?
-            .col-md-4
-              h2 Appetizers
-              - event.appetizers.each do |appetizer|
-                - if appetizer.guests.any?
-                  dl.dl-horizontal
-                    dt= appetizer.title
-                    - appetizer.guests.each do |guest|
-                      dd= guest.user.to_label
-
-          - if event.main_courses.any?
-            .col-md-4
-              h2 Main Courses
-              - event.main_courses.each do |main_course|
-                - if main_course.guests.any?
-                  dl.dl-horizontal
-                    dt= main_course.title
-                    - main_course.guests.each do |guest|
-                      dd= guest.user.to_label
-
-          - if event.desserts.any?
-            .col-md-4
-              h2 Desserts
-              - event.desserts.each do |dessert|
-                - if dessert.guests.any?
-                  dl.dl-horizontal
-                    dt= dessert.title
-                    - dessert.guests.each do |guest|
-                      dd= guest.user.to_label
+        = render partial: 'courses_details', locals: { event: event }
