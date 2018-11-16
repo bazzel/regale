@@ -1,10 +1,12 @@
 class EventDecorator < ApplicationDecorator
   delegate_all
+
   decorates_association :guests
-  decorates_association :soups
-  decorates_association :appetizers
-  decorates_association :main_courses
-  decorates_association :desserts
+
+  Dish.descendants.each do |d|
+    name = d.model_name.plural.to_sym
+    decorates_association name
+  end
 
   def calendar
     h.capture do

@@ -9,7 +9,7 @@ class Event < ApplicationRecord
   has_many :dishes, dependent: :destroy
 
   Dish.descendants.each do |d|
-    name = d.model_name.collection.to_sym
+    name = d.model_name.plural.to_sym
     has_many name, dependent: :destroy
     accepts_nested_attributes_for name, reject_if: :all_blank, allow_destroy: true
   end

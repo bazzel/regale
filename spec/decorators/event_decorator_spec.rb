@@ -21,10 +21,10 @@ RSpec.describe EventDecorator do
 
   describe '#courses_info_item' do
     before do
-      allow(instance).to receive(:soups).and_return([])
-      allow(instance).to receive(:appetizers).and_return([1])
-      allow(instance).to receive(:main_courses).and_return([1, 2])
-      allow(instance).to receive(:desserts).and_return([1, 2, 3])
+      allow(instance).to receive(:soups).and_return(build_list(:soup, 0))
+      allow(instance).to receive(:appetizers).and_return(build_list(:appetizer, 1))
+      allow(instance).to receive(:main_courses).and_return(build_list(:main_course, 2))
+      allow(instance).to receive(:desserts).and_return(build_list(:dessert, 3))
     end
     subject        { instance.decorate.courses_info_item }
     let(:instance) { build_stubbed :event }
