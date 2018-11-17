@@ -24,4 +24,16 @@ RSpec.describe PatternFly::Icons do
 
     it { is_expected.to have_css('span.pficon.pficon-error-circle-o') }
   end
+
+  describe '.unknown' do
+    subject { Capybara.string described_class.send('unknown status') }
+
+    it { is_expected.to have_css('span.pficon.pficon-unknown') }
+  end
+
+  describe 'with options' do
+    subject { Capybara.string described_class.ok(class: 'lorem', title: 'ipsum', data: { foo: 'bar' }) }
+
+    it { is_expected.to have_css('span.pficon.pficon-ok.lorem[title="ipsum"][data-foo="bar"]') }
+  end
 end

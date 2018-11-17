@@ -9,13 +9,18 @@ module PatternFly
       info: 'info',
       warning: 'warning-triangle-o',
       error: 'error-circle-o',
-      close: 'close'
+      close: 'close',
+      'unknown status': 'unknown'
+
     }.freeze
 
     class << self
       PF_ICONS.each do |k, v|
-        define_method(k) do
-          content_tag(:span, '', class: "pficon pficon-#{v}")
+        define_method(k) do |options = {}|
+          default_class   = "pficon pficon-#{v}"
+          options[:class] = [options[:class], default_class].join(' ')
+
+          content_tag(:span, '', options)
         end
       end
     end
