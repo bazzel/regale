@@ -12,7 +12,7 @@ module PatternFlyHelper
     PatternFly::ToastNotification.new(options, self).render
   end
 
-  def pf_icon(icon)
-    PatternFly::Icons.send(icon)
+  def pf_icon(icon, options = {})
+    PatternFly::Icons.send(icon, options)
   end
 end
