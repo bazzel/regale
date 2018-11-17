@@ -3,7 +3,7 @@ class Event < ApplicationRecord
                     length: { maximum: 100 }
   validates :scheduled_at, presence: true
 
-  has_many :guests, dependent: :destroy
+  has_many :guests, -> { order(:accept_status) }, dependent: :destroy
   has_many :users, through: :guests
 
   has_many :dishes, dependent: :destroy
