@@ -23,10 +23,10 @@ class GuestDecorator < ApplicationDecorator
     icon_name = 'error' if no?
     icon_name = 'unknown status' if maybe?
     icon = h.pf_icon(icon_name, title: accept_status, data: { toggle: :tooltip }) if icon_name
-    h.content_tag(:span) do
+    h.content_tag(:div, class: "accept-status #{model.accept_status}") do
       h.concat icon
       h.concat ' '
-      h.concat h.content_tag(:span, user.to_label, title: user.to_label, data: { toggle: :tooltip })
+      h.concat h.content_tag(:span, user.to_label, class: 'guest-name', title: user.to_label, data: { toggle: :tooltip })
     end
   end
 
