@@ -3,7 +3,7 @@ class EventDecorator < ApplicationDecorator
 
   decorates_association :guests
 
-  Dish.descendants.each do |d|
+  Dish.courses.each do |d|
     name = d.model_name.plural.to_sym
     decorates_association name
   end

@@ -5,12 +5,12 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event
-      .order(scheduled_at: :desc)
       .includes(soups: [guests: [:user]],
                 appetizers: [guests: [:user]],
                 main_courses: [guests: [:user]],
                 desserts: [guests: [:user]],
                 guests: [:user, :soup, :appetizer, :main_course, :dessert])
+      .order(scheduled_at: :desc)
       .decorate
   end
 

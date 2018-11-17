@@ -7,6 +7,12 @@ RSpec.describe Guest, type: :model do
   end
 
   describe 'scopes' do
+    describe '.default_scope' do
+      subject { described_class.all.to_sql }
+
+      it { is_expected.to eq described_class.all.order(:accept_status).to_sql }
+    end
+
     describe '.upcoming' do
       subject { described_class.upcoming }
 

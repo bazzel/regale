@@ -1,7 +1,7 @@
 h1 Courses
 
 .row
-  - Dish.descendants.each do |d|
+  - Dish.courses.each do |d|
     - name = d.model_name.plural.to_sym
     - if event.send(name).any?
       .col-md-6

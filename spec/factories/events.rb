@@ -10,7 +10,7 @@ FactoryBot.define do
       end
 
       before(:create) do |event, evaluator|
-        event.users = build_list(:user, evaluator.guests_count)
+        event.guests = build_list(:guest, evaluator.guests_count)
       end
     end
 

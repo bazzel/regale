@@ -18,6 +18,18 @@ class GuestDecorator < ApplicationDecorator
     I18n.t("accept_status/#{model.accept_status}", scope: [:activerecord, :attributes, :guest])
   end
 
+  def with_visual_accept
+    icon_name = 'ok' if yes?
+    icon_name = 'error' if no?
+    icon_name = 'unknown status' if maybe?
+    icon = h.pf_icon(icon_name, title: accept_status, data: { toggle: :tooltip }) if icon_name
+    h.content_tag(:span) do
+      h.concat icon
+      h.concat ' '
+      h.concat h.content_tag(:span, user.to_label, title: user.to_label, data: { toggle: :tooltip })
+    end
+  end
+
   def scheduled_at
     I18n.l(event.scheduled_at, format: :date_at_time)
   end

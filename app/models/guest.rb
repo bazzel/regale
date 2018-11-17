@@ -1,7 +1,10 @@
 class Guest < ApplicationRecord
+  default_scope { order(:accept_status) }
+
   belongs_to :user
   belongs_to :event, counter_cache: true
-  Dish.descendants.each do |d|
+
+  Dish.courses.each do |d|
     name = d.model_name.singular.to_sym
     belongs_to name, optional: true
   end

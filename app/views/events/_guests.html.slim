@@ -1,6 +1,6 @@
 h1 Guests
 - event.guests.each do |guest|
   dl.dl-horizontal
-    dt= guest.user.to_label
+    dt= guest.with_visual_accept
     dd= [guest.soup&.title, guest.appetizer&.title, guest.main_course&.title, guest.dessert&.title].compact.join(' - ')
 

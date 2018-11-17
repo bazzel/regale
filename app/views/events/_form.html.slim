@@ -4,7 +4,7 @@
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
-  - Dish.descendants.each do |d|
+  - Dish.courses.each do |d|
     - name = d.model_name.collection.to_sym
     .form-group
       = f.label name, class: 'col-sm-2 control-label'
