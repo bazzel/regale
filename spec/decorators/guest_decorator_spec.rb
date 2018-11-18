@@ -115,29 +115,29 @@ RSpec.describe GuestDecorator do
     context 'yes' do
       let(:instance) { build_stubbed(:guest, :yes).decorate }
 
-      it { is_expected.to have_css('.accept-status.yes span.pficon.pficon-ok[data-toggle="tooltip"][title="Accepted"]') }
-      it { is_expected.to have_css('.accept-status.yes span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
+      it { is_expected.to have_css('span.pficon.pficon-ok[data-toggle="tooltip"][title="Accepted"]') }
+      it { is_expected.to have_css('span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
     end
 
     context 'no' do
       let(:instance) { build_stubbed(:guest, :no).decorate }
 
-      it { is_expected.to have_css('.accept-status.no span.pficon.pficon-error-circle-o[data-toggle="tooltip"][title="Declined"]') }
-      it { is_expected.to have_css('.accept-status.no span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
+      it { is_expected.to have_css('span.pficon.pficon-error-circle-o[data-toggle="tooltip"][title="Declined"]') }
+      it { is_expected.to have_css('span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
     end
 
     context 'maybe' do
       let(:instance) { build_stubbed(:guest, :maybe).decorate }
 
-      it { is_expected.to have_css('.accept-status.maybe span.pficon.pficon-unknown[data-toggle="tooltip"][title="Maybe"]') }
-      it { is_expected.to have_css('.accept-status.maybe span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
+      it { is_expected.to have_css('span.pficon.pficon-unknown[data-toggle="tooltip"][title="Maybe"]') }
+      it { is_expected.to have_css('span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
     end
 
     context 'not responded' do
       let(:instance) { build_stubbed(:guest).decorate }
 
-      it { is_expected.not_to have_css('.accept-status span.pficon') }
-      it { is_expected.to have_css('.accept-status span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
+      it { is_expected.not_to have_css('span.pficon') }
+      it { is_expected.to have_css('span.guest-name[data-toggle="tooltip"][title="Marty"]', text: 'Marty') }
     end
   end
 end

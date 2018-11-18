@@ -19,15 +19,12 @@ class GuestDecorator < ApplicationDecorator
   end
 
   def with_visual_accept
-    icon_name = 'ok' if yes?
-    icon_name = 'error' if no?
-    icon_name = 'unknown status' if maybe?
-    icon = h.pf_icon(icon_name, title: accept_status, data: { toggle: :tooltip }) if icon_name
-    h.content_tag(:div, class: "accept-status #{model.accept_status}") do
-      h.concat icon
-      h.concat ' '
-      h.concat h.content_tag(:span, user.to_label, class: 'guest-name', title: user.to_label, data: { toggle: :tooltip })
-    end
+    content = [
+      accept_status_icon,
+      h.content_tag(:span, user.to_label, class: 'guest-name', title: user.to_label, data: { toggle: :tooltip })
+    ]
+
+    h.safe_join(content, ' ')
   end
 
   def scheduled_at
@@ -51,6 +48,13 @@ class GuestDecorator < ApplicationDecorator
   end
 
   private
+
+  def accept_status_icon
+    icon = 'ok'             if yes?
+    icon = 'error'          if no?
+    icon = 'unknown status' if maybe?
+    h.pf_icon(icon, title: accept_status, data: { toggle: :tooltip }) if icon
+  end
 
   def bootstrap_select_collection(collection)
     collection.map { |d| [d.title, d.id, { data: { subtext: d.description }}] }
