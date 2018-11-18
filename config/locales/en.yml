@@ -52,19 +52,19 @@ en:
       edit: Edit
       guests_summary:
         'yes':
-          zero:
+          zero: ''
           one: '%{count} yes'
           other: '%{count} yes'
         'no':
-          zero:
+          zero: ''
           one: '%{count} no'
           other: '%{count} no'
         maybe:
-          zero:
+          zero: ''
           one: '%{count} maybe'
           other: '%{count} maybe'
         awaiting:
-          zero:
+          zero: ''
           one: '%{count} awaiting'
           other: '%{count} awaiting'
   users:
