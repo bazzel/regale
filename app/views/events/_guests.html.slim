@@ -1,4 +1,6 @@
 h1 Guests
+p= event.guests_summary
+
 - event.guests.each do |guest|
   dl.dl-horizontal
     dt= guest.with_visual_accept

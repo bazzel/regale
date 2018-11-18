@@ -45,4 +45,53 @@ RSpec.describe EventDecorator do
     it { is_expected.to have_content('Dishes') }
     it { is_expected.to match('<strong>5</strong>') }
   end
+
+  describe '#guests_summary' do
+    subject { instance.guests_summary }
+    let(:instance) do
+      create :event do |event|
+        event.guests << yes
+        event.guests << no
+        event.guests << maybe
+        event.guests << awaiting
+      end.decorate
+    end
+
+    let(:yes_count)      { 4 }
+    let(:no_count)       { 3 }
+    let(:maybe_count)    { 2 }
+    let(:awaiting_count) { 1 }
+    let(:yes)      { build_list :guest, yes_count, :yes }
+    let(:no)       { build_list :guest, no_count, :no }
+    let(:maybe)    { build_list :guest, maybe_count, :maybe }
+    let(:awaiting) { build_list :guest, awaiting_count }
+
+    context do
+      it { is_expected.to eql('4 yes, 3 no, 2 maybe, and 1 awaiting') }
+    end
+
+    context do
+      let(:yes_count)      { 0 }
+
+      it { is_expected.to eql('3 no, 2 maybe, and 1 awaiting') }
+    end
+
+    context do
+      let(:no_count)      { 0 }
+
+      it { is_expected.to eql('4 yes, 2 maybe, and 1 awaiting') }
+    end
+
+    context do
+      let(:maybe_count)      { 0 }
+
+      it { is_expected.to eql('4 yes, 3 no, and 1 awaiting') }
+    end
+
+    context do
+      let(:awaiting_count)      { 0 }
+
+      it { is_expected.to eql('4 yes, 3 no, and 2 maybe') }
+    end
+  end
 end

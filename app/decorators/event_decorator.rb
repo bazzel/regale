@@ -51,6 +51,19 @@ class EventDecorator < ApplicationDecorator
     end
   end
 
+  def guests_summary
+    # WARNING: n+1 query alert
+    scope  = %i(events event guests_summary)
+    guests = model.guests
+
+    [
+      I18n.t(:yes, scope: scope, count: guests.yes.count),
+      I18n.t(:no, scope: scope, count: guests.no.count),
+      I18n.t(:maybe, scope: scope, count: guests.maybe.count),
+      I18n.t(:awaiting, scope: scope, count: guests.where(accept_status: nil).count)
+    ].reject { |e| e.blank? }.to_sentence
+  end
+
   private
 
   def info_item_wrapper

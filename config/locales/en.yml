@@ -45,11 +45,28 @@ en:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
   application:
     nav:
-      add_resource: "Add %{resource}"
-      show_all: "All %{resources}"
+      add_resource: 'Add %{resource}'
+      show_all: 'All %{resources}'
   events:
     event:
       edit: Edit
+      guests_summary:
+        'yes':
+          zero:
+          one: '%{count} yes'
+          other: '%{count} yes'
+        'no':
+          zero:
+          one: '%{count} no'
+          other: '%{count} no'
+        maybe:
+          zero:
+          one: '%{count} maybe'
+          other: '%{count} maybe'
+        awaiting:
+          zero:
+          one: '%{count} awaiting'
+          other: '%{count} awaiting'
   users:
     user:
       destroy: Delete
