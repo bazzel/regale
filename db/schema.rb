@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2018_11_19_172439) do
     t.integer "guests_count", default: 0
     t.datetime "respond_before"
     t.string "location", limit: 255
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "guests", force: :cascade do |t|

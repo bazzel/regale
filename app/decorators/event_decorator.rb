@@ -64,6 +64,12 @@ class EventDecorator < ApplicationDecorator
     ].reject { |e| e.blank? }.to_sentence
   end
 
+  def map_link_url
+    return location unless location && latitude && longitude
+
+    h.link_to location, Geocoder::Lookup.get(:google).map_link_url(coordinates),  target: '_blank'
+  end
+
   private
 
   def info_item_wrapper

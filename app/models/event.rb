@@ -18,6 +18,9 @@ class Event < ApplicationRecord
   scope :upcoming, -> { where('scheduled_at > ?', Date.today) }
   scope :for_user, -> (user) { joins(:users).merge(User.where(id: user.id)) }
 
+  geocoded_by :location
+  after_validation :geocode, if: :location_changed?
+
   def scheduled_at=(value)
     if value.is_a?(String)
       super(Time.zone.parse(value))
@@ -28,6 +31,10 @@ class Event < ApplicationRecord
 
   def invitation_expired?
     respond_before && (respond_before < Time.current)
+  end
+
+  def coordinates
+    [latitude, longitude]
   end
 
   private

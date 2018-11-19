@@ -19,8 +19,7 @@
     p.card-pf-info
       = Event.human_attribute_name(:location)
       | :
-      strong=< guest.event.location
-
+      strong=< guest.event.map_link_url
 
     - if guest.invitation_expired?
       dl.dl-horizontal
