@@ -1,6 +1,7 @@
 = simple_form_for(@event) do |f|
   = f.input :title
   = f.input :scheduled_at
+  = f.input :respond_before
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 

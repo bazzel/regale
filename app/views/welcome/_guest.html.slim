@@ -12,6 +12,10 @@
       = Guest.human_attribute_name(:scheduled_at)
       | :
       strong=< guest.scheduled_at
+    p.card-pf-info
+      = Guest.human_attribute_name(:respond_before)
+      | :
+      strong=< guest.respond_before
 
     = simple_form_for(guest, remote: true) do |f|
       = f.association :soup, collection: guest.soup_collection if guest.event.soups.any?

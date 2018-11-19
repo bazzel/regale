@@ -31,6 +31,12 @@ class GuestDecorator < ApplicationDecorator
     I18n.l(event.scheduled_at, format: :date_at_time)
   end
 
+  def respond_before
+    return unless (respond_before = event.respond_before)
+
+    I18n.l(respond_before, format: :date_at_time)
+  end
+
   def soup_collection
     bootstrap_select_collection(event.soups)
   end

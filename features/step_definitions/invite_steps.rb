@@ -52,3 +52,12 @@ Then("I see they're still expecting a final response for {string}") do |event_na
     expect(page).to have_button('Maybe', disabled: true)
   end
 end
+
+Then("I cannot respond to the invite for {string} anymore") do |event_name|
+  within('.card-pf') do
+    expect(page).not_to have_button('Save')
+    expect(page).not_to have_button('Yes')
+    expect(page).not_to have_button('No')
+    expect(page).not_to have_button('Maybe')
+  end
+end

@@ -9,7 +9,6 @@ Feature:
     When I choose "All Events" from the "Events" menu
     Then I see a list of 12 event
 
-  @wip
   @javascript
   Scenario: See division of courses for an event
     Given the following users:

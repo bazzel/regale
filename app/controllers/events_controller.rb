@@ -79,6 +79,7 @@ class EventsController < ApplicationController
     def event_params
       params.require(:event).permit(:title,
                                     :scheduled_at,
+                                    :respond_before,
                                     user_ids: [],
                                     soups_attributes: [:id, :title, :description, :_destroy],
                                     appetizers_attributes: [:id, :title, :description, :_destroy],

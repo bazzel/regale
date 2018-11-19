@@ -5,6 +5,7 @@ end
 Given("the following event:") do |table|
   table.map_headers!('starts_at' => :scheduled_at)
   table.map_column!('starts_at') { |s| Chronic.parse(s) }
+  table.map_column!('respond_before') { |s| Chronic.parse(s) }
   table.map_column!('guests') { |emails| emails.split(/\s*,\s*/) }
 
   table.hashes.each do |h|

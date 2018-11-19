@@ -2,6 +2,7 @@ class Event < ApplicationRecord
   validates :title, presence: true,
                     length: { maximum: 100 }
   validates :scheduled_at, presence: true
+  validate :respond_before_must_be_before_scheduled_at
 
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests
@@ -22,5 +23,13 @@ class Event < ApplicationRecord
     else
       super
     end
+  end
+
+  private
+
+  def respond_before_must_be_before_scheduled_at
+    return unless respond_before
+
+    errors.add(:respond_before, :invalid_respond_before) if respond_before > scheduled_at
   end
 end

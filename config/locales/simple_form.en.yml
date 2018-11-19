@@ -15,6 +15,7 @@ en:
     hints:
       event:
         title: "Short description, e.g. 'Italian dinner'"
+        respond_before: "Changes cannot be submitted after this date"
     labels:
       event:
         soups: Soups

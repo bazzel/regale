@@ -52,3 +52,14 @@ Feature:
     Then I see they're still expecting a final response for "Italian dinner"
 
   Scenario: Change response
+
+  @wip
+  @javascript
+  Scenario: View the invite after closing date
+    Given I signed in with my email address "john.doe@example.com"
+    And the following event:
+      | title          | starts_at        | respond_before | guests                                     |
+      | Italian dinner | tomorrow         | yesterday | john.doe@example.com, lorraine@example.com |
+    When I open the application
+    Then I cannot respond to the invite for "Italian dinner" anymore
+

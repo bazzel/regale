@@ -5,6 +5,13 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_length_of(:title).is_at_most(100) }
     it { is_expected.to validate_presence_of(:scheduled_at) }
+
+    describe 'respond_before' do
+      subject        { instance }
+      let(:instance) { build :event, scheduled_at: Date.today, respond_before: Date.tomorrow }
+
+      it { is_expected.to be_invalid }
+    end
   end
 
   describe 'associations' do

@@ -35,6 +35,7 @@ en:
         scheduled_at: Starts at
       guest:
         scheduled_at: Event
+        respond_before: RSVP
         accept_status: Your response
         accept_status/: (Awaiting your response)
         accept_status/yes: Accepted
@@ -75,6 +76,9 @@ en:
     am: am
     formats:
       date_at_time: "%a, %d %b %Y at %H:%M"
+  errors:
+    messages:
+      invalid_respond_before: 'must be earlier that date of the event'
   cocoon:
     soups:
       add: Add Soup
