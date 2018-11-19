@@ -25,6 +25,10 @@ class Event < ApplicationRecord
     end
   end
 
+  def invitation_expired?
+    respond_before && (respond_before < Time.current)
+  end
+
   private
 
   def respond_before_must_be_before_scheduled_at

@@ -14,6 +14,8 @@ class Guest < ApplicationRecord
 
   enum accept_status: %i(yes no maybe)
 
+  delegate :invitation_expired?, to: :event
+
   def accept_status=(value)
     super(value.to_i)
   end

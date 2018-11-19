@@ -14,6 +14,10 @@ FactoryBot.define do
       end
     end
 
+    trait :future do
+      scheduled_at { 1.week.from_now }
+    end
+
     trait :random do
       transient do
         from { 2.months.ago }

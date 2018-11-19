@@ -17,12 +17,29 @@
       | :
       strong=< guest.respond_before
 
-    = simple_form_for(guest, remote: true) do |f|
-      = f.association :soup, collection: guest.soup_collection if guest.event.soups.any?
-      = f.association :appetizer, collection: guest.appetizer_collection if guest.event.appetizers.any?
-      = f.association :main_course, collection: guest.main_course_collection if guest.event.main_courses.any?
-      = f.association :dessert, collection: guest.dessert_collection if guest.event.desserts.any?
 
-      = f.button :submit
+    - if guest.invitation_expired?
+      dl.dl-horizontal
+        - if guest.soup
+          dt= Soup.model_name.human
+          dd= guest.soup.title
+        - if guest.appetizer
+          dt= Appetizer.model_name.human
+          dd= guest.appetizer.title
+        - if guest.main_course
+          dt= MainCourse.model_name.human
+          dd= guest.main_course.title
+        - if guest.dessert
+          dt= Dessert.model_name.human
+          dd= guest.dessert.title
 
-    = guest.respond_buttons
+    - else
+      = simple_form_for(guest, remote: true) do |f|
+        = f.association :soup, collection: guest.soup_collection if guest.event.soups.any?
+        = f.association :appetizer, collection: guest.appetizer_collection if guest.event.appetizers.any?
+        = f.association :main_course, collection: guest.main_course_collection if guest.event.main_courses.any?
+        = f.association :dessert, collection: guest.dessert_collection if guest.event.desserts.any?
+
+        = f.button :submit
+
+      = guest.respond_buttons

@@ -64,6 +64,27 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe 'invitation_expired?' do
+    subject { build :event, :future, respond_before: respond_before }
+
+    context 'no respond_before' do
+      let(:respond_before) { nil }
+
+      it { is_expected.not_to be_invitation_expired }
+    end
+
+    context 'respond_before passed' do
+      let(:respond_before) { 1.day.ago }
+
+      it { is_expected.to be_invitation_expired }
+    end
+
+    context 'respond_before not passed' do
+      let(:respond_before) { 1.day.from_now }
+
+      it { is_expected.not_to be_invitation_expired }
+    end
+  end
 
   describe '#scheduled_at' do
 

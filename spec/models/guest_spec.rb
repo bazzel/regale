@@ -43,4 +43,30 @@ RSpec.describe Guest, type: :model do
       it { is_expected.to contain_exactly(*with_me.guests) }
     end
   end
+
+  describe 'invitation_expired?' do
+    subject do
+      build :guest do |guest|
+        guest.event = build :event, :future, respond_before: respond_before
+      end
+    end
+
+    context 'no respond_before' do
+      let(:respond_before) { nil }
+
+      it { is_expected.not_to be_invitation_expired }
+    end
+
+    context 'respond_before passed' do
+      let(:respond_before) { 1.day.ago }
+
+      it { is_expected.to be_invitation_expired }
+    end
+
+    context 'respond_before not passed' do
+      let(:respond_before) { 1.day.from_now }
+
+      it { is_expected.not_to be_invitation_expired }
+    end
+  end
 end
