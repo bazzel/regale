@@ -80,6 +80,7 @@ class EventsController < ApplicationController
       params.require(:event).permit(:title,
                                     :scheduled_at,
                                     :respond_before,
+                                    :location,
                                     user_ids: [],
                                     soups_attributes: [:id, :title, :description, :_destroy],
                                     appetizers_attributes: [:id, :title, :description, :_destroy],

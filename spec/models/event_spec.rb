@@ -5,6 +5,7 @@ RSpec.describe Event, type: :model do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_length_of(:title).is_at_most(100) }
     it { is_expected.to validate_presence_of(:scheduled_at) }
+    it { is_expected.to validate_length_of(:location).is_at_most(255) }
 
     describe 'respond_before' do
       subject        { instance }

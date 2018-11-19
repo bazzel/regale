@@ -16,6 +16,10 @@
       = Guest.human_attribute_name(:respond_before)
       | :
       strong=< guest.respond_before
+    p.card-pf-info
+      = Event.human_attribute_name(:location)
+      | :
+      strong=< guest.event.location
 
 
     - if guest.invitation_expired?

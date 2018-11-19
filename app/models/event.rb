@@ -3,6 +3,7 @@ class Event < ApplicationRecord
                     length: { maximum: 100 }
   validates :scheduled_at, presence: true
   validate :respond_before_must_be_before_scheduled_at
+  validates :location, length: { maximum: 255 }
 
   has_many :guests, dependent: :destroy
   has_many :users, through: :guests

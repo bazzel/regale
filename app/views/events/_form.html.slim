@@ -2,6 +2,7 @@
   = f.input :title
   = f.input :scheduled_at
   = f.input :respond_before
+  = f.input :location
 
   = f.association :users, as: :check_boxes, collection: User.decorate
 
