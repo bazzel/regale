@@ -22,7 +22,6 @@ Feature:
     And I click "Save"
     Then I see a list of 1 event
 
-  @wip
   Scenario: Create an event with a "Respond before" later than "Starts at"
     Given I signed in with my email address "john.doe@example.com"
     And I'm adding a new event

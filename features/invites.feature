@@ -53,7 +53,6 @@ Feature:
 
   Scenario: Change response
 
-  @wip
   @javascript
   Scenario: View the invite after closing date
     Given I signed in with my email address "john.doe@example.com"
