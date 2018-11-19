@@ -94,4 +94,38 @@ RSpec.describe EventDecorator do
       it { is_expected.to eql('4 yes, 3 no, and 2 maybe') }
     end
   end
+
+  describe '#map_link_url' do
+    before do
+      Geocoder.configure(lookup: :test)
+    end
+
+    let(:instance) { create :event, location: location }
+    let(:location) { 'New York, NY' }
+    let(:lat)      { 40.7143528 }
+    let(:long)     { -74.0059731 }
+
+    context 'no coordinates' do
+      before do
+        Geocoder::Lookup::Test.add_stub(location, [])
+      end
+
+      it do
+        expect(Geocoder::Lookup.get(:google)).not_to receive(:map_link_url)
+        expect(instance.decorate.map_link_url).to eql(location)
+      end
+
+    end
+
+    context 'coordinates' do
+      before do
+        Geocoder::Lookup::Test.add_stub(location, [{latitude: lat, longitude: long}])
+      end
+
+      it do
+        expect(Geocoder::Lookup.get(:google)).to receive(:map_link_url).with(instance.coordinates).and_return('http://regale.com')
+        expect(instance.decorate.map_link_url).to have_css('a[href="http://regale.com"][target="_blank"]')
+      end
+    end
+  end
 end

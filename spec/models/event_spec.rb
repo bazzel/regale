@@ -87,6 +87,36 @@ RSpec.describe Event, type: :model do
     end
   end
 
+  describe 'geocoding' do
+    before do
+      Geocoder.configure(lookup: :test)
+      Geocoder::Lookup::Test.add_stub(location, [{latitude: lat, longitude: long}])
+    end
+
+    let(:instance) { build :event, location: location }
+    let(:location) { 'New York, NY' }
+    let(:lat)      { 40.7143528 }
+    let(:long)     { -74.0059731 }
+
+    it do
+      expect do
+        instance.save
+      end.to change { instance.latitude }.to(lat).and \
+      change { instance.longitude }.to(long)
+    end
+
+    describe '#coordinates' do
+      subject { instance.coordinates }
+      before do
+        allow(instance).to receive(:latitude).and_return(lat)
+        allow(instance).to receive(:longitude).and_return(long)
+      end
+
+      it { is_expected.to eql([lat, long]) }
+    end
+  end
+
+
   describe '#scheduled_at' do
 
   end

@@ -65,7 +65,7 @@ class EventDecorator < ApplicationDecorator
   end
 
   def map_link_url
-    return location unless location && latitude && longitude
+    return location unless location && coordinates.all?
 
     h.link_to location, Geocoder::Lookup.get(:google).map_link_url(coordinates),  target: '_blank'
   end
