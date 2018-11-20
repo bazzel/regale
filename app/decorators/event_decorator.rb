@@ -75,9 +75,13 @@ class EventDecorator < ApplicationDecorator
   end
 
   def location
-    return model.location unless model.location && model.coordinates.all?
+    return model.location unless shareable_location?
 
     h.link_to model.location, Geocoder::Lookup.get(:google).map_link_url(model.coordinates),  target: '_blank'
+  end
+
+  def shareable_location?
+    model.location && model.coordinates.all?
   end
 
   private
