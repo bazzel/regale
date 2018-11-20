@@ -71,35 +71,36 @@ RSpec.describe EventDecorator do
     end
 
     context do
-      let(:yes_count)      { 0 }
+      let(:yes_count) { 0 }
 
       it { is_expected.to eql('3 no, 2 maybe, and 1 awaiting') }
     end
 
     context do
-      let(:no_count)      { 0 }
+      let(:no_count) { 0 }
 
       it { is_expected.to eql('4 yes, 2 maybe, and 1 awaiting') }
     end
 
     context do
-      let(:maybe_count)      { 0 }
+      let(:maybe_count) { 0 }
 
       it { is_expected.to eql('4 yes, 3 no, and 1 awaiting') }
     end
 
     context do
-      let(:awaiting_count)      { 0 }
+      let(:awaiting_count) { 0 }
 
       it { is_expected.to eql('4 yes, 3 no, and 2 maybe') }
     end
   end
 
-  describe '#map_link_url' do
+  describe '#location' do
     before do
       Geocoder.configure(lookup: :test)
     end
 
+    subject { instance.decorate.location }
     let(:instance) { create :event, location: location }
     let(:location) { 'New York, NY' }
     let(:lat)      { 40.7143528 }
@@ -112,9 +113,8 @@ RSpec.describe EventDecorator do
 
       it do
         expect(Geocoder::Lookup.get(:google)).not_to receive(:map_link_url)
-        expect(instance.decorate.map_link_url).to eql(location)
+        expect(subject).to eql(location)
       end
-
     end
 
     context 'coordinates' do
@@ -124,7 +124,7 @@ RSpec.describe EventDecorator do
 
       it do
         expect(Geocoder::Lookup.get(:google)).to receive(:map_link_url).with(instance.coordinates).and_return('http://regale.com')
-        expect(instance.decorate.map_link_url).to have_css('a[href="http://regale.com"][target="_blank"]')
+        expect(subject).to have_css('a[href="http://regale.com"][target="_blank"]')
       end
     end
   end
