@@ -8,10 +8,20 @@ class EventDecorator < ApplicationDecorator
     decorates_association name
   end
 
+  def scheduled_at
+    I18n.l(model.scheduled_at, format: :medium)
+  end
+
+  def respond_before
+    return unless model.respond_before
+
+    I18n.l(model.respond_before, format: :medium)
+  end
+
   def calendar
     h.capture do
-      h.concat scheduled_at.strftime('%b')
-      h.concat h.content_tag(:strong, scheduled_at.strftime('%d'))
+      h.concat model.scheduled_at.strftime('%b')
+      h.concat h.content_tag(:strong, model.scheduled_at.strftime('%d'))
     end
   end
 

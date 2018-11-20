@@ -1,15 +1,22 @@
-.list-group-item
+.list-group-item.list-view-pf-stacked
   .list-group-item-header
     .list-view-pf-actions
       = link_to t('.edit'), edit_event_path(event), class: 'btn btn-default'
     .list-view-pf-main-info
       .list-view-pf-left
-        .list-view-pf-calendar
-          = event.calendar
+        - if event.coordinates.none?
+          span.pficon.pficon-warning-triangle-o.list-view-pf-icon-lg.list-view-pf-icon-warning
+        - else
+          .list-view-pf-calendar= event.calendar
       .list-view-pf-body
         .list-view-pf-description
           .list-group-item-heading
             = event.title
+            - if event.respond_before
+              small
+                = Event.human_attribute_name(:respond_before)
+                | :
+                =< event.respond_before
           .list-group-item-text
             = event.location
         .list-view-pf-additional-info

@@ -33,9 +33,8 @@ en:
     attributes:
       event:
         scheduled_at: Starts at
+        respond_before: RSVP before
       guest:
-        scheduled_at: Event
-        respond_before: RSVP
         accept_status: Your response
         accept_status/: (Awaiting your response)
         accept_status/yes: Accepted
@@ -75,7 +74,7 @@ en:
   time:
     am: am
     formats:
-      date_at_time: "%a, %d %b %Y at %H:%M"
+      medium: "%a, %b %d, %Y %I:%M %P"
   errors:
     messages:
       invalid_respond_before: 'must be earlier that date of the event'
