@@ -1,5 +1,7 @@
-.blank-slate-pf
-  h1= "Welcome, #{current_user.email}"
-
-  = render partial: 'guest', collection: @my_upcoming_guests
-  .text-center= paginate @my_upcoming_guests, theme: 'upcoming_events'
+.row
+  .col-md-8.col-md-offset-2
+    - if @my_upcoming_guests.any?
+      = render partial: 'guest', collection: @my_upcoming_guests
+      .text-center= paginate @my_upcoming_guests, theme: 'upcoming_events'
+    - else
+      = render partial: 'empty_state'

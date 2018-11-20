@@ -43,10 +43,15 @@ en:
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
+  # Pages:
   application:
     nav:
       add_resource: 'Add %{resource}'
       show_all: 'All %{resources}'
+  welcome:
+    empty_state:
+      title: 'Hi %{name}!'
+      body_html: '<p>No events scheduled. Please try again later.</p>'
   events:
     event:
       edit: Edit
@@ -71,6 +76,7 @@ en:
     user:
       destroy: Delete
       confirm: 'Are you sure you want to delete %{name}?'
+  # End pages
   time:
     am: am
     formats:

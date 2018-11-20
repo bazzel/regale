@@ -53,7 +53,6 @@ Feature:
 
   Scenario: Change response
 
-  @javascript
   Scenario: View the invite after closing date
     Given I signed in with my email address "john.doe@example.com"
     And the following event:
@@ -62,3 +61,7 @@ Feature:
     When I open the application
     Then I cannot respond to the invite for "Italian dinner" anymore
 
+  Scenario: View an empty page
+    Given I signed in with my email address "john.doe@example.com"
+    When I open the application
+    Then I see an empty page

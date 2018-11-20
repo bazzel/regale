@@ -9,6 +9,11 @@ When('I open the application') do
   visit ''
 end
 
+Then("I see an empty page") do
+  expect(page).not_to have_css('.card-pf')
+  expect(page).to have_content(/Hi/)
+end
+
 Then("I see a toast notification telling me my changes are saved") do
   expect(page).to have_css('.toast-pf.alert.alert-success')
 end
