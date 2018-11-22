@@ -1,48 +1,60 @@
-.card-pf.card-pf-view.text-center{ id=dom_id(guest) }
-  .card-pf-body
-    .card-pf-top-element
-      span.fa.fa-cutlery.card-pf-icon-circle
+.guest-card.card-pf.card-pf-accented { class=guest.model.accept_status id=dom_id(guest) }
+  .card-pf-heading
+    .card-pf-heading-details
+      - if guest.invitation_expired?
+        => guest.accept_status_icon(class: 'fa-2x')
+      - else
+        = guest.respond_buttons
     h2.card-pf-title
       = guest.event.title
-    p.card-pf-subtitle
-      = Guest.human_attribute_name(:accept_status)
-      | :
-      strong=< guest.accept_status
-    p.card-pf-info
-      = Event.human_attribute_name(:scheduled_at)
-      | :
-      strong=< guest.event.scheduled_at
-    p.card-pf-info
-      = Event.human_attribute_name(:respond_before)
-      | :
-      strong=< guest.event.respond_before
-    p.card-pf-info
-      = Event.human_attribute_name(:location)
-      | :
-      strong=< guest.event.location
 
-    - if guest.invitation_expired?
-      dl.dl-horizontal
-        - if guest.soup
-          dt= Soup.model_name.human
-          dd= guest.soup.title
-        - if guest.appetizer
-          dt= Appetizer.model_name.human
-          dd= guest.appetizer.title
-        - if guest.main_course
-          dt= MainCourse.model_name.human
-          dd= guest.main_course.title
-        - if guest.dessert
-          dt= Dessert.model_name.human
-          dd= guest.dessert.title
+  - if guest.invitation_expired?
+    = simple_form_for(guest, url: '#') do |f|
+      .card-pf-body
+        .row
+          .col-sm-10.col-sm-offset-2
+            - if guest.event.scheduled_at
+              p.card-pf-aggregate-status-notifications
+                span.card-pf-aggregate-status-notification
+                  => fa_icon('clock-o', title: "#{Event.human_attribute_name(:scheduled_at)} #{guest.event.scheduled_at}", data: { toggle: :tooltip})
+                  => guest.event.scheduled_at
+            - if guest.event.model.location.present?
+              p.card-pf-aggregate-status-notifications
+                span.card-pf-aggregate-status-notification
+                  => fa_icon('map-marker')
+                  = guest.event.location
+        .card-pf-subtitle This will be your menu
+        = f.input :soup, readonly: true, input_html: { value: guest.soup&.title } if guest.event.soups.any?
+        = f.input :appetizer, readonly: true, input_html: { value: guest.appetizer&.title } if guest.event.appetizers.any?
+        = f.input :main_course, readonly: true, input_html: { value: guest.main_course&.title } if guest.event.main_courses.any?
+        = f.input :dessert, readonly: true, input_html: { value: guest.dessert&.title } if guest.event.desserts.any?
 
-    - else
-      = simple_form_for(guest, remote: true) do |f|
+  - else
+    = simple_form_for(guest, remote: true) do |f|
+      .card-pf-body
+        .row
+          .col-sm-10.col-sm-offset-2
+            - if guest.event.scheduled_at
+              p.card-pf-aggregate-status-notifications
+                span.card-pf-aggregate-status-notification
+                  => fa_icon('clock-o', title: "#{Event.human_attribute_name(:scheduled_at)} #{guest.event.scheduled_at}", data: { toggle: :tooltip})
+                  => guest.event.scheduled_at
+            - if !guest.invitation_expired? && guest.event.respond_before
+              p.card-pf-aggregate-status-notifications
+                span.card-pf-aggregate-status-notification
+                  => fa_icon('calendar-check-o', title: "#{Event.human_attribute_name(:respond_before)} #{guest.event.respond_before}", data: { toggle: :tooltip})
+                  = guest.event.respond_before
+            - if guest.event.model.location.present?
+              p.card-pf-aggregate-status-notifications
+                span.card-pf-aggregate-status-notification
+                  => fa_icon('map-marker')
+                  = guest.event.location
+        .card-pf-subtitle Create your own menu
         = f.association :soup, collection: guest.soup_collection if guest.event.soups.any?
         = f.association :appetizer, collection: guest.appetizer_collection if guest.event.appetizers.any?
         = f.association :main_course, collection: guest.main_course_collection if guest.event.main_courses.any?
         = f.association :dessert, collection: guest.dessert_collection if guest.event.desserts.any?
 
-        = f.button :submit
-
-      = guest.respond_buttons
+      .card-pf-footer.text-right
+        .visible-xs-block= f.button :submit_cancel, class: 'btn-lg btn-block'
+        .hidden-xs= f.button :submit_cancel, class: 'btn-lg'

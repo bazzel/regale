@@ -8,7 +8,7 @@ module FontAwesomeHelper
   # @example
   #   fa_icon('cutlery')
   #   #=> '<span class="fa fa-cutlery"></span>
-  def fa_icon(icon)
-    FontAwesome::Icons.send(icon)
+  def fa_icon(icon, options={})
+    FontAwesome::Icons.send(icon, options)
   end
 end

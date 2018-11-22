@@ -1,3 +1,16 @@
+.guest-card {
+  &.yes {
+    border-top-color: $alert-success-border;
+  }
+  &.no {
+    border-top-color: $alert-danger-border;
+  }
+  &.maybe {
+    border-top-color: $alert-warning-border;
+  }
+
+}
+
 .btn-group {
   .button_to {
     display: inline;

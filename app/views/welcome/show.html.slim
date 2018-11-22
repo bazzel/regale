@@ -1,5 +1,5 @@
 .row
-  .col-md-8.col-md-offset-2
+  .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
     - if @my_upcoming_guests.any?
       = render partial: 'guest', collection: @my_upcoming_guests
       .text-center= paginate @my_upcoming_guests, theme: 'upcoming_events'

@@ -14,8 +14,9 @@
                 = Event.human_attribute_name(:respond_before)
                 | :
                 =< event.respond_before
-          .list-group-item-text
-            = event.location
+          - if event.model.location.present?
+            .list-group-item-text
+              = event.location
         .list-view-pf-additional-info
           = event.guests_info_item
           = event.courses_info_item

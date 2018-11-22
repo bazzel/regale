@@ -27,6 +27,13 @@ class GuestDecorator < ApplicationDecorator
     h.safe_join(content, ' ')
   end
 
+  def accept_status_icon(options={})
+    icon = 'ok'             if yes?
+    icon = 'error'          if no?
+    icon = 'unknown status' if maybe?
+    h.pf_icon(icon, options.merge(title: accept_status, data: { toggle: :tooltip })) if icon
+  end
+
   def soup_collection
     bootstrap_select_collection(event.soups)
   end
@@ -44,13 +51,6 @@ class GuestDecorator < ApplicationDecorator
   end
 
   private
-
-  def accept_status_icon
-    icon = 'ok'             if yes?
-    icon = 'error'          if no?
-    icon = 'unknown status' if maybe?
-    h.pf_icon(icon, title: accept_status, data: { toggle: :tooltip }) if icon
-  end
 
   def bootstrap_select_collection(collection)
     collection.map { |d| [d.title, d.id, { data: { subtext: d.description }}] }

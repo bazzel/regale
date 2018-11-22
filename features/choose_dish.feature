@@ -33,6 +33,6 @@ Feature:
     And I open the application
     When I select the dish "tomato soup" as "Appetizer"
     And I select the dish "pizza" as "Main Course"
-    And I click "Save"
+    And I click "Submit Menu"
     Then I see a toast notification telling me my changes are saved
 

@@ -23,7 +23,7 @@ When('I use the magic link') do
 end
 
 Then("I'm in") do
-  expect(page).to have_text("Welcome, #{@user.email}")
+  expect(page).to have_text("Hi #{@user.email}!")
 end
 
 Given("I signed in with my email address {string}") do |email|

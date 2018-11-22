@@ -3,6 +3,8 @@ en:
     submit:
       create: Save
       update: Save
+      guest:
+        update: Submit Menu
       accept_status/yes: Accept
       accept_status/no: Decline
       accept_status/maybe: Maybe
@@ -80,7 +82,7 @@ en:
   time:
     am: am
     formats:
-      medium: "%a, %b %d, %Y %I:%M %P"
+      medium: "%A, %b %d %I:%M %P"
   errors:
     messages:
       invalid_respond_before: 'must be earlier that date of the event'
