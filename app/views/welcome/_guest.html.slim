@@ -2,7 +2,10 @@
   .card-pf-heading
     .card-pf-heading-details
       - if guest.invitation_expired?
-        => guest.accept_status_icon(class: 'fa-2x')
+        - if guest.accept_status?
+          = guest.accept_status_icon(class: 'fa-2x')
+        - else
+          = fa_icon('ban', class: 'fa-2x')
       - else
         = guest.respond_buttons
     h2.card-pf-title

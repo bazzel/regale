@@ -45,6 +45,19 @@ RSpec.configure do |config|
   config.shared_context_metadata_behavior = :apply_to_host_groups
   config.filter_run_when_matching :focus
 
+  config.before(:suite) do
+    puts '-----> Set a default stub for Geocoder'
+    Geocoder.configure(lookup: :test)
+    Geocoder::Lookup::Test.set_default_stub(
+      [
+        {
+          latitude: 40.7143528,
+          longitude: -74.0059731
+        }
+      ]
+    )
+  end
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin

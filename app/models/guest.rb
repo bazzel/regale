@@ -17,6 +17,6 @@ class Guest < ApplicationRecord
   delegate :invitation_expired?, to: :event
 
   def accept_status=(value)
-    super(value.to_i)
+    super(value&.to_i)
   end
 end

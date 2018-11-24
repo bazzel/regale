@@ -1,21 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Event, type: :model do
-  before do
-    Geocoder.configure(lookup: :test)
-    Geocoder::Lookup::Test.set_default_stub(
-      [
-        {
-          latitude: lat,
-          longitude: long
-        }
-      ]
-    )
-  end
-
-  let(:lat)  { 40.7143528 }
-  let(:long) { -74.0059731 }
-
   describe 'validations' do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_length_of(:title).is_at_most(100) }

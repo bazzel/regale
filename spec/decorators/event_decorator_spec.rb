@@ -96,9 +96,7 @@ RSpec.describe EventDecorator do
   end
 
   describe '#location' do
-    before do
-      Geocoder.configure(lookup: :test)
-    end
+    before { Geocoder.configure(lookup: :test) }
 
     subject { instance.decorate.location }
     let(:instance) { create :event, location: location }
@@ -107,9 +105,7 @@ RSpec.describe EventDecorator do
     let(:long)     { -74.0059731 }
 
     context 'no coordinates' do
-      before do
-        Geocoder::Lookup::Test.add_stub(location, [])
-      end
+      before { Geocoder::Lookup::Test.add_stub(location, []) }
 
       it do
         expect(Geocoder::Lookup.get(:google)).not_to receive(:map_link_url)
