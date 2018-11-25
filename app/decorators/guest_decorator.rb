@@ -14,8 +14,8 @@ class GuestDecorator < ApplicationDecorator
     end
   end
 
-  def accept_status
-    I18n.t("accept_status/#{model.accept_status}", scope: [:activerecord, :attributes, :guest])
+  def accept_status_word
+    I18n.t("accept_status/#{accept_status}", scope: [:activerecord, :attributes, :guest])
   end
 
   def with_visual_accept
@@ -31,7 +31,7 @@ class GuestDecorator < ApplicationDecorator
     icon = 'ok'             if yes?
     icon = 'error'          if no?
     icon = 'unknown status' if maybe?
-    h.pf_icon(icon, options.merge(title: accept_status, data: { toggle: :tooltip })) if icon
+    h.pf_icon(icon, options.merge(title: accept_status_word, data: { toggle: :tooltip })) if icon
   end
 
   def soup_collection
@@ -65,7 +65,7 @@ class GuestDecorator < ApplicationDecorator
           accept_status: Guest.accept_statuses[status]
         }
       },
-      disabled: (model.accept_status == status),
+      disabled: (accept_status == status),
       class: 'btn btn-default',
       remote: true,
       data: {

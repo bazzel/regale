@@ -95,10 +95,10 @@ RSpec.describe EventDecorator do
     end
   end
 
-  describe '#location' do
+  describe '#link_to_location' do
     before { Geocoder.configure(lookup: :test) }
 
-    subject { instance.decorate.location }
+    subject { instance.decorate.link_to_location }
     let(:instance) { create :event, location: location }
     let(:location) { 'New York, NY' }
     let(:lat)      { 40.7143528 }

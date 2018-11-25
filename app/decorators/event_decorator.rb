@@ -74,7 +74,7 @@ class EventDecorator < ApplicationDecorator
     ].reject { |e| e.blank? }.to_sentence
   end
 
-  def location
+  def link_to_location
     return model.location unless shareable_location?
 
     h.link_to model.location, Geocoder::Lookup.get(:google).map_link_url(model.coordinates),  target: '_blank'
