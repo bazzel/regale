@@ -86,6 +86,7 @@ en:
     empty_state:
       title: 'Looks like there are no events yet.'
       body_html: '<p>When you create an event, it will show up here.</p>'
+      add_resource: 'Add %{resource}'
   users:
     user:
       destroy: Delete
