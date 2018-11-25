@@ -1,7 +1,7 @@
 .row
   .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
     - if @my_upcoming_guests.any?
-      = render partial: 'guest', collection: @my_upcoming_guests
+      = render partial: 'guests/card', collection: @my_upcoming_guests, as: :guest
       .text-center= paginate @my_upcoming_guests, theme: 'upcoming_events'
     - else
       = render partial: 'empty_state'

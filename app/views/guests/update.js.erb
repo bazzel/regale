@@ -1,4 +1,4 @@
 var el = document.getElementById('<%= @guest.dom_id %>')
-el.outerHTML = '<%= j render(partial: 'welcome/guest', object: @guest) %>'
+el.outerHTML = '<%= j render(partial: 'guests/card', object: @guest, as: :guest) %>'
 document.body.insertAdjacentHTML('afterbegin', '<%= j pf_toast_notification %>')
 $('select').selectpicker('refresh');
