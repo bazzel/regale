@@ -1,5 +1,9 @@
 .nav-pf-vertical.nav-pf-vertical-with-sub-menus.nav-pf-persistent-secondary
   ul.list-group
+    li.list-group-item
+      = link_to root_path do
+        = fa_icon('dashboard')
+        span.list-group-item-value= t('.dashboard')
     li.list-group-item.secondary-nav-item-pf
       a[href="#"]
         = fa_icon('cutlery')

@@ -48,6 +48,7 @@ en:
   # Pages:
   application:
     nav:
+      dashboard: Dashboard
       add_resource: 'Add %{resource}'
       show_all: 'All %{resources}'
   welcome:
