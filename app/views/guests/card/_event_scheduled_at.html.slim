@@ -1,0 +1,5 @@
+- if event.scheduled_at?
+  p.card-pf-aggregate-status-notifications
+    span.card-pf-aggregate-status-notification
+      => fa_icon('clock-o', title: "#{Event.human_attribute_name(:scheduled_at)} #{event.scheduled_at}", data: { toggle: :tooltip})
+      => event.scheduled_at

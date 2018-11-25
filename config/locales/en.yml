@@ -54,6 +54,12 @@ en:
     empty_state:
       title: 'Hi %{name}!'
       body_html: '<p>No events scheduled. Please try again later.</p>'
+  guests:
+    card:
+      show:
+        subtitle: 'This will be your menu'
+      edit:
+        subtitle: 'Create your own menu'
   events:
     event:
       edit: Edit

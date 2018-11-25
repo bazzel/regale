@@ -1,0 +1,21 @@
+.card-pf-heading
+  .card-pf-heading-details
+    - if guest.accept_status?
+      = guest.accept_status_icon(class: 'fa-2x')
+    - else
+      = fa_icon('ban', class: 'fa-2x')
+  h2.card-pf-title
+    = guest.event.title
+
+= simple_form_for(guest, url: '#') do |f|
+  .card-pf-body
+    .row
+      .col-sm-10.col-sm-offset-2
+        = render partial: 'guests/card/event_scheduled_at', object: guest.event, as: :event
+        = render partial: 'guests/card/event_location', object: guest.event, as: :event
+    .card-pf-subtitle= t('.subtitle')
+    = f.input :soup, readonly: true, input_html: { value: guest.soup&.title } if guest.event.soups.any?
+    = f.input :appetizer, readonly: true, input_html: { value: guest.appetizer&.title } if guest.event.appetizers.any?
+    = f.input :main_course, readonly: true, input_html: { value: guest.main_course&.title } if guest.event.main_courses.any?
+    = f.input :dessert, readonly: true, input_html: { value: guest.dessert&.title } if guest.event.desserts.any?
+

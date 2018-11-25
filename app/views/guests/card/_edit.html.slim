@@ -1,0 +1,24 @@
+.card-pf-heading
+  .card-pf-heading-details
+    = guest.respond_buttons
+  h2.card-pf-title
+    = guest.event.title
+
+= simple_form_for(guest, remote: true) do |f|
+  .card-pf-body
+    .row
+      .col-sm-10.col-sm-offset-2
+        = render partial: 'guests/card/event_scheduled_at', object: guest.event, as: :event
+        = render partial: 'guests/card/event_respond_before', object: guest.event, as: :event
+        = render partial: 'guests/card/event_location', object: guest.event, as: :event
+
+    .card-pf-subtitle= t('.subtitle')
+    = f.association :soup, collection: guest.soup_collection if guest.event.soups.any?
+    = f.association :appetizer, collection: guest.appetizer_collection if guest.event.appetizers.any?
+    = f.association :main_course, collection: guest.main_course_collection if guest.event.main_courses.any?
+    = f.association :dessert, collection: guest.dessert_collection if guest.event.desserts.any?
+
+  .card-pf-footer.text-right
+    .visible-xs-block= f.button :submit_cancel, class: 'btn-lg btn-block'
+    .hidden-xs= f.button :submit_cancel, class: 'btn-lg'
+

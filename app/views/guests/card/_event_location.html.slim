@@ -1,0 +1,6 @@
+- if event.location.present?
+  p.card-pf-aggregate-status-notifications
+    span.card-pf-aggregate-status-notification
+      => fa_icon('map-marker')
+      = event.link_to_location
+
