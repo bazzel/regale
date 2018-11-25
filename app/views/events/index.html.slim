@@ -1,3 +1,7 @@
-h1 Listing events
-
-.pf-list-compound-expansion.list-group.list-view-pf= render @events
+- if @events.any?
+  h1 Listing events
+  .pf-list-compound-expansion.list-group.list-view-pf= render @events
+- else
+  .row
+    .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2
+      = render partial: 'empty_state'

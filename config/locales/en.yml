@@ -64,6 +64,8 @@ en:
   events:
     event:
       edit: Edit
+      destroy: Delete
+      confirm: 'Are you sure you want to delete the event %{name}?'
       guests_summary:
         'yes':
           zero: ''
@@ -81,6 +83,9 @@ en:
           zero: ''
           one: '%{count} awaiting'
           other: '%{count} awaiting'
+    empty_state:
+      title: 'Looks like there are no events yet.'
+      body_html: '<p>When you create an event, it will show up here.</p>'
   users:
     user:
       destroy: Delete

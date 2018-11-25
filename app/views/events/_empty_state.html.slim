@@ -1,0 +1,7 @@
+.welcome.blank-slate-pf.blank-slate-content-pf
+  .blank-slate-pf-icon
+    = fa_icon('cutlery')
+  h1= t('.title', name: current_user.decorate.to_label)
+  = t('.body_html')
+  .blank-slate-pf-main-action
+    = link_to 'Add Event', new_event_path, class: 'btn btn-primary btn-lg'

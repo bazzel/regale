@@ -8,6 +8,10 @@ class EventDecorator < ApplicationDecorator
     decorates_association name
   end
 
+  def to_s
+    title.inspect
+  end
+
   def scheduled_at
     I18n.l(model.scheduled_at, format: :medium)
   end
@@ -75,14 +79,16 @@ class EventDecorator < ApplicationDecorator
   end
 
   def link_to_location
-    return model.location unless shareable_location?
+    return location unless shareable_location?
 
-    h.link_to model.location, Geocoder::Lookup.get(:google).map_link_url(model.coordinates),  target: '_blank'
+    h.link_to location, Geocoder::Lookup.get(:google).map_link_url(model.coordinates),  target: '_blank'
   end
 
   def shareable_location?
-    model.location && model.coordinates.all?
+    location && coordinates.all?
   end
+
+
 
   private
 

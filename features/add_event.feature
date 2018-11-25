@@ -33,4 +33,3 @@ Feature:
 
   Scenario: Edit an event
 
-  Scenario: Delete an event

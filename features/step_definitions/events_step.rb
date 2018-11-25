@@ -58,9 +58,21 @@ Given("I'm expanding the {string} for the event {string}") do |course_name, even
   item.find('.list-view-pf-additional-info-item', text: course_name).click
 end
 
+Given("I delete the event {string}") do |event_name|
+  within('.list-group-item', text: event_name) do
+    accept_confirm do
+      page.click_on('Delete')
+    end
+  end
+end
+
 Then("I see a list of {int} event(s)/user(s)") do |items_count|
-  within('.list-group.list-view-pf') do
-    expect(page).to have_css('.list-group-item', count: items_count)
+  if items_count.zero?
+    expect(page).not_to have_css('.list-group.list-view-pf')
+  else
+    within('.list-group.list-view-pf') do
+      expect(page).to have_css('.list-group-item', count: items_count)
+    end
   end
 end
 
@@ -120,4 +132,10 @@ Then(/I see an expansion showing the following (soup|appetizer|main course|desse
       end
     end
   end
+end
+
+Then("I see an empty events page") do
+  expect(page).not_to have_css('.card-pf')
+  expect(page).to have_content('Looks like there are no events yet.')
+  expect(page).to have_link('Add Event')
 end

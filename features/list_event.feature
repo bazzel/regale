@@ -3,6 +3,11 @@ Feature:
   I want to add an event
   So I can ask my colleagues can sign in
 
+  Scenario: No events
+    Given I signed in with my email address "john.doe@example.com"
+    And I'm viewing the events
+    Then I see an empty events page
+
   Scenario: List events
     Given I signed in with my email address "john.doe@example.com"
     And there are 12 events
