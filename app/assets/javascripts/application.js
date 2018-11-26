@@ -19,6 +19,8 @@
 //
 //= require 'jquery/dist/jquery'
 //= require 'bootstrap/dist/js/bootstrap'
+//= require 'c3/c3'
+//= require 'd3/d3'
 //= require 'patternfly/dist/js/patternfly'
 
 //= require 'moment/moment'

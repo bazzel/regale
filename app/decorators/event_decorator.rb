@@ -57,6 +57,14 @@ class EventDecorator < ApplicationDecorator
     end
   end
 
+  def donut_info_item
+    h.content_tag(:div, class: 'list-view-pf-additional-info-item list-view-pf-additional-info-item-donut-chart') do
+      h.content_tag(:div, class: 'list-view-pf-expand') do
+        h.react_component("DonutChart", React::EventDecorator.new(model))
+      end
+    end
+  end
+
   def dishes_info_item
     info_item_wrapper do
       h.concat h.fa_icon('spoon')

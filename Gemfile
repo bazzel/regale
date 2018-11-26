@@ -45,6 +45,7 @@ gem 'kaminari' # Scope & Engine based, clean, powerful, agnostic, customizable a
 gem 'cocoon' # Unobtrusive nested forms handling, using jQuery
 gem 'faker' # easily generate fake data: names, addresses, phone numbers, etc.
 gem 'geocoder' # Provides object geocoding and more
+gem 'react-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
