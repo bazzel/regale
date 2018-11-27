@@ -3,6 +3,7 @@ Feature:
   I want to add guests to an event
   So they can see they're invited
 
+  @javascript
   Scenario: Add guests to a new event
     Given the following users:
       | email                | name  |

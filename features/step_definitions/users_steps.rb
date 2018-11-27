@@ -1,5 +1,5 @@
 Then("I can add a new user") do
-  expect(page).to have_content('New user')
+  expect(page).to have_content('New User')
   within('form') do
     expect(page).to have_button('Save')
   end

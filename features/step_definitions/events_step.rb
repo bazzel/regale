@@ -90,10 +90,9 @@ Then("I can add a new event") do
 end
 
 Then("I see the event {string} with {int} guests") do |event_title, guests_count|
-  element = find('.list-group.list-view-pf .list-group-item', text: event_title)
-  name = 'Guest'.pluralize(guests_count)
+  element = find('.list-group.list-view-pf .list-group-item .list-view-pf-additional-info-item-donut-chart')
 
-  expect(element).to have_content(/#{guests_count}\n*#{name}/)
+  expect(element).to have_content(guests_count)
 end
 
 Then("I see the event {string} with {int} courses") do |event_title, courses_count|
