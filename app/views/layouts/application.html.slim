@@ -10,7 +10,7 @@ html.layout-pf.layout-pf-fixed.transitions
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'styles', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  body.cards-pf
+  body( class=yield(:body_class) )
     = render partial: 'masthead'
     = render partial: 'nav'
 
