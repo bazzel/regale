@@ -28,5 +28,6 @@
               .links
                 = link_to_add_association f, name, partial: 'dish_fields', class: 'btn btn-default'
 
+  = f.input :additional_info, as: :text, input_html: { rows: 10 }
   = f.button :submit_cancel, cancel: events_path
 

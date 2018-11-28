@@ -61,7 +61,7 @@ SimpleForm.setup do |config|
     b.optional :minlength
     b.optional :pattern
     b.optional :min_max
-    b.optional :readonly
+    b.use :readonly
     b.use :label, class: 'col-sm-2 control-label'
 
     b.wrapper tag: 'div', class: 'col-sm-10' do |ba|

@@ -96,7 +96,13 @@ class EventDecorator < ApplicationDecorator
     location && coordinates.all?
   end
 
+  def truncated_additional_info_with_tooltip
+    return if additional_info.blank?
 
+    tooltip = h.pf_icon('info', data: { toggle: :tooltip, html: true }, title: h.simple_format(additional_info))
+
+    h.truncate(h.content_tag(:p, additional_info), escape: false, length: 100) { h.safe_join [' ', tooltip] }
+  end
 
   private
 

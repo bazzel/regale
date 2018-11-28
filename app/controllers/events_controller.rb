@@ -81,6 +81,7 @@ class EventsController < ApplicationController
                                     :scheduled_at,
                                     :respond_before,
                                     :location,
+                                    :additional_info,
                                     user_ids: [],
                                     soups_attributes: [:id, :title, :description, :_destroy],
                                     appetizers_attributes: [:id, :title, :description, :_destroy],

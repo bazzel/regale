@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_172439) do
+ActiveRecord::Schema.define(version: 2018_11_28_095957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_172439) do
     t.string "location", limit: 255
     t.float "latitude"
     t.float "longitude"
+    t.string "additional_info", limit: 500
   end
 
   create_table "guests", force: :cascade do |t|
