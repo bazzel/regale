@@ -10,6 +10,12 @@ When("I select the dish {string} as {string}") do |dish_name, course_name|
   bootstrap_select(dish_name, from: course_name)
 end
 
+When("I select the {string} tab") do |tab_name|
+  within('.tabs-container') do
+    click_on(tab_name)
+  end
+end
+
 def bootstrap_select(value, from:)
   container = find('label', text: from).ancestor('.form-group.select')
   container.click_button
