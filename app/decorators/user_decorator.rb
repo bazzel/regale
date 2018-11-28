@@ -24,4 +24,8 @@ class UserDecorator < ApplicationDecorator
     email
   end
   alias to_s to_label
+
+  def role_word
+    I18n.t("role/#{role}", scope: [:activerecord, :attributes, :user])
+  end
 end

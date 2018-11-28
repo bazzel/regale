@@ -1,5 +1,6 @@
 = simple_form_for(@user) do |f|
   = f.input :email, autofocus: true
   = f.input :name
+  = f.input :role, as: :radio_buttons, collection: User.roles.symbolize_keys.keys
 
-  = f.button :submit_cancel, cancel: root_path
+  = f.button :submit_cancel, cancel: users_path

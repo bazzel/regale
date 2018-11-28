@@ -42,6 +42,10 @@ en:
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
+      user:
+        role/user: User
+        role/vip: VIP
+        role/admin: Administrator
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
