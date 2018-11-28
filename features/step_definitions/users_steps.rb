@@ -18,3 +18,9 @@ Given("I delete the user {string}") do |user_label|
     end
   end
 end
+
+Then("I see {string} is a(n) {string} user") do |user_label, role|
+  container = find('.list-group-item', text: user_label)
+
+  expect(container).to have_content(role)
+end

@@ -14,6 +14,23 @@ Feature:
     When I fill in "Email" with "me@example.com"
     And I click "Save"
     Then I see a list of 2 users
+    And I see "me@example.com" is a "User" user
+
+  Scenario: Create a VIP user
+    Given I signed in with my email address "john.doe@example.com"
+    And I'm adding a new user
+    When I fill in "Email" with "me@example.com"
+    And I select "VIP" from "Role"
+    And I click "Save"
+    Then I see "me@example.com" is a "VIP" user
+
+  Scenario: Create an admin user
+    Given I signed in with my email address "john.doe@example.com"
+    And I'm adding a new user
+    When I fill in "Email" with "me@example.com"
+    And I select "Administrator" from "Role"
+    And I click "Save"
+    Then I see "me@example.com" is an "Administrator" user
 
   Scenario: Create a user with empty fields
     Given I signed in with my email address "john.doe@example.com"
