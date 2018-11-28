@@ -1,5 +1,5 @@
 = simple_form_for(@user) do |f|
-  = f.input :email
+  = f.input :email, autofocus: true
   = f.input :name
 
   = f.button :submit_cancel, cancel: root_path

@@ -27,7 +27,7 @@
 //= require 'bootstrap-datepicker/dist/js/bootstrap-datepicker'
 //= require 'patternfly/node_modules/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker'
 //= require 'bootstrap-select/dist/js/bootstrap-select'
-//= require cocoon
+//= require_tree './initializers'
 
 var ready = function() {
   $('body').tooltip({
