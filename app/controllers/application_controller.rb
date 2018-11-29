@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   before_action :authenticate_user!
   before_action :make_action_mailer_use_request_host_and_protocol
   helper_method :current_user

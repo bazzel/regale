@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  enum role: %i(user vip admin)
+  enum role: %i(guest vip admin)
   after_initialize :set_default_role, if: :new_record?
 
   validates :email, presence: true,

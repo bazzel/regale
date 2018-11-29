@@ -43,7 +43,7 @@ en:
         accept_status/no: Declined
         accept_status/maybe: Maybe
       user:
-        role/user: User
+        role/guest: Guest
         role/vip: VIP
         role/admin: Administrator
   datetime:

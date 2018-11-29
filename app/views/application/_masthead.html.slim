@@ -1,10 +1,11 @@
 nav.navbar.navbar-pf-vertical
   .navbar-header
-    button.navbar-toggle type="button"
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
+    - if current_user.admin?
+      button.navbar-toggle type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
     = link_to root_path, class: 'navbar-brand' do
       = image_tag 'logo-alt.svg', class: 'img navbar-brand-icon'
       = image_tag 'brand-alt.svg', class: 'navbar-brand-name', alt: 'PatternFly Enterprise Application'

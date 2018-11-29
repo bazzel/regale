@@ -14,6 +14,6 @@ html.layout-pf.layout-pf-fixed.transitions
     = render partial: 'masthead'
     = render partial: 'nav'
 
-    .container-fluid.container-cards-pf.container-pf-nav-pf-vertical.nav-pf-persistent-secondary
+    .container-fluid.container-cards-pf( class=(%w(container-pf-nav-pf-vertical nav-pf-persistent-secondary) if current_user.admin?))
       = pf_flash
       = yield

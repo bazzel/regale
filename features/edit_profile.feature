@@ -25,3 +25,4 @@ Feature:
     And I see a validation error for "Email"
 
   Scenario: Cancelling the profile page
+

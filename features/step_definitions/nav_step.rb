@@ -7,6 +7,13 @@ When("I choose {string} from the {string} menu") do |subitem, item|
   end
 end
 
+Then("I cannot add a new user") do
+  expect(page).not_to have_css('.navbar .navbar-toggle')
+  expect(page).not_to have_css('.nav-pf-vertical')
+  expect(page).not_to have_css('.container-pf-nav-pf-vertical.nav-pf-persistent-secondary')
+
+end
+
 Given("I'm viewing the {model_name}s") do |resource|
   resources = resource.pluralize
   step %(I choose "All #{resources}" from the "#{resources}" menu)
