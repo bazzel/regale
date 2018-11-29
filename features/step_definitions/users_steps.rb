@@ -5,6 +5,18 @@ Then("I can add a new user") do
   end
 end
 
+Then("I can edit my profile") do
+  within('form') do
+    expect(page).to have_button('Save')
+  end
+end
+
+Then("I cannot edit my role") do
+  within('form') do
+    expect(page).not_to have_css('label', text: 'Role')
+  end
+end
+
 Given("the following users:") do |table|
   table.hashes.each do |h|
     create :user, h

@@ -24,6 +24,13 @@ Given("I edit the {model_name} {string}") do |resource, to_label|
   end
 end
 
+Given("I choose {string} from the user icon menu") do |menu_item|
+  within('.navbar-utility') do
+    click_button
+    click_on(menu_item)
+  end
+end
+
 When("I try to add an empty {model_name}") do |resource|
   step %Q(I'm adding a new #{resource})
   within('form') do

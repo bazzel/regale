@@ -55,6 +55,9 @@ en:
       dashboard: Dashboard
       add_resource: 'Add %{resource}'
       show_all: 'All %{resources}'
+    masthead:
+      profile: Profile
+      logout: Logout
   welcome:
     empty_state:
       title: 'Hi %{name}!'

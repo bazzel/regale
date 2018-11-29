@@ -18,5 +18,7 @@ nav.navbar.navbar-pf-vertical
             span.caret
         ul.dropdown-menu
           li
-            = link_to 'Logout', sign_out_path, method: :delete
+            = link_to t('.profile'), edit_user_path(current_user)
+          li
+            = link_to t('.logout'), sign_out_path, method: :delete
 
