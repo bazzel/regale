@@ -16,5 +16,8 @@ module Regale
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = 'Amsterdam'
+
+    # See https://github.com/varvet/pundit#rescuing-a-denied-authorization-in-rails
+    config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
   end
 end
