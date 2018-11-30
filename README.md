@@ -4,6 +4,10 @@ See https://regale.herokuapp.com/
 
 # Heroku
 
+## Add an admin user
+
+Define an `ADMIN_EMAIL` ENV variable. The user with this email address is the first administrator and can assign the same role to other users.
+
 
 # SendGrid
 
