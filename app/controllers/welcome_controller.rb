@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
       .upcoming
       .page(params[:page]).per(1)
       .includes(:event)
+      .order('events.scheduled_at')
       .decorate
   end
 end
