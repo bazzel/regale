@@ -1,4 +1,21 @@
-$font-path:      '~patternfly/dist/fonts/';
-$icon-font-path: $font-path;
-$img-path:       '~patternfly/dist/img/';
+$font-path:          '~patternfly/dist/fonts/';
+$icon-font-path:     $font-path;
+$img-path:           '~patternfly/dist/img/';
 
+$img-bg-login: 'bg-login.jpg';
+
+$color-primary-0:    #33607C;// Main Primary color */
+$color-primary-1:    #82A3B7;
+$color-primary-2:    #537D95;
+$color-primary-3:    #1D4B66;
+$color-primary-4:    #0A334B;
+
+//$color-pf-blue:      $color-primary-0;
+//$color-pf-blue-25:   lighten($color-primary-1, 30%);
+//$color-pf-blue-50:   lighten($color-primary-1, 20%);
+//$color-pf-blue-100:  lighten($color-primary-2, 10%);
+//$color-pf-blue-200:  $color-primary-2;
+//$color-pf-blue-300:  lighten($color-primary-3, 20%);
+//$color-pf-blue-400:  $color-primary-3;
+//$color-pf-blue-500:  lighten($color-primary-4, 10%);
+//$color-pf-blue-600:  $color-primary-4;

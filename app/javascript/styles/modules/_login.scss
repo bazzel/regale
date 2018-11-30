@@ -1,0 +1,7 @@
+.login-pf {
+  background-image: url($img-bg-login);
+  body {
+    background-image: url($img-bg-login);
+    border-top: $navbar-pf-vertical-border-width $navbar-pf-vertical-border-style $navbar-pf-vertical-border-color;
+  }
+}
