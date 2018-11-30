@@ -42,6 +42,10 @@ en:
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
+      user:
+        role/guest: Guest
+        role/vip: VIP
+        role/admin: Administrator
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
@@ -51,6 +55,9 @@ en:
       dashboard: Dashboard
       add_resource: 'Add %{resource}'
       show_all: 'All %{resources}'
+    masthead:
+      profile: Profile
+      logout: Logout
   welcome:
     empty_state:
       title: 'Hi %{name}!'

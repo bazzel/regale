@@ -20,12 +20,12 @@ class GuestsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_guest
-      @guest = Guest.find(params[:id]).decorate
+      @guest = authorize Guest.find(params[:id]).decorate
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def guest_params
-      params.require(:guest).permit(:accept_status, :soup_id, :appetizer_id, :main_course_id, :dessert_id)
+      permitted_attributes(@guest || Guest)
     end
 end
 

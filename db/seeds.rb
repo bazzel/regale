@@ -14,13 +14,10 @@ include FactoryBot::Syntax::Methods
 Event.destroy_all
 User.destroy_all
 
-email = ENV['email']
-users_count = ENV.fetch('users_count', 20)
-events_count = ENV.fetch('events_count', 10)
+users_count = ENV.fetch('USERS_COUNT', 20)
+events_count = ENV.fetch('EVENTS_COUNT', 10)
 
-current_user = create :user,
-  email: email,
-  name: nil
+current_user = CreateAdminService.new.call
 
 users_count.times do
   create :user, :random
@@ -56,4 +53,4 @@ events_count.times do
   end
 end
 
-puts "Login: #{Rails.application.routes.url_helpers.token_sign_in_path(current_user.login_token)}"
+puts "Login as #{current_user.email}"

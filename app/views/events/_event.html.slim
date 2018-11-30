@@ -15,9 +15,9 @@
                 = Event.human_attribute_name(:respond_before)
                 | :
                 =< event.respond_before
-          - if event.location.present?
-            .list-group-item-text
-              = event.link_to_location
+          .list-group-item-text
+            = event.link_to_location
+            = event.truncated_additional_info_with_tooltip
         .list-view-pf-additional-info
           = event.donut_info_item
           /= event.guests_info_item

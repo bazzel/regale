@@ -10,6 +10,29 @@ Then("I see a page with instructions for {string} how to login") do |email|
   expect(page).to have_text("We've emailed a special link to #{email}. Click the link to confirm your address and get started.")
 end
 
+Given("I signed in as an admin") do
+  @user = create(:user, :admin)
+
+  step %q(I open the application)
+  step %Q(I fill in "Email" with "#{@user.email}")
+  step %q(I click "Sign In")
+  step %q(I use the magic link)
+end
+
+Given("I signed in as a guest") do
+  @user = create(:user, :guest)
+  step %q(I use the magic link)
+end
+
+Given("I signed in as admin {string}") do |email|
+  @user = create(:user, :admin, email: email)
+
+  step %q(I open the application)
+  step %Q(I fill in "Email" with "#{email}")
+  step %q(I click "Sign In")
+  step %q(I use the magic link)
+end
+
 Given("I sign up with my email address {string}") do |email|
   @user = create(:user, email: email)
 

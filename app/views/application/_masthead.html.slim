@@ -1,10 +1,11 @@
 nav.navbar.navbar-pf-vertical
   .navbar-header
-    button.navbar-toggle type="button"
-      span.sr-only Toggle navigation
-      span.icon-bar
-      span.icon-bar
-      span.icon-bar
+    - if current_user.admin?
+      button.navbar-toggle type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
     = link_to root_path, class: 'navbar-brand' do
       = image_tag 'logo-alt.svg', class: 'img navbar-brand-icon'
       = image_tag 'kabisa.png', class: 'navbar-brand-name', alt: 'PatternFly Enterprise Application'
@@ -14,9 +15,11 @@ nav.navbar.navbar-pf-vertical
         button.btn.btn-link.dropdown-toggle.nav-item-iconic data-toggle='dropdown'
           span.fa.pficon-user title='Username'
           span.dropdown-title
-            => current_user.email
+            => current_user.to_label
             span.caret
         ul.dropdown-menu
           li
-            = link_to 'Logout', sign_out_path, method: :delete
+            = link_to t('.profile'), edit_user_path(current_user)
+          li
+            = link_to t('.logout'), sign_out_path, method: :delete
 

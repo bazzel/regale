@@ -10,10 +10,11 @@ Feature:
       | marty@example.com    | Marty |
       | lorraine@example.com |       |
       | emmett@example.com   | Doc   |
-    And I signed in with my email address "john.doe@example.com"
+    And I signed in as admin "john.doe@example.com"
     And I'm adding a new event
     When I fill in "Title" with "Italian dinner"
     And I fill in "Starts at" with "1-1-2018 6:00 PM"
+    And I select the "Guests" tab
     And I add "Marty" as a guest
     And I add "lorraine@example.com" as a guest
     And I click "Save"
@@ -30,7 +31,7 @@ Feature:
       | marty@example.com    | Marty |
       | lorraine@example.com |       |
       | emmett@example.com   | Doc   |
-    And I signed in with my email address "john.doe@example.com"
+    And I signed in as admin "john.doe@example.com"
     And the following event:
       | title          | starts_at        | guests                                  |
       | Italian dinner | 1-1-2018 6:00 pm | marty@example.com, lorraine@example.com |

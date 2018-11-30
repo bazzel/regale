@@ -124,4 +124,28 @@ RSpec.describe EventDecorator do
       end
     end
   end
+
+  describe '#truncated_additional_info_with_tooltip' do
+    subject        { instance.decorate.truncated_additional_info_with_tooltip }
+    let(:instance) { create :event, additional_info: additional_info }
+
+    context 'no info' do
+      let(:additional_info) { nil }
+
+      it { is_expected.to be_nil }
+    end
+
+    context 'little text' do
+      let(:additional_info) { 'Lorem Ipsum' }
+
+      it { is_expected.to have_selector('p', text: additional_info) }
+    end
+
+    context 'a lotta text' do
+      let(:additional_info) { "Lorem Ipsum "*10 }
+
+      it { is_expected.to have_selector('p', text: /\.{3}\s$/) }
+      it { is_expected.to have_selector("p span.pficon.pficon-info[data-toggle=\"tooltip\"][title*=\"#{additional_info}\"]") }
+    end
+  end
 end

@@ -1,0 +1,26 @@
+.tabs-container {
+  .nav-tabs {
+    margin-bottom: $form-group-margin-bottom;
+  }
+  .tab-content {
+    max-height: 30em;
+    padding: $form-group-margin-bottom;
+    padding-left: 0;
+    overflow-y: auto;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      height: 20%;
+      width: 100%;
+      content: "";
+      background: linear-gradient(to top, white 0%, transparentize(white, 1) 100%);
+      pointer-events: none;
+    }
+  }
+
+  position: relative;
+  margin-bottom: $form-group-margin-bottom;
+  border-bottom: 1px solid $nav-tabs-border-color;
+  padding-bottom: $form-group-margin-bottom;
+}

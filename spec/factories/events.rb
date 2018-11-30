@@ -23,8 +23,16 @@ FactoryBot.define do
         to { 6.months.from_now }
       end
 
-      title { Faker::TwinPeaks.unique.location }
-      scheduled_at { Time.at(from + rand * (to.to_f - from.to_f)) }
+      title           { Faker::TwinPeaks.unique.location }
+      scheduled_at    { Time.at(from + rand * (to.to_f - from.to_f)) }
+      location        { Faker::Address.unique.full_address }
+      longitude       { Faker::Address.latitude }
+      latitude        { Faker::Address.longitude }
+      additional_info { Faker::Lorem.paragraph(2, false, 4) }
+
+     after(:build) do |event, evaluator|
+       event.respond_before = (event.scheduled_at - 14.days)
+     end
     end
   end
 end

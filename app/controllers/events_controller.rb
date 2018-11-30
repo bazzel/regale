@@ -4,6 +4,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
+    authorize Event
     @events = Event
       .includes(soups: [guests: [:user]],
                 appetizers: [guests: [:user]],
@@ -21,7 +22,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = authorize Event.new
   end
 
   # GET /events/1/edit
@@ -31,8 +32,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
-
+    @event = authorize Event.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -72,19 +72,11 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = authorize Event.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title,
-                                    :scheduled_at,
-                                    :respond_before,
-                                    :location,
-                                    user_ids: [],
-                                    soups_attributes: [:id, :title, :description, :_destroy],
-                                    appetizers_attributes: [:id, :title, :description, :_destroy],
-                                    main_courses_attributes: [:id, :title, :description, :_destroy],
-                                    desserts_attributes: [:id, :title, :description, :_destroy])
+      permitted_attributes(@event || Event)
     end
 end

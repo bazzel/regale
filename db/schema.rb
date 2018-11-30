@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_19_172439) do
+ActiveRecord::Schema.define(version: 2018_11_28_184447) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_172439) do
     t.string "location", limit: 255
     t.float "latitude"
     t.float "longitude"
+    t.string "additional_info", limit: 500
   end
 
   create_table "guests", force: :cascade do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2018_11_19_172439) do
     t.datetime "login_token_valid_until"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "role", default: 0
   end
 
   add_foreign_key "guests", "dishes", column: "appetizer_id"
