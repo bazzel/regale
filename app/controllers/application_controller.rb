@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include RedirectToUrl
 
   before_action :authenticate_user!
   before_action :make_action_mailer_use_request_host_and_protocol
@@ -9,9 +10,8 @@ class ApplicationController < ActionController::Base
     session[:user_id] = user.id
   end
 
-  # If i don't find a user from session i return null object
   def current_user
-    User.find_by(id: session[:user_id]) || NullUser.new
+    User.find_by(id: session[:user_id])&.decorate || NullUser.new
   end
 
   private

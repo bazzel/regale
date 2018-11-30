@@ -38,6 +38,16 @@ Given("I choose {string} from the user icon menu") do |menu_item|
   end
 end
 
+Then("I see {string} as label for the user icon menu") do |user_label|
+  within('.navbar-utility') do
+    expect(page).to have_content(user_label)
+  end
+end
+
+When("I edit my profile") do
+  step %q(I choose "Profile" from the user icon menu)
+end
+
 When("I try to add an empty {model_name}") do |resource|
   step %Q(I'm adding a new #{resource})
   within('form') do

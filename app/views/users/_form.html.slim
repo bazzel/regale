@@ -1,7 +1,8 @@
 = simple_form_for(@user) do |f|
+  = redirect_to_url_field
   = f.input :email, autofocus: true
   = f.input :name
   - if current_user.admin?
     = f.input :role, as: :radio_buttons, collection: User.roles.symbolize_keys.keys
 
-  = f.button :submit_cancel, cancel: users_path
+  = f.button :submit_cancel, cancel: redirect_to_path

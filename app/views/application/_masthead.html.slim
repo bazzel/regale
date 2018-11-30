@@ -15,7 +15,7 @@ nav.navbar.navbar-pf-vertical
         button.btn.btn-link.dropdown-toggle.nav-item-iconic data-toggle='dropdown'
           span.fa.pficon-user title='Username'
           span.dropdown-title
-            => current_user.email
+            => current_user.to_label
             span.caret
         ul.dropdown-menu
           li
