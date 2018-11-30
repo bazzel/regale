@@ -4,12 +4,12 @@ Feature:
   So I can ask my colleagues can sign in
 
   Scenario: No events
-    Given I signed in with my email address "john.doe@example.com"
+    Given I signed in as an admin
     And I'm viewing the events
     Then I see an empty events page
 
   Scenario: List events
-    Given I signed in with my email address "john.doe@example.com"
+    Given I signed in as an admin
     And there are 12 events
     When I choose "All Events" from the "Events" menu
     Then I see a list of 12 event
@@ -21,7 +21,7 @@ Feature:
       | marty@example.com    | Marty |
       | lorraine@example.com |       |
       | emmett@example.com   | Doc   |
-    And I signed in with my email address "john.doe@example.com"
+    And I signed in as admin "john.doe@example.com"
     And the following event:
       | title          | starts_at       | guests                                                        |
       | Italian dinner | 1 week from now | marty@example.com, lorraine@example.com, john.doe@example.com |

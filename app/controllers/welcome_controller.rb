@@ -1,8 +1,9 @@
 class WelcomeController < ApplicationController
+  skip_after_action :verify_authorized
+
   def show
-    @my_upcoming_guests = Guest
+    @my_upcoming_guests = policy_scope(Guest)
       .upcoming
-      .for_user(current_user)
       .page(params[:page]).per(1)
       .includes(:event)
       .decorate

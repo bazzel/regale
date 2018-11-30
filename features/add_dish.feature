@@ -5,7 +5,7 @@ Feature:
 
   @javascript
   Scenario: Add appetizer, main course and dessert
-    Given I signed in with my email address "john.doe@example.com"
+    Given I signed in as an admin
     And I'm adding a new event
     When I fill in "Title" with "Italian dinner"
     And I fill in "Starts at" with "1-1-2018 6:00 PM"

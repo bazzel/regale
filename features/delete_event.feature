@@ -5,7 +5,7 @@ Feature:
 
   @javascript
   Scenario: Delete an event
-    Given I signed in with my email address "john.doe@example.com"
+    Given I signed in as admin "john.doe@example.com"
     And the following event:
       | title          | starts_at       | guests               |
       | Italian dinner | 1 week from now | john.doe@example.com |

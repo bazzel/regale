@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
 
   before_action :authenticate_user!
   before_action :make_action_mailer_use_request_host_and_protocol
+
+  after_action :verify_authorized
+
   helper_method :current_user
 
   def current_user=(user)
