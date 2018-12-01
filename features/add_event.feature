@@ -3,9 +3,17 @@ Feature:
   I want to add an event
   So I can my colleagues can sign in
 
-  Scenario: Add an event
+  Scenario: Add first event
     Given I signed in as an admin
-    When I choose "Add Event" from the "Events" menu
+    When I choose the "Events" menu
+    And I click the "Add Event" button
+    Then I can add a new event
+
+  Scenario: Add next event
+    Given I signed in as an admin
+    And there are 2 events
+    When I choose the "Events" menu
+    And I click the "Add Event" button
     Then I can add a new event
 
   Scenario: Create an invalid event

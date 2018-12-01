@@ -8,6 +8,8 @@ en:
       accept_status/yes: Accept
       accept_status/no: Decline
       accept_status/maybe: Maybe
+      add_resource: 'Add %{resource}'
+      show_all: 'All %{resources}'
   activerecord:
     models:
       event: Event
@@ -53,8 +55,6 @@ en:
   application:
     nav:
       dashboard: Dashboard
-      add_resource: 'Add %{resource}'
-      show_all: 'All %{resources}'
     masthead:
       profile: Profile
       logout: Logout
@@ -93,7 +93,6 @@ en:
     empty_state:
       title: 'Looks like there are no events yet.'
       body_html: '<p>When you create an event, it will show up here.</p>'
-      add_resource: 'Add %{resource}'
   users:
     user:
       destroy: Delete

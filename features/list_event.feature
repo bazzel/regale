@@ -11,7 +11,7 @@ Feature:
   Scenario: List events
     Given I signed in as an admin
     And there are 12 events
-    When I choose "All Events" from the "Events" menu
+    When I choose the "Events" menu
     Then I see a list of 12 event
 
   @javascript

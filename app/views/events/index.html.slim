@@ -1,6 +1,10 @@
 - if @events.any?
-  h1 Listing events
-  .pf-list-compound-expansion.list-group.list-view-pf= render @events
+  h1
+    span Listing events
+    .pull-right
+      = add_event_button
+
+  .pf-list-compound-expansion.list-group.list-view-pf.list-view-pf-view= render @events
 - else
   .row
     .col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2

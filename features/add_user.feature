@@ -5,7 +5,8 @@ Feature:
 
   Scenario: Allow an Admin to add a user
     Given I signed in as an admin
-    When I choose "Add User" from the "Users" menu
+    When I choose the "Users" menu
+    And I click the "Add User" button
     Then I can add a new user
 
   Scenario: Forbid Guests to add users

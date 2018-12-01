@@ -1,10 +1,11 @@
-When("I choose {string} from the {string} menu") do |subitem, item|
-  within('.nav-pf-vertical-with-sub-menus') do
+When("I choose the {string} menu") do |item|
+  within('.nav-pf-vertical') do
     click_on item
-    within('.secondary-nav-item-pf', text: item) do
-      click_on subitem
-    end
   end
+end
+
+When("I click the {string} button") do |label|
+  click_on label
 end
 
 Then("I cannot add a new user") do
@@ -16,11 +17,12 @@ end
 
 Given("I'm viewing the {model_name}s") do |resource|
   resources = resource.pluralize
-  step %(I choose "All #{resources}" from the "#{resources}" menu)
+  step %Q(I choose the "#{resource.pluralize}" menu)
 end
 
 Given("I'm adding a new {model_name}") do |resource|
-  step %Q(I choose "Add #{resource}" from the "#{resource.pluralize}" menu)
+  step %Q(I choose the "#{resource.pluralize}" menu)
+  step %Q(I click the "Add #{resource}" button)
 end
 
 Given("I edit the {model_name} {string}") do |resource, to_label|

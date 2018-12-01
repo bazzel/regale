@@ -4,4 +4,4 @@
   h1= t('.title', name: current_user.decorate.to_label)
   = t('.body_html')
   .blank-slate-pf-main-action
-    = link_to t('.add_resource', resource: Event.model_name.human), new_event_path, class: 'btn btn-primary btn-lg'
+    = add_event_button
