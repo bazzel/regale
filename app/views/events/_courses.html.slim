@@ -9,6 +9,6 @@ h1 Courses
         - event.send(name).each do |dish|
           - if dish.guests.any?
             dl.dl-horizontal
-              dt= dish.title
+              dt= dish.title_with_icon
               - dish.guests.each do |guest|
                 dd= guest.user.to_label

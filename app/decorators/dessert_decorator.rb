@@ -1,4 +1,2 @@
-class DessertDecorator < ApplicationDecorator
-  delegate_all
-  decorates_association :guests
+class DessertDecorator < DishDecorator
 end

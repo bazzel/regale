@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user!
     if current_user.anonymous?
-      redirect_to signin_path, alert: 'Not authenticated'
+      redirect_to signin_path
     end
   end
 

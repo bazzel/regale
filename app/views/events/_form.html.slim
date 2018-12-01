@@ -20,13 +20,14 @@
       #courses.tab-pane(role='tabpanel')
         - Dish.courses.each do |d|
           - name = d.model_name.collection.to_sym
+          - view = "events/nested/#{d.model_name.element}_fields"
           .form-group
             = f.label name, class: 'col-sm-2 control-label'
             .col-sm-10
               = f.simple_fields_for name do |dish|
-                = render 'dish_fields', f: dish
+                = render view, f: dish
               .links
-                = link_to_add_association f, name, partial: 'dish_fields', class: 'btn btn-default'
+                = link_to_add_association f, name, partial: view, class: 'btn btn-default'
 
   = f.input :additional_info, as: :text, input_html: { rows: 10 }
   = f.button :submit_cancel, cancel: events_path

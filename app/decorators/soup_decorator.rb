@@ -1,4 +1,2 @@
-class SoupDecorator < ApplicationDecorator
-  delegate_all
-  decorates_association :guests
+class SoupDecorator < DishDecorator
 end

@@ -22,9 +22,9 @@ class EventPolicy < ApplicationPolicy
      :location,
      :additional_info,
      user_ids: [],
-     soups_attributes: [:id, :title, :description, :_destroy],
-     appetizers_attributes: [:id, :title, :description, :_destroy],
-     main_courses_attributes: [:id, :title, :description, :_destroy],
+     soups_attributes: [:id, :title, :description, :vegetarian, :_destroy],
+     appetizers_attributes: [:id, :title, :description, :vegetarian, :_destroy],
+     main_courses_attributes: [:id, :title, :description, :vegetarian, :_destroy],
      desserts_attributes: [:id, :title, :description, :_destroy]]
   end
 

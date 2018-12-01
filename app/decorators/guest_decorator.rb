@@ -1,6 +1,10 @@
 class GuestDecorator < ApplicationDecorator
   delegate_all
   decorates_association :event
+  decorates_association :soup
+  decorates_association :appetizer
+  decorates_association :main_course
+  decorates_association :dessert
   decorates_association :user
 
   def dom_id
@@ -53,7 +57,7 @@ class GuestDecorator < ApplicationDecorator
   private
 
   def bootstrap_select_collection(collection)
-    collection.map { |d| [d.title, d.id, { data: { subtext: d.description }}] }
+    collection.map { |d| [d.title, d.id, { data: { subtext: d.description, content: d.title_with_icon }}] }
   end
 
   def respond_button(status)
