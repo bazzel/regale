@@ -31,7 +31,8 @@
 
 var ready = function() {
   $('body').tooltip({
-    selector: '[data-toggle="tooltip"]'
+    selector: '[data-toggle="tooltip"]',
+    container: 'body'
   });
   $('select').selectpicker({
     iconBase: 'fa'
