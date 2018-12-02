@@ -1,6 +1,6 @@
 - if event.respond_before?
   p.card-pf-aggregate-status-notifications
     span.card-pf-aggregate-status-notification
-      => fa_icon('calendar-check-o', title: "#{Event.human_attribute_name(:respond_before)} #{event.respond_before}", data: { toggle: :tooltip})
+      => fa_icon('calendar-check-o', tooltipped("#{Event.human_attribute_name(:respond_before)} #{event.respond_before}"))
       = event.respond_before
 

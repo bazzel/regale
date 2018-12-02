@@ -17,7 +17,7 @@ class DishDecorator < ApplicationDecorator
   def vegetarian_icon(options = {})
     return unless vegetarian?
 
-    h.fa_icon('leaf', options.merge(data: { toggle: :tooltip, html: true }, title: 'vegetarian'))
+    h.fa_icon('leaf', h.tooltipped(Dish.human_attribute_name(:vegetarian), options))
   end
 
   alias feedback_label vegetarian_icon

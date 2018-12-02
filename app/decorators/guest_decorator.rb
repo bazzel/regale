@@ -25,7 +25,7 @@ class GuestDecorator < ApplicationDecorator
   def with_visual_accept
     content = [
       accept_status_icon,
-      h.content_tag(:span, user.to_label, class: 'guest-name', title: user.to_label, data: { toggle: :tooltip })
+      h.content_tag(:span, user.to_label, h.tooltipped(user.to_label, class: 'guest-name'))
     ]
 
     h.safe_join(content, ' ')
@@ -35,7 +35,7 @@ class GuestDecorator < ApplicationDecorator
     icon = 'ok'             if yes?
     icon = 'error'          if no?
     icon = 'unknown status' if maybe?
-    h.pf_icon(icon, options.merge(title: accept_status_word, data: { toggle: :tooltip })) if icon
+    h.pf_icon(icon, h.tooltipped(accept_status_word, options)) if icon
   end
 
   def soup_collection

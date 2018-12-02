@@ -44,6 +44,8 @@ en:
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe
+      dish:
+        vegetarian: Vegetarian
       user:
         role/guest: Guest
         role/vip: VIP
