@@ -15,7 +15,10 @@ class DishDecorator < ApplicationDecorator
   end
 
   def vegetarian_icon(options = {})
-    vegetarian? ? h.fa_icon('leaf', options) : nil
+    return unless vegetarian?
+
+    h.fa_icon('leaf', options)
   end
 
+  alias feedback_label vegetarian_icon
 end
