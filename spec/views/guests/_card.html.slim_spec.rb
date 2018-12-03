@@ -149,13 +149,12 @@ RSpec.describe "guests/card", type: :view do
         allow(event).to receive(:main_courses).and_return(build_list(:main_course, 2))
         allow(event).to receive(:desserts).and_return(build_list(:dessert, 3))
 
-        allow(guest).to receive(:appetizer).and_return(appetizer)
-        allow(guest).to receive(:main_course).and_return(main_course)
-        allow(guest).to receive(:dessert).and_return(nil)
+        guest.appetizer = appetizer
+        guest.main_course = main_course
       end
 
-      let(:appetizer) { build_stubbed :appetizer, title: 'my-appetizer' }
-      let(:main_course) { build_stubbed :main_course, title: 'my-main-course' }
+      let(:appetizer) { build :appetizer, title: 'my-appetizer' }
+      let(:main_course) { build :main_course, title: 'my-main-course' }
 
       it { is_expected.to have_css('.guest-card form .card-pf-body .card-pf-subtitle', text: 'This will be your menu') }
 

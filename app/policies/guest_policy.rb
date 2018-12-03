@@ -4,7 +4,7 @@ class GuestPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    %i(accept_status soup_id appetizer_id main_course_id dessert_id)
+    %i(accept_status soup_id appetizer_id main_course_id dessert_id additional_info)
   end
 
   class Scope < Scope

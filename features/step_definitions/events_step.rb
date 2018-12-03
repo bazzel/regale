@@ -77,7 +77,7 @@ Then("I see a list of {int} event(s)/user(s)") do |items_count|
 end
 
 Then("I see a validation error for {string}") do |label|
-  within('form') do
+  within('form.simple_form') do
     expect(page).to have_css('.form-group.has-error', text: label)
   end
 end

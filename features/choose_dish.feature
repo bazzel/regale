@@ -36,3 +36,18 @@ Feature:
     And I click "Submit Menu"
     Then I see a toast notification telling me my changes are saved
 
+  Scenario: Adding invalid additional info
+    Given I signed in with my email address "john.doe@example.com"
+    And the following event:
+      | title          | starts_at       | guests               |
+      | Italian dinner | 1 week from now | john.doe@example.com |
+    And the event "Italian dinner" has the following menu:
+      | course       | dishes                 |
+      | appetizers   | carpaccio, tomato soup |
+      | main_courses | pizza, spaghetti       |
+      | desserts     | tiramisu, limoncello   |
+    And I open the application
+    And I enter a very long text as additional info
+    And I click "Submit Menu"
+    And I see a validation error for "Additional Info"
+

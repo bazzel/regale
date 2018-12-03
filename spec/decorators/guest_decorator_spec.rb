@@ -73,8 +73,8 @@ RSpec.describe GuestDecorator do
       let(:el1)      { build(:soup, id: 1, title: 'foo', description: 'Lorem') }
       let(:el2)      { build(:soup, id: 2, title: 'bar', description: 'Ipsum') }
 
-      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
-      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+      it { is_expected.to include(['foo', 1, data: { content: 'foo', subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { content: 'bar', subtext: 'Ipsum' }]) }
     end
 
     describe '#appetizer_collection' do
@@ -83,8 +83,8 @@ RSpec.describe GuestDecorator do
       let(:el1)      { build(:appetizer, id: 1, title: 'foo', description: 'Lorem') }
       let(:el2)      { build(:appetizer, id: 2, title: 'bar', description: 'Ipsum') }
 
-      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
-      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+      it { is_expected.to include(['foo', 1, data: { content: 'foo', subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { content: 'bar', subtext: 'Ipsum' }]) }
     end
 
     describe '#main_course_collection' do
@@ -93,8 +93,8 @@ RSpec.describe GuestDecorator do
       let(:el1)      { build(:main_course, id: 1, title: 'foo', description: 'Lorem') }
       let(:el2)      { build(:main_course, id: 2, title: 'bar', description: 'Ipsum') }
 
-      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
-      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+      it { is_expected.to include(['foo', 1, data: { content: 'foo', subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { content: 'bar', subtext: 'Ipsum' }]) }
     end
 
     describe '#dessert_collection' do
@@ -103,8 +103,8 @@ RSpec.describe GuestDecorator do
       let(:el1)      { build(:dessert, id: 1, title: 'foo', description: 'Lorem') }
       let(:el2)      { build(:dessert, id: 2, title: 'bar', description: 'Ipsum') }
 
-      it { is_expected.to include(['foo', 1, data: { subtext: 'Lorem' }]) }
-      it { is_expected.to include(['bar', 2, data: { subtext: 'Ipsum' }]) }
+      it { is_expected.to include(['foo', 1, data: { content: 'foo', subtext: 'Lorem' }]) }
+      it { is_expected.to include(['bar', 2, data: { content: 'bar', subtext: 'Ipsum' }]) }
     end
   end
 

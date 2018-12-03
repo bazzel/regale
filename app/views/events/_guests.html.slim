@@ -5,4 +5,7 @@ p= event.guests_summary
   dl.dl-horizontal
     dt= guest.with_visual_accept
     dd= [guest.soup&.title, guest.appetizer&.title, guest.main_course&.title, guest.dessert&.title].compact.join(' - ')
+    - if guest.additional_info?
+      dd
+        em= simple_format guest.additional_info
 

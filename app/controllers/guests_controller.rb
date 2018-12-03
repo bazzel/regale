@@ -12,6 +12,7 @@ class GuestsController < ApplicationController
         format.json { render :show, status: :ok, location: @guest }
       else
         format.html { render :edit }
+        format.js { render :update }
         format.json { render json: @guest.errors, status: :unprocessable_entity }
       end
     end

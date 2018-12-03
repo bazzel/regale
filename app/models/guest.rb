@@ -1,6 +1,8 @@
 class Guest < ApplicationRecord
   default_scope { order(:accept_status) }
 
+  validates :additional_info, length: { maximum: 500 }
+
   belongs_to :user
   belongs_to :event, counter_cache: true
 

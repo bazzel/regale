@@ -20,6 +20,10 @@ When("I select the {string} tab") do |tab_name|
   end
 end
 
+When("I enter a very long text as additional info") do
+  fill_in 'Additional Info', with: "lorem "*100
+end
+
 def bootstrap_select(value, from:)
   container = find('label', text: from).ancestor('.form-group.select')
   container.click_button

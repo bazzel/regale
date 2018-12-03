@@ -13,10 +13,11 @@
       .col-sm-10.col-sm-offset-2
         = render partial: 'guests/card/event_scheduled_at', object: guest.event, as: :event
         = render partial: 'guests/card/event_location', object: guest.event, as: :event
-        p= guest.event.additional_info
+        = simple_format guest.event.additional_info
     .row
       .col-sm-10.col-sm-offset-2
         .card-pf-subtitle= t('.subtitle')
+        = simple_format guest.additional_info
     = f.input :soup, as: :has_feedback_string, readonly: true, input_html: { value: guest.soup&.title } if guest.event.soups.any?
     = f.input :appetizer, as: :has_feedback_string, readonly: true, input_html: { value: guest.appetizer&.title } if guest.event.appetizers.any?
     = f.input :main_course, as: :has_feedback_string, readonly: true, input_html: { value: guest.main_course&.title } if guest.event.main_courses.any?
