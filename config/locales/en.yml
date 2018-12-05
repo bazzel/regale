@@ -40,7 +40,7 @@ en:
         respond_before: RSVP before
       guest:
         accept_status: Your response
-        accept_status/: (Awaiting your response)
+        accept_status/: Awaiting
         accept_status/yes: Accepted
         accept_status/no: Declined
         accept_status/maybe: Maybe

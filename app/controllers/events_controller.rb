@@ -69,6 +69,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def mail_menu_choices
+    # x.text_part.body.decoded
+    #mailer = EventsMailer.menu_choices(@event)
+    #body = mailer.text_part.body.decoded
+    #p mailer.mailto
+    #redirect_to mailer.mailto and return
+    redirect_to 'mailto:?body=some&subject=some'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event

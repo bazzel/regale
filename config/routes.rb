@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   get '/sign_in/:token', to: 'sessions#show', as: :token_sign_in
   delete '/sign_out', to: 'sessions#destroy', as: :sign_out
 
-  resources :events
+  resources :events do
+    get 'mail_menu_choices', on: :member
+  end
   resources :users
   resources :guests
 
