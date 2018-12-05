@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Modal, Button } from 'react-bootstrap'
+//import I18n from 'i18n-js/index.js.erb'
 
 class MailMenuChoices extends React.Component {
   constructor(props, context) {
