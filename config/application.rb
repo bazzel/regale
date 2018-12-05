@@ -19,5 +19,6 @@ module Regale
 
     # See https://github.com/varvet/pundit#rescuing-a-denied-authorization-in-rails
     config.action_dispatch.rescue_responses["Pundit::NotAuthorizedError"] = :forbidden
+    Jbuilder.key_format camelize: :lower
   end
 end
