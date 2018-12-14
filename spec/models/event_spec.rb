@@ -111,7 +111,7 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe '#accept_status_summary', focus: true do
+  describe '#accept_statuses_summary' do
     subject { instance.accept_statuses_summary }
 
     let(:instance) { create :event }
