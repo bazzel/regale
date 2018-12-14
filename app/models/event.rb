@@ -38,27 +38,8 @@ class Event < ApplicationRecord
     [latitude, longitude]
   end
 
-  # @return [HashWithIndifferentAccess] contains all accept statuses (`nil` included) as keys
-  #   and the number of corresponding responses asthe values
-  # @example
-  #   event.accept_statuses_summary
-  #   # => {
-  #          yes: 13,
-  #          no:  2,
-  #          maybe: 3,
-  #          nil => 34
-  #        }
   def accept_statuses_summary
-    h = HashWithIndifferentAccess.new(nil => 0)
-    Guest.accept_statuses.keys.each do |k|
-      h[k] = 0
-    end
-
-    guests.group(:accept_status).count.each do |accept_status, count|
-      h[accept_status] = count
-    end
-
-    h
+    AcceptStatusSummary.new(guests).summary
   end
 
   private
