@@ -21,8 +21,4 @@ class DonutChart extends React.Component {
   }
 }
 
-DonutChart.propTypes = {
-  greeting: PropTypes.string
-};
-
 export default DonutChart

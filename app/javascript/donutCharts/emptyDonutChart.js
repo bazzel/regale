@@ -1,5 +1,5 @@
 class EmptyDonutChart {
-  constructor({ yes = 0, no = 0, maybe = 0, '': awaiting = 0 }) {
+  constructor({ yes, no, maybe, '': awaiting }) {
     this.yes = yes;
     this.no = no;
     this.maybe = maybe;

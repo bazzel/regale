@@ -3,21 +3,19 @@ import FilledDonutChart from 'donutCharts/filledDonutChart'
 
 class Factory {
   static createChartGenerator(props) {
+    const { acceptStatusesSummary } = props;
     const {
-      acceptStatus = {}
-    } = props;
-    const {
-      yes = 0,
-      no = 0,
-      maybe = 0,
-      '': awaiting = 0
-    } = acceptStatus;
+      yes,
+      no,
+      maybe,
+      '': awaiting
+    } = acceptStatusesSummary;
     const total = yes + no + maybe + awaiting;
 
     if (total == 0)
-      return new EmptyDonutChart(acceptStatus);
+      return new EmptyDonutChart(acceptStatusesSummary);
 
-    return new FilledDonutChart(acceptStatus);
+    return new FilledDonutChart(acceptStatusesSummary);
   }
 }
 
