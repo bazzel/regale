@@ -39,7 +39,7 @@ class Event < ApplicationRecord
   end
 
   def accept_statuses_summary
-    AcceptStatusSummary.new(guests).summary
+    AcceptStatusesSummary.new(guests).summary
   end
 
   private

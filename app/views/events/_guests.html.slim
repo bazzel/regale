@@ -1,5 +1,5 @@
 h1 Guests
-p= event.guests_summary
+p= event.accept_statuses_summary.to_sentence
 
 - event.guests.each do |guest|
   dl.dl-horizontal

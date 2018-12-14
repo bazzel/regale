@@ -111,64 +111,6 @@ RSpec.describe Event, type: :model do
     end
   end
 
-  describe '#accept_statuses_summary' do
-    subject { instance.accept_statuses_summary }
-
-    let(:instance) { create :event }
-
-    context 'all guests responded' do
-      before do
-        instance.guests << build_list(:guest, 1, :yes)
-        instance.guests << build_list(:guest, 2, :no)
-        instance.guests << build_list(:guest, 3, :maybe)
-      end
-
-      it { is_expected.to include(yes: 1) }
-      it { is_expected.to include(no: 2) }
-      it { is_expected.to include(maybe: 3) }
-      it { is_expected.to include(nil => 0) }
-    end
-
-    context 'no "yes"' do
-      before do
-        instance.guests << build_list(:guest, 1)
-        instance.guests << build_list(:guest, 2, :no)
-        instance.guests << build_list(:guest, 3, :maybe)
-      end
-
-      it { is_expected.to include(yes: 0) }
-      it { is_expected.to include(no: 2) }
-      it { is_expected.to include(maybe: 3) }
-      it { is_expected.to include(nil => 1) }
-    end
-
-    context 'no "no"' do
-      before do
-        instance.guests << build_list(:guest, 1, :yes)
-        instance.guests << build_list(:guest, 2)
-        instance.guests << build_list(:guest, 3, :maybe)
-      end
-
-      it { is_expected.to include(yes: 1) }
-      it { is_expected.to include(no: 0) }
-      it { is_expected.to include(maybe: 3) }
-      it { is_expected.to include(nil => 2) }
-    end
-
-    context 'no "maybe"' do
-      before do
-        instance.guests << build_list(:guest, 1, :yes)
-        instance.guests << build_list(:guest, 2, :no)
-        instance.guests << build_list(:guest, 3)
-      end
-
-      it { is_expected.to include(yes: 1) }
-      it { is_expected.to include(no: 2) }
-      it { is_expected.to include(maybe: 0) }
-      it { is_expected.to include(nil => 3) }
-    end
-  end
-
   describe '#scheduled_at' do
 
   end

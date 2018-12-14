@@ -1,4 +1,4 @@
-class AcceptStatusSummary < HashWithIndifferentAccess
+class AcceptStatusesSummary < HashWithIndifferentAccess
   attr_reader :guests
 
   def initialize(guests)
@@ -24,6 +24,15 @@ class AcceptStatusSummary < HashWithIndifferentAccess
     end
 
     self
+  end
+
+  def to_sentence
+    scope  = %i(events event guests_summary)
+
+    summary.map do |k, v|
+      k ||= :awaiting
+      I18n.t(k, scope: scope, count: v)
+    end.reject(&:blank?).to_sentence
   end
 
   private
