@@ -51,6 +51,9 @@ en:
         role/guest: Guest
         role/vip: VIP
         role/admin: Administrator
+  mail_to_mailer:
+    menu_choices:
+      subject: Menu choices
   datetime:
     formats:
       datetimepicker: 'YYYY-MM-DD, hh:mm a'
@@ -76,7 +79,7 @@ en:
       edit: Edit
       destroy: Delete
       confirm: 'Are you sure you want to delete the event %{name}?'
-      guests_summary:
+      accept_statuses_summary:
         'yes':
           zero: ''
           one: '%{count} yes'

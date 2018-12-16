@@ -27,7 +27,7 @@ class AcceptStatusesSummary < HashWithIndifferentAccess
   end
 
   def to_sentence
-    scope  = %i(events event guests_summary)
+    scope  = %i(events event accept_statuses_summary)
 
     summary.map do |k, v|
       k ||= :awaiting
