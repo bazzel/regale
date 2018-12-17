@@ -6,16 +6,16 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# bin/rails db:seed email=<your-email-address>
-# bin/rails db:seed email=<your-email-address> users_count=100 events_count=20
+# bin/rails db:seed ADMIN_EMAIL=<your-email-address>
+# bin/rails db:seed ADMIN_EMAIL=<your-email-address> USERS_COUNT=100 EVENTS_COUNT=20
 #
 include FactoryBot::Syntax::Methods
 
 Event.destroy_all
 User.destroy_all
 
-users_count = ENV.fetch('USERS_COUNT', 20)
-events_count = ENV.fetch('EVENTS_COUNT', 10)
+users_count = ENV.fetch('USERS_COUNT', 20).to_i
+events_count = ENV.fetch('EVENTS_COUNT', 10).to_i
 
 current_user = CreateAdminService.new.call
 
