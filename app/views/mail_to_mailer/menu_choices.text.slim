@@ -1,45 +1,21 @@
+- additional_info = @guests.map(&:additional_info).compact
+
 = @event.title
 = "\r\n" * 2
 = @event.scheduled_at
 = "\r\n"
 
-- soups = Hash[@guests.map(&:soup).compact.group_by(&:title).map {|k,v| [k, v.size] }]
-- appetizers = Hash[@guests.map(&:appetizer).compact.group_by(&:title).map {|k,v| [k, v.size] }]
-- main_courses = Hash[@guests.map(&:main_course).compact.group_by(&:title).map {|k,v| [k, v.size] }]
-- desserts = Hash[@guests.map(&:dessert).compact.group_by(&:title).map {|k,v| [k, v.size] }]
-- additional_info = @guests.map(&:additional_info).compact
+- Dish.courses.each do |d|
+  - dish_name = d.model_name.singular.to_sym
+  - dishes = Hash[@guests.map { |g| g.send(dish_name) }.compact.group_by(&:title).map {|k,v| [k, v.size] }]
 
-- if soups.any?
-  = "\r\n"
-  | Soups
-  = "\r\n"
-  - soups.each do |dish, count|
-    = "#{dish}: #{count}"
+  - if dishes.any?
     = "\r\n"
-
-- if appetizers.any?
-  = "\r\n"
-  | Appetizers
-  = "\r\n"
-  - appetizers.each do |dish, count|
-    = "#{dish}: #{count}"
+    = d.model_name.human
     = "\r\n"
-
-- if main_courses.any?
-  = "\r\n"
-  | Main Courses
-  = "\r\n"
-  - main_courses.each do |dish, count|
-    = "#{dish}: #{count}"
-    = "\r\n"
-
-- if desserts.any?
-  = "\r\n"
-  | Desserts
-  = "\r\n"
-  - desserts.each do |dish, count|
-    = "#{dish}: #{count}"
-    = "\r\n"
+    - dishes.each do |dish, count|
+      = "#{dish}: #{count}"
+      = "\r\n"
 
 - if additional_info.any?
   = "\r\n"
