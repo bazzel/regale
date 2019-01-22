@@ -11,6 +11,10 @@ class MailToController < ApplicationController
 
   private
   def sanizited_accept_status_param
-    params[:accept_status].map { |status| status.blank? ? nil : status }
+    accept_status_param_with_default.map { |status| status.blank? ? nil : status }
+  end
+
+  def accept_status_param_with_default
+    params[:accept_status] || []
   end
 end

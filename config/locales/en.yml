@@ -10,6 +10,7 @@ en:
       accept_status/maybe: Maybe
       add_resource: 'Add %{resource}'
       show_all: 'All %{resources}'
+      cancel: &cancel 'Cancel'
   activerecord:
     models:
       event: Event
@@ -78,6 +79,7 @@ en:
     event:
       edit: Edit
       destroy: Delete
+      mail_menu_choices: &mail_menu_choices 'Mail Menu Choices'
       confirm: 'Are you sure you want to delete the event %{name}?'
       accept_statuses_summary:
         'yes':
@@ -104,6 +106,14 @@ en:
       destroy: Delete
       confirm: 'Are you sure you want to delete %{name}?'
   # End pages
+  # Modals
+  mail_menu_choices:
+    title: *mail_menu_choices
+    body: "Send a mail with the menu choices for this event. Menu choices of guests that belong to the selected groups are included."
+    submit: Compose Email
+    cancel: *cancel
+  #
+  # End modals
   time:
     am: am
     formats:

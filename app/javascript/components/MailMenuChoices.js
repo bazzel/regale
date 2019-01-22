@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Modal, Checkbox, Button } from 'react-bootstrap'
-import I18n from 'i18n-js/index.js.erb'
-import FormAuthenticityToken from "./FormAuthenticityToken"
+import React from "react";
+import PropTypes from "prop-types";
+import { Modal, Checkbox, Button } from "react-bootstrap";
+import I18n from "i18n-js/index.js.erb";
+import FormAuthenticityToken from "./FormAuthenticityToken";
 
 class MailMenuChoices extends React.Component {
   constructor(props, context) {
@@ -13,59 +13,72 @@ class MailMenuChoices extends React.Component {
     };
   }
 
-  render () {
-    const handleShow = () => this.handleShow()
-    const handleClose = () => this.handleClose()
-    const handleSubmit = () => this.handleSubmit()
-
+  render() {
     const { mailMenuChoicesPath } = this.props;
+    const { show } = this.state;
 
     return (
       <React.Fragment>
-        <span onClick={handleShow}>Mail Menu Choices...</span>
+        <span onClick={this._handleShow}>
+          {`${I18n.t("events.event.mail_menu_choices")}...`}
+        </span>
 
-        <Modal show={this.state.show} onHide={handleClose}>
+        <Modal show={show} onHide={this._handleClose}>
           <form action={mailMenuChoicesPath} method="post" target="_blank">
             <FormAuthenticityToken />
             <Modal.Header closeButton>
-              <Modal.Title>Modal heading</Modal.Title>
+              <Modal.Title>{I18n.t("mail_menu_choices.title")}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <h4>Text in a modal</h4>
-              <p>
-                Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-              </p>
-
+              <p>{I18n.t("mail_menu_choices.body")}</p>
               {this.Checkboxes}
             </Modal.Body>
             <Modal.Footer>
-              <Button onClick={handleClose}>Cancel</Button>
-              <Button bsStyle="primary" type="submit" onClick={handleSubmit}>Compose Email</Button>
+              <Button onClick={this._handleClose}>
+                {I18n.t("mail_menu_choices.cancel")}
+              </Button>
+              <Button
+                bsStyle="primary"
+                type="submit"
+                onClick={this._handleSubmit}
+              >
+                {I18n.t("mail_menu_choices.submit")}
+              </Button>
             </Modal.Footer>
           </form>
         </Modal>
-
       </React.Fragment>
-      );
+    );
   }
 
   get Checkboxes() {
     let { acceptStatusesSummary } = this.props;
 
-    return Object.keys(acceptStatusesSummary).map((key) => <Checkbox value={key} name="accept_status[]">{I18n.t(`activerecord.attributes.guest.accept_status/${key}`)}</Checkbox>);
+    return Object.keys(acceptStatusesSummary).map(key => (
+      <Checkbox value={key} key={key} name="accept_status[]">
+        {`${I18n.t(`activerecord.attributes.guest.accept_status/${key}`)} (${
+          acceptStatusesSummary[key]
+        })`}
+      </Checkbox>
+    ));
   }
 
-  handleClose() {
+  _handleClose = () => {
     this.setState({ show: false });
-  }
+  };
 
-  handleShow() {
+  _handleShow = () => {
     this.setState({ show: true });
-  }
+  };
 
-  handleSubmit() {
-    this.handleClose()
-  }
+  _handleSubmit = () => {
+    this._handleClose();
+  };
 }
 
-export default MailMenuChoices
+MailMenuChoices.PropTypes = {
+  acceptStatusesSummary: PropTypes.objectOf(PropTypes.number).isRequired,
+  mailMenuChoicesPath: PropTypes.string.isRequired
+};
+
+export default MailMenuChoices;

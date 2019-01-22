@@ -13,7 +13,23 @@
     "react_ujs": "^2.4.4"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint": "^5.12.1",
+    "eslint-config-prettier": "^3.6.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "prettier": "^1.16.0",
     "rails-erb-loader": "^5.5.0",
     "webpack-dev-server": "2.11.2"
+  },
+  "scripts": {
+    "format": "prettier --write \"app/javascript/components/**/*.jsx\"",
+    "format:check": "prettier --list-different \"app/javascript/components/**/*.jsx\"",
+    "lint": "eslint app/javascript/components/**/*.jsx --quiet"
   }
 }
