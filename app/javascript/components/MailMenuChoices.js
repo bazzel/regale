@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Modal, Checkbox, Button} from 'react-bootstrap';
-import I18n from '../i18n-js/index.js.erb';
+import I18n from 'i18n-js/index.js.erb';
 import FormAuthenticityToken from './FormAuthenticityToken';
 
 class MailMenuChoices extends React.Component {
