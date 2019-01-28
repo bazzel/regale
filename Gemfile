@@ -48,6 +48,7 @@ gem 'geocoder' # Provides object geocoding and more
 gem 'react-rails' # Render components in views or controller actions
 gem 'pundit' # Object oriented authorization for Rails applications
 gem 'i18n-js' # It's a small library to provide the Rails I18n translations on the Javascript.
+gem 'htmlentities' # A module for encoding and decoding (X)HTML entities.
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

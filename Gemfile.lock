@@ -353,6 +353,7 @@ DEPENDENCIES
   faker
   geocoder
   html2slim
+  htmlentities
   i18n-js
   jbuilder (~> 2.5)
   kaminari
