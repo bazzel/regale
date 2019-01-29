@@ -32,10 +32,10 @@
 var ready = function() {
   $('body').tooltip({
     selector: '[data-toggle="tooltip"]',
-    container: 'body'
+    container: 'body',
   });
   $('select').selectpicker({
-    iconBase: 'fa'
+    iconBase: 'fa',
   });
 
   $().setupVerticalNavigation(true);
@@ -45,15 +45,15 @@ var ready = function() {
     toolbarPlacement: 'bottom',
     sideBySide: true,
     icons: {
-      today: 'today-button-pf'
-    }
+      today: 'today-button-pf',
+    },
   });
   $('.bootstrap-datepicker').datepicker({
     autoclose: true,
-    todayBtn: "linked",
-    todayHighlight: true
+    todayBtn: 'linked',
+    todayHighlight: true,
   });
-}
+};
 
 //$(document).on('turbolinks:load', ready)
-$(document).ready(ready)
+$(document).ready(ready);
