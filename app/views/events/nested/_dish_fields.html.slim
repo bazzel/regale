@@ -1,6 +1,6 @@
 .nested-fields
   .form-group
-    .col-sm-3= f.input_field :title, class: 'form-control'
-    .col-sm-6= f.input_field :description, class: 'form-control'
+    .col-sm-3= f.input :title, wrapper: :nested_form
+    .col-sm-6= f.input :description, wrapper: :nested_form
     .col-sm-2= f.input :vegetarian, wrapper: :inline_boolean
     .col-sm-1.text-right= link_to_remove_association fa_icon('trash-o'), f, class: 'btn btn-default'
