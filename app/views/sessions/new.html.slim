@@ -8,4 +8,5 @@
       = email_field_tag :email, nil, placeholder: 'Email', class: 'form-control input-lg'
       = submit_tag 'Sign In', class: 'button.btn btn-primary btn-block btn-lg'
   p.login-pf-signup
-    | Regale uses magic links instead of passwords.
+    => Rails.application.config.app_name
+    | uses magic links instead of passwords.
