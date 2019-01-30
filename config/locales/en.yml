@@ -117,7 +117,7 @@ en:
   time:
     am: am
     formats:
-      medium: "%A, %b %d %I:%M %P"
+      medium: "%a, %b %d %I:%M %P"
   errors:
     messages:
       invalid_respond_before: 'must be earlier that date of the event'
