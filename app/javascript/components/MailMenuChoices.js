@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import {Modal, Checkbox, Button} from 'react-bootstrap';
 import I18n from 'i18n-js/index.js.erb';
 import FormAuthenticityToken from './FormAuthenticityToken';
@@ -75,9 +75,9 @@ class MailMenuChoices extends React.Component {
   };
 }
 
-MailMenuChoices.PropTypes = {
-  acceptStatusesSummary: PropTypes.objectOf(PropTypes.number).isRequired,
-  mailMenuChoicesPath: PropTypes.string.isRequired,
+MailMenuChoices.propTypes = {
+  mailMenuChoicesPath: propTypes.string.isRequired,
+  acceptStatusesSummary: propTypes.objectOf(propTypes.number).isRequired,
 };
 
 export default MailMenuChoices;

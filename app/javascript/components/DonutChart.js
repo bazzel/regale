@@ -1,6 +1,5 @@
-import React from "react"
-import PropTypes from "prop-types"
-import Factory from 'donutCharts/factory'
+import React from 'react';
+import Factory from 'donutCharts/factory';
 
 class DonutChart extends React.Component {
   constructor(props) {
@@ -14,11 +13,9 @@ class DonutChart extends React.Component {
     this.generator.generate();
   }
 
-  render () {
-    return (
-      <div ref={this.myRef} />
-    );
+  render() {
+    return <div ref={this.myRef} />;
   }
 }
 
-export default DonutChart
+export default DonutChart;
